@@ -56,7 +56,7 @@
             this.lblSignUp.AutoSize = true;
             this.lblSignUp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSignUp.Location = new System.Drawing.Point(377, 455);
+            this.lblSignUp.Location = new System.Drawing.Point(377, 478);
             this.lblSignUp.Name = "lblSignUp";
             this.lblSignUp.Size = new System.Drawing.Size(89, 25);
             this.lblSignUp.TabIndex = 30;
@@ -68,7 +68,7 @@
             this.label7.AutoSize = true;
             this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(139, 455);
+            this.label7.Location = new System.Drawing.Point(139, 478);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(218, 22);
             this.label7.TabIndex = 29;
@@ -83,7 +83,7 @@
             this.btnSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignIn.ForeColor = System.Drawing.Color.White;
-            this.btnSignIn.Location = new System.Drawing.Point(310, 373);
+            this.btnSignIn.Location = new System.Drawing.Point(310, 396);
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(168, 45);
             this.btnSignIn.TabIndex = 28;
@@ -99,7 +99,7 @@
             this.btnClear.FlatAppearance.BorderSize = 2;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(128, 373);
+            this.btnClear.Location = new System.Drawing.Point(128, 396);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(168, 45);
             this.btnClear.TabIndex = 27;
@@ -114,7 +114,7 @@
             this.cbShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbShowPassword.ForeColor = System.Drawing.Color.DimGray;
-            this.cbShowPassword.Location = new System.Drawing.Point(331, 283);
+            this.cbShowPassword.Location = new System.Drawing.Point(331, 323);
             this.cbShowPassword.Name = "cbShowPassword";
             this.cbShowPassword.Size = new System.Drawing.Size(147, 24);
             this.cbShowPassword.TabIndex = 26;
@@ -128,7 +128,7 @@
             this.label6.Cursor = System.Windows.Forms.Cursors.Default;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(123, 211);
+            this.label6.Location = new System.Drawing.Point(123, 251);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 25);
             this.label6.TabIndex = 25;
@@ -139,7 +139,7 @@
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(128, 239);
+            this.txtPassword.Location = new System.Drawing.Point(128, 279);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(350, 38);
             this.txtPassword.TabIndex = 24;
@@ -150,7 +150,7 @@
             this.label2.Cursor = System.Windows.Forms.Cursors.Default;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(123, 134);
+            this.label2.Location = new System.Drawing.Point(123, 174);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 25);
             this.label2.TabIndex = 17;
@@ -161,7 +161,7 @@
             this.txtEmailOrPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmailOrPhone.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtEmailOrPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailOrPhone.Location = new System.Drawing.Point(128, 162);
+            this.txtEmailOrPhone.Location = new System.Drawing.Point(128, 202);
             this.txtEmailOrPhone.Name = "txtEmailOrPhone";
             this.txtEmailOrPhone.Size = new System.Drawing.Size(350, 38);
             this.txtEmailOrPhone.TabIndex = 16;
