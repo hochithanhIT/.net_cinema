@@ -43,7 +43,7 @@ namespace Cinema
         public DataAccess()
         {
             // Chuỗi kết nối đến SQL Server (Data Source, Database, User ID, Password)
-            this.Sqlcon = new SqlConnection(@"Data Source=MSI;Initial Catalog=Cinema;Persist Security Info=True;User ID=sa;Password=***********;Encrypt=False;Trust Server Certificate=True");
+            this.Sqlcon = new SqlConnection(@"Data Source=MSI;Initial Catalog=Cinema;Persist Security Info=True;User ID=sa;Password=hv3!Epad;Encrypt=False;Trust Server Certificate=True");
 
             // Mở kết nối đến database
             Sqlcon.Open();
