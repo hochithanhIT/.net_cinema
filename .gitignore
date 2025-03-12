@@ -363,4 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /Cinema/Form1.resx
 
-connect_db/
+Cinema/connect_db/
+
