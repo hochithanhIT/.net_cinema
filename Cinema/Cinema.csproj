@@ -77,5 +77,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\poster\28_YEARS_LATER.jpg" />
+    <Content Include="assets\poster\ANH_TRAI_SAY_HI_VILLAINS_MADE_THE_HERO.jpg" />
+    <Content Include="assets\poster\ATTACK_ON_TITAN_THE_LAST_ATTACK.jpg" />
+    <Content Include="assets\poster\CAPTAIN_AMERICA_BRAVE_NEW_WORLD.jpg" />
+    <Content Include="assets\poster\DARK_NUNS.jpg" />
+    <Content Include="assets\poster\FLIGHT_RISK.jpg" />
+    <Content Include="assets\poster\FLOW.jpg" />
+    <Content Include="assets\poster\INTERSTELLAR_%28RERUN%29.jpg" />
+    <Content Include="assets\poster\JURASSIC_WORLD_REBIRTH.jpg" />
+    <Content Include="assets\poster\M3GAN_2.0.jpg" />
+    <Content Include="assets\poster\MOBILE_SUIT_GUNDAM_GQUUUUUUX_BEGINNING.jpg" />
+    <Content Include="assets\poster\NHA_GIA_TIEN.jpg" />
+    <Content Include="assets\poster\NOSFERATU.jpg" />
+    <Content Include="assets\poster\PADDINGTON_IN_PERU.jpg" />
+    <Content Include="assets\poster\PANOR.jpg" />
+    <Content Include="assets\poster\SUPERMAN.jpg" />
+    <Content Include="assets\poster\THE_BAD_GUYS_2.png" />
+    <Content Include="assets\poster\THE_SMURFS_MOVIE.jpg" />
+    <Content Include="assets\poster\THE_SUBSTANCE_%28RERUN%29.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
