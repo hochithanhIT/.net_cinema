@@ -15,6 +15,7 @@ namespace Cinema
     public partial class UCSignIn: UserControl
     {
         private FormRegistration formRegistration;
+        private ProfileForm profileForm = new ProfileForm();
         private DataAccess dataAccess = new DataAccess();
         public UCSignIn(FormRegistration formRegistration)
         {
@@ -54,6 +55,64 @@ namespace Cinema
             return true;
         }
 
+        //private void SignIn(string emailOrPhone, string password)
+        //{
+        //    if (!this.IsValidToSignIn())
+        //    {
+        //        MessageBox.Show("Please fill in all fields", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+        //    // Kiểm tra xem emailOrPhone nhập vào có hợp lệ không
+        //    if (!IsValidEmail(emailOrPhone) && !IsValidPhoneNumber(emailOrPhone))
+        //    {
+        //        MessageBox.Show("Invalid email or phone number format.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return;
+        //    }
+
+        //    try
+        //    {
+        //        // Truy vấn lấy mật khẩu băm từ database
+        //        string query = "SELECT PASS, FULL_NAME FROM THEATER_MEM WHERE EMAIL = @emailOrphone OR PHONE = @emailOrphone";
+        //        SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon);
+        //        cmd.Parameters.AddWithValue("@emailOrphone", emailOrPhone);
+
+        //        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+        //        DataTable dt = new DataTable();
+        //        adapter.Fill(dt);
+
+        //        if (dt.Rows.Count == 1)
+        //        {
+        //            string hashedPassword = dt.Rows[0]["PASS"].ToString();
+        //            string fullName = dt.Rows[0]["FULL_NAME"].ToString();
+
+        //            // So sánh mật khẩu với bcrypt
+        //            if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+        //            {
+        //                MessageBox.Show($"Welcome {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                this.ClearAllFields();
+        //                // Mở Form Profile
+        //                profileForm.Show();
+
+        //                // Đóng Form đăng nhập
+        //                Form parentForm = this.FindForm();
+        //                parentForm.Hide();
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("Invalid email/phone or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Account not found.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "SignIn() Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
         private void SignIn(string emailOrPhone, string password)
         {
             if (!this.IsValidToSignIn())
@@ -62,7 +121,7 @@ namespace Cinema
                 return;
             }
 
-            // Kiểm tra xem emailOrPhone nhập vào có hợp lệ không
+            // Validate email or phone
             if (!IsValidEmail(emailOrPhone) && !IsValidPhoneNumber(emailOrPhone))
             {
                 MessageBox.Show("Invalid email or phone number format.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -71,8 +130,8 @@ namespace Cinema
 
             try
             {
-                // Truy vấn lấy mật khẩu băm từ database
-                string query = "SELECT PASS, FULL_NAME FROM THEATER_MEM WHERE EMAIL = @emailOrphone OR PHONE = @emailOrphone";
+                // Query to get user data from the database
+                string query = "SELECT PASS, FULL_NAME, EMAIL, PHONE, BIRTHDAY, SPENDING FROM THEATER_MEM WHERE EMAIL = @emailOrphone OR PHONE = @emailOrphone";
                 SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon);
                 cmd.Parameters.AddWithValue("@emailOrphone", emailOrPhone);
 
@@ -84,12 +143,22 @@ namespace Cinema
                 {
                     string hashedPassword = dt.Rows[0]["PASS"].ToString();
                     string fullName = dt.Rows[0]["FULL_NAME"].ToString();
+                    string email = dt.Rows[0]["EMAIL"].ToString();
+                    string phone = dt.Rows[0]["PHONE"].ToString();
 
-                    // So sánh mật khẩu với bcrypt
+                    // Verify password
                     if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
                     {
                         MessageBox.Show($"Welcome {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.ClearAllFields();
+
+                        // Pass user data to ProfileForm
+                        ProfileForm profileForm = new ProfileForm(fullName, email, phone);
+                        profileForm.Show();
+
+                        // Close the login form
+                        Form parentForm = this.FindForm();
+                        parentForm.Hide();
                     }
                     else
                     {

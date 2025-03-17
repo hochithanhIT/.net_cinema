@@ -38,9 +38,11 @@ namespace Cinema
             this.panelLeft.Controls.Add(this.label3);
             this.panelLeft.Controls.Add(this.label2);
             this.panelLeft.Controls.Add(this.label1);
+            this.panelLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(600, 700);
+            this.panelLeft.Size = new System.Drawing.Size(1050, 1184);
             this.panelLeft.TabIndex = 0;
             // 
             // btnSignIn
@@ -52,9 +54,10 @@ namespace Cinema
             this.btnSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
             this.btnSignIn.ForeColor = System.Drawing.Color.White;
-            this.btnSignIn.Location = new System.Drawing.Point(311, 510);
+            this.btnSignIn.Location = new System.Drawing.Point(544, 924);
+            this.btnSignIn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnSignIn.Name = "btnSignIn";
-            this.btnSignIn.Size = new System.Drawing.Size(168, 54);
+            this.btnSignIn.Size = new System.Drawing.Size(294, 98);
             this.btnSignIn.TabIndex = 29;
             this.btnSignIn.Text = "Sign In";
             this.btnSignIn.UseVisualStyleBackColor = false;
@@ -71,9 +74,10 @@ namespace Cinema
             this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
             this.btnSignUp.ForeColor = System.Drawing.Color.White;
-            this.btnSignUp.Location = new System.Drawing.Point(97, 510);
+            this.btnSignUp.Location = new System.Drawing.Point(170, 924);
+            this.btnSignUp.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(168, 54);
+            this.btnSignUp.Size = new System.Drawing.Size(294, 98);
             this.btnSignUp.TabIndex = 28;
             this.btnSignUp.Text = "Sign Up";
             this.btnSignUp.UseVisualStyleBackColor = false;
@@ -86,7 +90,8 @@ namespace Cinema
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(25, 384);
+            this.label3.Location = new System.Drawing.Point(44, 696);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(501, 40);
             this.label3.TabIndex = 2;
@@ -98,7 +103,8 @@ namespace Cinema
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(24, 301);
+            this.label2.Location = new System.Drawing.Point(42, 546);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(489, 50);
             this.label2.TabIndex = 1;
@@ -109,7 +115,8 @@ namespace Cinema
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(20, 9);
+            this.label1.Location = new System.Drawing.Point(35, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(320, 51);
             this.label1.TabIndex = 0;
@@ -118,19 +125,22 @@ namespace Cinema
             // panelContainer
             // 
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelContainer.Location = new System.Drawing.Point(600, 0);
+            this.panelContainer.Location = new System.Drawing.Point(874, 0);
+            this.panelContainer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(600, 700);
+            this.panelContainer.Size = new System.Drawing.Size(1050, 1175);
             this.panelContainer.TabIndex = 1;
             // 
             // FormRegistration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.ClientSize = new System.Drawing.Size(1924, 1175);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panelLeft);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.MaximizeBox = false;
             this.Name = "FormRegistration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -63,6 +63,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connect_db\DataAccess.cs" />
+    <Compile Include="forms\profile\ProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\profile\ProfileForm.Designer.cs">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\profile\UCMemberRank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\profile\UCMemberRank.Designer.cs">
+      <DependentUpon>UCMemberRank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\profile\UCProfileDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\profile\UCProfileDetails.Designer.cs">
+      <DependentUpon>UCProfileDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\profile\UCTicketHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\profile\UCTicketHistory.Designer.cs">
+      <DependentUpon>UCTicketHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\SignUp_SignIn\FormRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,18 +107,26 @@
     <Compile Include="forms\SignUp_SignIn\UCSignUp.Designer.cs">
       <DependentUpon>UCSignUp.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="forms\profile\ProfileForm.resx">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\profile\UCMemberRank.resx">
+      <DependentUpon>UCMemberRank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\profile\UCProfileDetails.resx">
+      <DependentUpon>UCProfileDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\profile\UCTicketHistory.resx">
+      <DependentUpon>UCTicketHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\SignUp_SignIn\FormRegistration.resx">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="forms\SignUp_SignIn\UCSignIn.resx">
       <DependentUpon>UCSignIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +138,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -116,8 +153,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\logo\" />
-    <Folder Include="forms\profile\" />
+    <Folder Include="assets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

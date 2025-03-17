@@ -72,8 +72,8 @@ namespace Cinema
 
                 // Câu lệnh SQL chèn dữ liệu vào bảng THEATER_MEM
                 string sql = $@"
-                INSERT INTO THEATER_MEM (FULL_NAME, PHONE, EMAIL, BIRTHDATE, PASS) 
-                VALUES (N'{fullName}', '{phone}', '{email}', '{birthDate:yyyy-MM-dd}', '{hashedPassword}')";
+                INSERT INTO THEATER_MEM (FULL_NAME, PHONE, EMAIL, BIRTHDATE, PASS, SPENDING) 
+                VALUES (N'{fullName}', '{phone}', '{email}', '{birthDate:yyyy-MM-dd}', '{hashedPassword}', '0')";
 
                 // Thực thi truy vấn
                 int result = this.dataAccess.ExecuteDMLQuery(sql);
@@ -82,6 +82,7 @@ namespace Cinema
                 {
                     MessageBox.Show("Sign up successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.ClearAllFields();
+                    this.formRegistration.AddUserControl(new UCSignIn(this.formRegistration));
                 }
                 else
                 {
