@@ -17,5 +17,15 @@ namespace Cinema.Forms {
         private void Movie_Detail_Load(object sender, EventArgs e) {
 
         }
+
+        private void Booking_Button_MouseEnter(object sender, EventArgs e) {
+            Booking_Button.BackColor = Color.FromArgb(116, 198, 157);
+            Booking_Button.ForeColor = Color.White;
+        }
+
+        private void Booking_Button_MouseLeave(object sender, EventArgs e) {
+            Booking_Button.BackColor = Color.FromArgb(148, 213, 180);
+            Booking_Button.ForeColor = Color.SeaGreen;
+        }
     }
 }
