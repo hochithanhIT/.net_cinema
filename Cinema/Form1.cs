@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cinema.forms.profile
+namespace Cinema
 {
-    public partial class UCMemberRank: UserControl
+    public partial class Form1: Form
     {
-        private ProfileForm ProfileForm;
-        public UCMemberRank(ProfileForm ProfileForm)
+        public Form1()
         {
             InitializeComponent();
-            this.ProfileForm = ProfileForm;
         }
     }
 }
