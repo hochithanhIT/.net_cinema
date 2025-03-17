@@ -13,5 +13,9 @@ namespace Cinema.Forms {
         public Movie_Detail() {
             InitializeComponent();
         }
+
+        private void Movie_Detail_Load(object sender, EventArgs e) {
+
+        }
     }
 }
