@@ -8,12 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cinema
-{
-    public partial class Form1: Form
-    {
-        public Form1()
-        {
+namespace Cinema.Forms {
+    public partial class Movie_Detail : Form {
+        public Movie_Detail() {
             InitializeComponent();
         }
     }
