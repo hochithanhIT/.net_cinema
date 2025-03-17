@@ -64,6 +64,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="assets\icon\log.opng" />
+    <None Include="assets\icon\retro-cinema-background_52683-1701.avif" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +80,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\icon\686458.png" />
+    <Content Include="assets\icon\cin.jpg" />
+    <Content Include="assets\icon\cinema.png" />
+    <Content Include="assets\icon\free-movie-icon-850-thumb.png" />
+    <Content Include="assets\icon\images.png" />
+    <Content Include="assets\icon\log.png" />
+    <Content Include="assets\icon\logo.png" />
+    <Content Include="assets\icon\mem.png" />
+    <Content Include="assets\icon\movie-theater.svg" />
+    <Content Include="assets\icon\movie.png" />
+    <Content Include="assets\icon\movies.png" />
+    <Content Include="assets\icon\png-clipart-users-group-computer-icons-membership-miscellaneous-user-interface-design-thumbnail.png" />
+    <Content Include="assets\icon\Screenshot 2025-03-10 164134.png" />
+    <Content Include="assets\icon\sta.jpg" />
+    <Content Include="assets\icon\sta.png" />
+    <Content Include="assets\icon\stas.png" />
+    <Content Include="assets\icon\thea.png" />
+    <Content Include="assets\icon\tải xuống.png" />
+    <Content Include="assets\icon\user_icon_007.jpg" />
+
     <Content Include="assets\poster\28_YEARS_LATER.jpg" />
     <Content Include="assets\poster\ANH_TRAI_SAY_HI_VILLAINS_MADE_THE_HERO.jpg" />
     <Content Include="assets\poster\ATTACK_ON_TITAN_THE_LAST_ATTACK.jpg" />
