@@ -26,6 +26,18 @@ namespace Cinema.forms.profile
             string newPassword = txtNewPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;
 
+            // Must enter at least 8 characters
+            if (currentPassword.Length < 8)
+            {
+                MessageBox.Show("Your current password must be at least 8 characters long", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (newPassword.Length < 8)
+            {
+                MessageBox.Show("New password must be at least 8 characters long", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (newPassword != confirmPassword)
             {
                 MessageBox.Show("New password and confirm password do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
