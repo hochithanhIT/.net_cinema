@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 
+
 namespace Cinema
 {
     public partial class UCSignIn: UserControl
@@ -24,13 +25,13 @@ namespace Cinema
             this.txtPassword.UseSystemPasswordChar = true;
         }
 
-        // Kiểm tra số điện thoại (10 chữ số)
+        // Check phone number (10 digits) and start with 0
         public static bool IsValidPhoneNumber(string phone)
         {
-            return Regex.IsMatch(phone, @"^\d{10}$");
+            return Regex.IsMatch(phone, @"^0\d{9}$");
         }
 
-        // Kiểm tra email (phải có @ và định dạng đúng)
+        // Check email (must have @ and correct format)
         public static bool IsValidEmail(string email)
         {
             return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
@@ -54,65 +55,73 @@ namespace Cinema
             }
             return true;
         }
+        private (string RankName, decimal Discount) GetUserRankAndDiscount(string emailOrPhone)
+        {
+            string rankName = "No Rank";
+            decimal discount = 0.0m;
 
-        //private void SignIn(string emailOrPhone, string password)
-        //{
-        //    if (!this.IsValidToSignIn())
-        //    {
-        //        MessageBox.Show("Please fill in all fields", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
+            try
+            {
+                // Query to get user spending
+                string query = "SELECT SPENDING FROM THEATER_MEM WHERE EMAIL = @emailOrPhone OR PHONE = @emailOrPhone";
+                using (SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon))
+                {
+                    cmd.Parameters.AddWithValue("@emailOrPhone", emailOrPhone);
 
-        //    // Kiểm tra xem emailOrPhone nhập vào có hợp lệ không
-        //    if (!IsValidEmail(emailOrPhone) && !IsValidPhoneNumber(emailOrPhone))
-        //    {
-        //        MessageBox.Show("Invalid email or phone number format.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return;
-        //    }
+                    // Execute the query to get the user's spending
+                    int spending = Convert.ToInt32(cmd.ExecuteScalar());
 
-        //    try
-        //    {
-        //        // Truy vấn lấy mật khẩu băm từ database
-        //        string query = "SELECT PASS, FULL_NAME FROM THEATER_MEM WHERE EMAIL = @emailOrphone OR PHONE = @emailOrphone";
-        //        SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon);
-        //        cmd.Parameters.AddWithValue("@emailOrphone", emailOrPhone);
+                    // Determine the rank based on spending
+                    if (spending == 0 || spending < 1000000)
+                    {
+                        // Get the rank and discount for threshold = 0
+                        query = "SELECT RANK_NAME, DISCOUNT FROM MEMBER_RANK WHERE THRESHOLD = 0";
+                    }
+                    else if (spending == 1000000 || spending < 3000000)
+                    {
+                        // Get the rank and discount for threshold = 1000000
+                        query = "SELECT RANK_NAME, DISCOUNT FROM MEMBER_RANK WHERE THRESHOLD = 1000000";
+                    }
+                    else if (spending == 3000000 || spending < 10000000)
+                    {
+                        // Get the rank and discount for threshold = 3000000
+                        query = "SELECT RANK_NAME, DISCOUNT FROM MEMBER_RANK WHERE THRESHOLD = 3000000";
+                    }
+                    else if (spending >= 10000000)
+                    {
+                        // Get the rank and discount for threshold = 10000000
+                        query = "SELECT RANK_NAME, DISCOUNT FROM MEMBER_RANK WHERE THRESHOLD = 10000000";
+                    }
+                    else
+                    {
+                        MessageBox.Show("There is something wrong with your member rank. Please contact Admin for help!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-        //        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-        //        DataTable dt = new DataTable();
-        //        adapter.Fill(dt);
+                    using (SqlCommand rankCmd = new SqlCommand(query, dataAccess.Sqlcon))
+                    {
+                        if (spending != 0 && spending >= 1000000)
+                        {
+                            rankCmd.Parameters.AddWithValue("@spending", spending);
+                        }
 
-        //        if (dt.Rows.Count == 1)
-        //        {
-        //            string hashedPassword = dt.Rows[0]["PASS"].ToString();
-        //            string fullName = dt.Rows[0]["FULL_NAME"].ToString();
+                        using (SqlDataReader reader = rankCmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                rankName = reader["RANK_NAME"].ToString();
+                                discount = Convert.ToDecimal(reader["DISCOUNT"]);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving rank: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-        //            // So sánh mật khẩu với bcrypt
-        //            if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
-        //            {
-        //                MessageBox.Show($"Welcome {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //                this.ClearAllFields();
-        //                // Mở Form Profile
-        //                profileForm.Show();
-
-        //                // Đóng Form đăng nhập
-        //                Form parentForm = this.FindForm();
-        //                parentForm.Hide();
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Invalid email/phone or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Account not found.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "SignIn() Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+            return (rankName, discount);
+        }
         private void SignIn(string emailOrPhone, string password)
         {
             if (!this.IsValidToSignIn())
@@ -128,52 +137,63 @@ namespace Cinema
                 return;
             }
 
-            try
+            // Must enter at least 8 characters before checking
+            if (password.Length < 8)
             {
-                // Query to get user data from the database
-                string query = "SELECT PASS, FULL_NAME, EMAIL, PHONE, BIRTHDAY, SPENDING FROM THEATER_MEM WHERE EMAIL = @emailOrphone OR PHONE = @emailOrphone";
-                SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon);
-                cmd.Parameters.AddWithValue("@emailOrphone", emailOrPhone);
+                MessageBox.Show("Password must be at least 8 characters long", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-
-                if (dt.Rows.Count == 1)
+            try
                 {
-                    string hashedPassword = dt.Rows[0]["PASS"].ToString();
-                    string fullName = dt.Rows[0]["FULL_NAME"].ToString();
-                    string email = dt.Rows[0]["EMAIL"].ToString();
-                    string phone = dt.Rows[0]["PHONE"].ToString();
+                    string query = "SELECT PASS, FULL_NAME, EMAIL, PHONE, BIRTHDATE, SPENDING FROM THEATER_MEM WHERE EMAIL = @emailOrphone OR PHONE = @emailOrphone";
+                    SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon);
+                    cmd.Parameters.AddWithValue("@emailOrphone", emailOrPhone);
 
-                    // Verify password
-                    if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    if (dt.Rows.Count == 1)
                     {
-                        MessageBox.Show($"Welcome {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.ClearAllFields();
+                        string hashedPassword = dt.Rows[0]["PASS"].ToString();
+                        string fullName = dt.Rows[0]["FULL_NAME"].ToString();
+                        string email = dt.Rows[0]["EMAIL"].ToString();
+                        string phone = dt.Rows[0]["PHONE"].ToString();
+                        DateTime dob = Convert.ToDateTime(dt.Rows[0]["BIRTHDATE"]);
+                        int spending = Convert.ToInt32(dt.Rows[0]["SPENDING"]);
 
-                        // Pass user data to ProfileForm
-                        ProfileForm profileForm = new ProfileForm(fullName, email, phone);
-                        profileForm.Show();
+                        // Verify password
+                        if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+                        {
+                            MessageBox.Show($"Welcome {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.ClearAllFields();
 
-                        // Close the login form
-                        Form parentForm = this.FindForm();
-                        parentForm.Hide();
+                            // Get user rank and discount based on spending
+                            var (rankName, discount) = GetUserRankAndDiscount(emailOrPhone);
+
+                            // Pass user data to ProfileForm
+                            ProfileForm profileForm = new ProfileForm(fullName, email, phone, dob, spending.ToString(), rankName, discount);
+                            profileForm.Show();
+
+                            // Close the login form
+                            Form parentForm = this.FindForm();
+                            parentForm.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Invalid email/phone or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Account not found.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Account not found.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "SignIn() Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "SignIn() Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
 
@@ -201,7 +221,6 @@ namespace Cinema
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            // Lấy dữ liệu từ các ô nhập liệu
             string emailOrphone = txtEmailOrPhone.Text.Trim();
             string password = txtPassword.Text.Trim();
             this.SignIn(emailOrphone, password);

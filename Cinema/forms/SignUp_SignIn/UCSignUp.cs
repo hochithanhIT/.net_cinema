@@ -23,13 +23,13 @@ namespace Cinema
             this.txtPassword.UseSystemPasswordChar = true;
         }
 
-        // Kiểm tra số điện thoại (10 chữ số)
+        // Check phone number (10 digits) and start with 0
         public static bool IsValidPhoneNumber(string phone)
         {
-            return Regex.IsMatch(phone, @"^\d{10}$");
+            return Regex.IsMatch(phone, @"^0\d{9}$");
         }
 
-        // Kiểm tra email (phải có @ và định dạng đúng)
+        // Check email (must have @ and correct format)
         public static bool IsValidEmail(string email)
         {
             return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
@@ -55,27 +55,38 @@ namespace Cinema
                 return;
             }
 
-            if (!IsValidEmail(txtEmail.Text.Trim())){
-                MessageBox.Show("Your email is unvalid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!IsValidPhoneNumber(phone.Trim()))
+            {
+                MessageBox.Show("Your phone number is invalid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!IsValidPhoneNumber(txtPhone.Text.Trim()))
+
+            if (!IsValidEmail(email.Trim()))
             {
-                MessageBox.Show("Your phone number is unvalid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Your email is invalid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (birthDate > DateTime.Today)
+            {
+                MessageBox.Show("Birthdate cannot be in the future", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Check password has at least 8 characters
+            if (password.Length < 8)
+            {
+                MessageBox.Show("Password must be at least 8 characters long", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             try
             {
-                // Hash mật khẩu bằng BCrypt
+                // Hash password with BCrypt
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
-                // Câu lệnh SQL chèn dữ liệu vào bảng THEATER_MEM
-                string sql = $@"
-                INSERT INTO THEATER_MEM (FULL_NAME, PHONE, EMAIL, BIRTHDATE, PASS, SPENDING) 
-                VALUES (N'{fullName}', '{phone}', '{email}', '{birthDate:yyyy-MM-dd}', '{hashedPassword}', '0')";
+                string sql = $@"INSERT INTO THEATER_MEM (FULL_NAME, PHONE, EMAIL, BIRTHDATE, PASS, SPENDING) VALUES (N'{fullName}', '{phone}', '{email}', '{birthDate:yyyy-MM-dd}', '{hashedPassword}', '0')";
 
-                // Thực thi truy vấn
+                // Execute query
                 int result = this.dataAccess.ExecuteDMLQuery(sql);
 
                 if (result > 0)
@@ -96,7 +107,8 @@ namespace Cinema
         }
 
 
-    private void lblLogIn_Click(object sender, EventArgs e)
+
+        private void lblLogIn_Click(object sender, EventArgs e)
         {
             this.formRegistration.AddUserControl(new UCSignIn(this.formRegistration));
         }
@@ -120,14 +132,14 @@ namespace Cinema
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
-            // Lấy dữ liệu từ các ô nhập liệu
+            // Get data from input cells
             string fullName = txtFullName.Text.Trim();
             string phone = txtPhone.Text.Trim();
             string email = txtEmail.Text.Trim();
             DateTime birthDate = dtpDoB.Value;
             string password = txtPassword.Text.Trim();
 
-            // Gọi phương thức SignUp với dữ liệu từ người dùng
+            // Call the SignUp method with data from the user
             this.SignUp(fullName, phone, email, birthDate, password);
         }
 
