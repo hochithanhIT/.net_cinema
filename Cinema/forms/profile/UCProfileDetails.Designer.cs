@@ -1,4 +1,6 @@
-﻿namespace Cinema.forms.profile
+﻿using System.Drawing;
+
+namespace Cinema.forms.profile
 {
     partial class UCProfileDetails
     {
@@ -37,8 +39,7 @@
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFullName = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtSpending = new System.Windows.Forms.TextBox();
+            this.lblMemRank = new System.Windows.Forms.Label();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             this.label9.Cursor = System.Windows.Forms.Cursors.Default;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.DimGray;
-            this.label9.Location = new System.Drawing.Point(546, 299);
+            this.label9.Location = new System.Drawing.Point(537, 302);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(117, 16);
             this.label9.TabIndex = 28;
@@ -60,7 +61,7 @@
             this.dtpDoB.CustomFormat = "yyyy - MM - dd";
             this.dtpDoB.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDoB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDoB.Location = new System.Drawing.Point(313, 318);
+            this.dtpDoB.Location = new System.Drawing.Point(304, 321);
             this.dtpDoB.Name = "dtpDoB";
             this.dtpDoB.Size = new System.Drawing.Size(350, 38);
             this.dtpDoB.TabIndex = 27;
@@ -71,7 +72,7 @@
             this.label5.Cursor = System.Windows.Forms.Cursors.Default;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(308, 290);
+            this.label5.Location = new System.Drawing.Point(299, 293);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 25);
             this.label5.TabIndex = 24;
@@ -83,7 +84,7 @@
             this.label4.Cursor = System.Windows.Forms.Cursors.Default;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(308, 207);
+            this.label4.Location = new System.Drawing.Point(299, 210);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 25);
             this.label4.TabIndex = 23;
@@ -94,7 +95,7 @@
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(313, 235);
+            this.txtEmail.Location = new System.Drawing.Point(304, 238);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(350, 38);
             this.txtEmail.TabIndex = 22;
@@ -105,7 +106,7 @@
             this.label3.Cursor = System.Windows.Forms.Cursors.Default;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(308, 127);
+            this.label3.Location = new System.Drawing.Point(299, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(143, 25);
             this.label3.TabIndex = 21;
@@ -116,7 +117,7 @@
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(313, 155);
+            this.txtPhone.Location = new System.Drawing.Point(304, 158);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(350, 38);
             this.txtPhone.TabIndex = 20;
@@ -127,7 +128,7 @@
             this.label2.Cursor = System.Windows.Forms.Cursors.Default;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(308, 50);
+            this.label2.Location = new System.Drawing.Point(299, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 25);
             this.label2.TabIndex = 19;
@@ -138,32 +139,22 @@
             this.txtFullName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFullName.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullName.Location = new System.Drawing.Point(313, 78);
+            this.txtFullName.Location = new System.Drawing.Point(304, 81);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(350, 38);
             this.txtFullName.TabIndex = 18;
             // 
-            // label6
+            // lblMemRank
             // 
-            this.label6.AutoSize = true;
-            this.label6.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(308, 372);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 25);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "Spending";
-            // 
-            // txtSpending
-            // 
-            this.txtSpending.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSpending.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtSpending.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSpending.Location = new System.Drawing.Point(313, 400);
-            this.txtSpending.Name = "txtSpending";
-            this.txtSpending.Size = new System.Drawing.Size(350, 38);
-            this.txtSpending.TabIndex = 25;
+            this.lblMemRank.AutoSize = true;
+            this.lblMemRank.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblMemRank.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMemRank.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lblMemRank.Location = new System.Drawing.Point(39, 569);
+            this.lblMemRank.Name = "lblMemRank";
+            this.lblMemRank.Size = new System.Drawing.Size(126, 25);
+            this.lblMemRank.TabIndex = 26;
+            this.lblMemRank.Text = "member rank";
             // 
             // btnChangePassword
             // 
@@ -173,12 +164,13 @@
             this.btnChangePassword.FlatAppearance.BorderSize = 2;
             this.btnChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangePassword.Location = new System.Drawing.Point(313, 532);
+            this.btnChangePassword.Location = new System.Drawing.Point(304, 454);
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(350, 45);
+            this.btnChangePassword.Size = new System.Drawing.Size(350, 43);
             this.btnChangePassword.TabIndex = 29;
             this.btnChangePassword.Text = "Change Password";
             this.btnChangePassword.UseVisualStyleBackColor = false;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // btnSave
             // 
@@ -189,12 +181,13 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(313, 468);
+            this.btnSave.Location = new System.Drawing.Point(304, 390);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(350, 45);
             this.btnSave.TabIndex = 30;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // UCProfileDetails
             // 
@@ -205,8 +198,7 @@
             this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dtpDoB);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtSpending);
+            this.Controls.Add(this.lblMemRank);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtEmail);
@@ -232,8 +224,7 @@
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtFullName;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtSpending;
+        private System.Windows.Forms.Label lblMemRank;
         private System.Windows.Forms.Button btnChangePassword;
         private System.Windows.Forms.Button btnSave;
     }
