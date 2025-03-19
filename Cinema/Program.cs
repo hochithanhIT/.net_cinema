@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cinema.forms.profile;
 
 namespace Cinema
 {
@@ -29,6 +30,8 @@ namespace Cinema
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormRegistration());
+            //Application.Run(new TicketHistoryForm());
+
         }
     }
 }

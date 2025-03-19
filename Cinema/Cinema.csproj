@@ -69,6 +69,12 @@
     <Compile Include="forms\profile\ProfileForm.Designer.cs">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\profile\UCChangePass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\profile\UCChangePass.Designer.cs">
+      <DependentUpon>UCChangePass.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\profile\UCMemberRank.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </Compile>
     <EmbeddedResource Include="forms\profile\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\profile\UCChangePass.resx">
+      <DependentUpon>UCChangePass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\profile\UCMemberRank.resx">
       <DependentUpon>UCMemberRank.cs</DependentUpon>
