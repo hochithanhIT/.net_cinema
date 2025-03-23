@@ -78,7 +78,7 @@
             // SeatPanel
             // 
             this.SeatPanel.AutoSize = true;
-            this.SeatPanel.Location = new System.Drawing.Point(435, 245);
+            this.SeatPanel.Location = new System.Drawing.Point(446, 245);
             this.SeatPanel.Name = "SeatPanel";
             this.SeatPanel.Size = new System.Drawing.Size(925, 499);
             this.SeatPanel.TabIndex = 6;

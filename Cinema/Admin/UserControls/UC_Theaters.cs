@@ -33,12 +33,11 @@ namespace Cinema.Admin.UserControls
 
                 if (TheaterCombobox.SelectedValue is DataRowView rowView)
                 {
-                    // Lấy giá trị theater_id từ DataRowView
                     selectedTheaterId = Convert.ToInt32(rowView["theater_id"]);
                 }
                 else if (int.TryParse(TheaterCombobox.SelectedValue.ToString(), out selectedTheaterId))
                 {
-                    // Chuyển đổi nếu SelectedValue là số nguyên hợp lệ
+                    // Giá trị hợp lệ, tiếp tục xử lý
                 }
                 else
                 {
@@ -46,21 +45,48 @@ namespace Cinema.Admin.UserControls
                     return;
                 }
 
-                LoadSeats(selectedTheaterId);
+                // Kiểm tra xem FMovie và FSchedule đã chọn hay chưa
+                if (FMovie.SelectedValue == null || FSchedule.SelectedItem == null)
+                {
+                    MessageBox.Show("Vui lòng chọn phim và suất chiếu trước.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Lấy ID phim
+                int selectedMovieID = Convert.ToInt32(FMovie.SelectedValue);
+
+                // Lấy ngày chiếu
+                DateTime selectedDate = FDate.Value;
+
+                // Lấy giờ chiếu từ FSchedule
+                string selectedTime = FSchedule.SelectedItem.ToString();
+
+                // Gọi LoadSeats với đủ thông tin cần thiết
+                LoadSeats(selectedTheaterId, selectedMovieID, selectedDate, selectedTime);
             }
         }
 
 
-        private void LoadSeats(int theaterId)
+
+        private void LoadSeats(int theaterId, int movieId, DateTime date, string time)
         {
             SeatPanel.Controls.Clear(); // Xóa sơ đồ ghế cũ
 
-            // Lấy danh sách tất cả ghế trong phòng chiếu
+            // Lấy danh sách ghế trong phòng chiếu
             string querySeats = $"SELECT ID, SEAT_CODE FROM SEAT WHERE THEATER_ID = {theaterId}";
             DataTable seats = dataAccess.ExecuteQueryTable(querySeats);
 
-            // Lấy danh sách các ghế đã được đặt từ bảng TICKET
-            string queryBookedSeats = $"SELECT SEAT_ID FROM TICKET WHERE SCHEDULE_ID IN (SELECT ID FROM SCHEDULE WHERE THEATER_ID = {theaterId})";
+            // Lấy danh sách ghế đã đặt theo lịch chiếu, phim và thời gian cụ thể
+            string queryBookedSeats = $@"
+        SELECT SEAT_ID FROM TICKET 
+        WHERE SCHEDULE_ID IN (
+            SELECT ID FROM SCHEDULE 
+            WHERE THEATER_ID = {theaterId}
+            AND MOVIE_ID = {movieId}
+            AND CONVERT(date, START_TIME) = '{date:yyyy-MM-dd}'
+            AND FORMAT(START_TIME, 'HH:mm') = '{time}'
+        )";
+
             DataTable bookedSeats = dataAccess.ExecuteQueryTable(queryBookedSeats);
 
             // Chuyển danh sách ghế đã đặt thành HashSet để tra cứu nhanh
@@ -70,7 +96,7 @@ namespace Cinema.Admin.UserControls
                 bookedSeatIds.Add(Convert.ToInt32(row["SEAT_ID"]));
             }
 
-            int seatPerRow = 12; // Mỗi hàng có 12 ghế
+            int seatPerRow = 12;
             int index = 0;
 
             foreach (DataRow row in seats.Rows)
@@ -80,56 +106,46 @@ namespace Cinema.Admin.UserControls
 
                 Button seatButton = new Button();
                 seatButton.Text = seatCode;
-                seatButton.Width = 60;
-                seatButton.Height = 60;
-                seatButton.Font = new Font("Arial", 8, FontStyle.Bold);
+                seatButton.Width = 50;
+                seatButton.Height = 50;
+                seatButton.Font = new Font("Arial", 7, FontStyle.Bold);
                 seatButton.FlatStyle = FlatStyle.Flat;
                 seatButton.FlatAppearance.BorderSize = 0;
                 seatButton.Cursor = Cursors.Hand;
+                seatButton.Margin = new Padding(7);
 
-                // Kiểm tra nếu ghế đã được đặt
+                // Kiểm tra nếu ghế đã đặt
                 if (bookedSeatIds.Contains(seatId))
                 {
-                    seatButton.BackColor = Color.FromArgb(155, 63, 65); // Màu đỏ
-                    seatButton.ForeColor = Color.White; // Chữ màu trắng
-                    
+                    seatButton.BackColor = Color.FromArgb(155, 63, 65);
+                    seatButton.ForeColor = Color.White;
                 }
                 else
                 {
-                    seatButton.BackColor = Color.Gainsboro; // Màu ghế trống
-                    seatButton.ForeColor = Color.Black; // Chữ màu đen
-                    seatButton.Enabled = true; // Có thể bấm
+                    seatButton.BackColor = Color.Gainsboro;
+                    seatButton.ForeColor = Color.Black;
+                    seatButton.Enabled = true;
                 }
-
-                // Bo góc ghế
-                System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-                int cornerRadius = 39;
-                path.AddArc(0, 0, cornerRadius, cornerRadius, 180, 90);
-                path.AddArc(seatButton.Width - cornerRadius, 0, cornerRadius, cornerRadius, 270, 90);
-                path.AddArc(seatButton.Width - cornerRadius, seatButton.Height - cornerRadius, cornerRadius, cornerRadius, 0, 90);
-                path.AddArc(0, seatButton.Height - cornerRadius, cornerRadius, cornerRadius, 90, 90);
-                path.CloseFigure();
-                seatButton.Region = new Region(path);
 
                 SeatPanel.Controls.Add(seatButton);
 
-                // Chèn khoảng cách sau ghế thứ 6
                 if ((index + 1) % seatPerRow == 6)
                 {
                     Label space = new Label();
-                    space.Width = 80;
+                    space.Width = 90;
                     SeatPanel.Controls.Add(space);
                 }
 
                 index++;
 
-                // Xuống dòng sau mỗi hàng (12 ghế)
                 if (index % seatPerRow == 0)
                 {
                     SeatPanel.SetFlowBreak(seatButton, true);
                 }
             }
         }
+
+
 
 
 
@@ -271,36 +287,56 @@ namespace Cinema.Admin.UserControls
 
             try
             {
-                string selectedTime = FSchedule.SelectedItem.ToString();
-                int selectedMovieID = Convert.ToInt32(FMovie.SelectedValue);
-                DateTime selectedDate = FDate.Value;
+                DateTime parsedTime;
+                if (!DateTime.TryParse(FSchedule.SelectedItem.ToString(), out parsedTime))
+                {
+                    MessageBox.Show("Giờ chiếu không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                string selectedTime = parsedTime.ToString("HH:mm");
 
-                string query = $@"
+                int selectedMovieID = Convert.ToInt32(FMovie.SelectedValue);
+                DateTime selectedDate = FDate.Value.Date;
+
+                string query = @"
         SELECT DISTINCT s.theater_id, t.theater_name
         FROM schedule s
         JOIN theater t ON s.theater_id = t.id
-        WHERE s.movie_id = {selectedMovieID}
-        AND FORMAT(s.start_time, 'HH:mm') = '{selectedTime}'
-        AND CONVERT(date, s.start_time) = '{selectedDate:yyyy-MM-dd}'
+        WHERE s.movie_id = @MovieID
+        AND FORMAT(s.start_time, 'HH:mm') = @StartTime
+        AND CAST(s.start_time AS DATE) = @SelectedDate
         ORDER BY t.theater_name";
 
-                DataTable result = dataAccess.ExecuteQueryTable(query);
+                DataAccess dataAccess = new DataAccess(); // Không dùng `using`
 
-                // Kiểm tra nếu có dữ liệu
-                if (result.Rows.Count > 0)
+                using (SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon))
                 {
-                    TheaterCombobox.DataSource = result;
-                    TheaterCombobox.DisplayMember = "theater_name";
-                    TheaterCombobox.ValueMember = "theater_id";
-                    TheaterCombobox.SelectedIndex = 0; // Chọn phòng đầu tiên
+                    cmd.Parameters.AddWithValue("@MovieID", selectedMovieID);
+                    cmd.Parameters.AddWithValue("@StartTime", selectedTime);
+                    cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.ToString("yyyy-MM-dd"));
 
-                    int selectedTheaterId = Convert.ToInt32(TheaterCombobox.SelectedValue);
-                    LoadSeats(selectedTheaterId); // Load sơ đồ ghế cho phòng đó
-                }
-                else
-                {
-                    TheaterCombobox.DataSource = null; // Không có phòng chiếu
-                    TheaterCombobox.Items.Clear();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable result = new DataTable();
+                        adapter.Fill(result);
+
+                        if (result.Rows.Count > 0)
+                        {
+                            TheaterCombobox.DataSource = result;
+                            TheaterCombobox.DisplayMember = "theater_name";
+                            TheaterCombobox.ValueMember = "theater_id";
+                            TheaterCombobox.SelectedIndex = 0;
+
+                            int selectedTheaterId = Convert.ToInt32(TheaterCombobox.SelectedValue);
+
+                            LoadSeats(selectedMovieID, selectedTheaterId, selectedDate, selectedTime);
+                        }
+                        else
+                        {
+                            TheaterCombobox.DataSource = null;
+                            TheaterCombobox.Items.Clear();
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -308,6 +344,9 @@ namespace Cinema.Admin.UserControls
                 MessageBox.Show($"Lỗi khi tải rạp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
 
         private void UC_Theaters_Load(object sender, EventArgs e)
         {
