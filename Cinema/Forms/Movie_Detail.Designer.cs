@@ -26,25 +26,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Movie_Detail));
             this.panel_Top = new System.Windows.Forms.Panel();
             this.panel_Body = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Duration_Content = new System.Windows.Forms.Label();
+            this.Duration_Label = new System.Windows.Forms.Label();
+            this.Screening_Content = new System.Windows.Forms.Label();
+            this.Screening_Label = new System.Windows.Forms.Label();
+            this.Genre_Content = new System.Windows.Forms.Label();
+            this.Genre_Label = new System.Windows.Forms.Label();
+            this.Actor_Content = new System.Windows.Forms.TextBox();
+            this.Actor_Label = new System.Windows.Forms.Label();
+            this.Director_Content = new System.Windows.Forms.Label();
+            this.Director_Label = new System.Windows.Forms.Label();
             this.Rated_Content = new System.Windows.Forms.Label();
             this.Rated_Label = new System.Windows.Forms.Label();
             this.Movie_Content = new System.Windows.Forms.TextBox();
             this.Movie_Name = new System.Windows.Forms.Label();
             this.Booking_Button = new System.Windows.Forms.Button();
             this.Poster = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Poster)).BeginInit();
             this.SuspendLayout();
@@ -55,25 +52,23 @@
             this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(1100, 55);
+            this.panel_Top.Size = new System.Drawing.Size(1200, 55);
             this.panel_Top.TabIndex = 0;
             // 
             // panel_Body
             // 
+            this.panel_Body.AutoSize = true;
             this.panel_Body.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel_Body.Controls.Add(this.label11);
-            this.panel_Body.Controls.Add(this.label12);
-            this.panel_Body.Controls.Add(this.label9);
-            this.panel_Body.Controls.Add(this.label10);
-            this.panel_Body.Controls.Add(this.label7);
-            this.panel_Body.Controls.Add(this.label8);
-            this.panel_Body.Controls.Add(this.label5);
-            this.panel_Body.Controls.Add(this.label6);
-            this.panel_Body.Controls.Add(this.textBox1);
-            this.panel_Body.Controls.Add(this.label3);
-            this.panel_Body.Controls.Add(this.label4);
-            this.panel_Body.Controls.Add(this.label1);
-            this.panel_Body.Controls.Add(this.label2);
+            this.panel_Body.Controls.Add(this.Duration_Content);
+            this.panel_Body.Controls.Add(this.Duration_Label);
+            this.panel_Body.Controls.Add(this.Screening_Content);
+            this.panel_Body.Controls.Add(this.Screening_Label);
+            this.panel_Body.Controls.Add(this.Genre_Content);
+            this.panel_Body.Controls.Add(this.Genre_Label);
+            this.panel_Body.Controls.Add(this.Actor_Content);
+            this.panel_Body.Controls.Add(this.Actor_Label);
+            this.panel_Body.Controls.Add(this.Director_Content);
+            this.panel_Body.Controls.Add(this.Director_Label);
             this.panel_Body.Controls.Add(this.Rated_Content);
             this.panel_Body.Controls.Add(this.Rated_Label);
             this.panel_Body.Controls.Add(this.Movie_Content);
@@ -83,33 +78,113 @@
             this.panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Body.Location = new System.Drawing.Point(0, 55);
             this.panel_Body.Name = "panel_Body";
-            this.panel_Body.Size = new System.Drawing.Size(1100, 621);
+            this.panel_Body.Size = new System.Drawing.Size(1200, 645);
             this.panel_Body.TabIndex = 1;
             // 
-            // label1
+            // Duration_Content
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(619, 229);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 24);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Huynh Lap";
+            this.Duration_Content.AutoSize = true;
+            this.Duration_Content.Location = new System.Drawing.Point(700, 245);
+            this.Duration_Content.Name = "Duration_Content";
+            this.Duration_Content.Size = new System.Drawing.Size(111, 24);
+            this.Duration_Content.TabIndex = 16;
+            this.Duration_Content.Text = "117 minutes";
             // 
-            // label2
+            // Duration_Label
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(533, 229);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 24);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Director:";
+            this.Duration_Label.AutoSize = true;
+            this.Duration_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Duration_Label.Location = new System.Drawing.Point(609, 245);
+            this.Duration_Label.Name = "Duration_Label";
+            this.Duration_Label.Size = new System.Drawing.Size(94, 24);
+            this.Duration_Label.TabIndex = 15;
+            this.Duration_Label.Text = "Duration:";
+            // 
+            // Screening_Content
+            // 
+            this.Screening_Content.AutoSize = true;
+            this.Screening_Content.Location = new System.Drawing.Point(717, 209);
+            this.Screening_Content.Name = "Screening_Content";
+            this.Screening_Content.Size = new System.Drawing.Size(100, 24);
+            this.Screening_Content.TabIndex = 14;
+            this.Screening_Content.Text = "21/02/2025";
+            // 
+            // Screening_Label
+            // 
+            this.Screening_Label.AutoSize = true;
+            this.Screening_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Screening_Label.Location = new System.Drawing.Point(609, 209);
+            this.Screening_Label.Name = "Screening_Label";
+            this.Screening_Label.Size = new System.Drawing.Size(112, 24);
+            this.Screening_Label.TabIndex = 13;
+            this.Screening_Label.Text = "Screening:";
+            // 
+            // Genre_Content
+            // 
+            this.Genre_Content.AutoSize = true;
+            this.Genre_Content.Location = new System.Drawing.Point(681, 170);
+            this.Genre_Content.Name = "Genre_Content";
+            this.Genre_Content.Size = new System.Drawing.Size(146, 24);
+            this.Genre_Content.TabIndex = 12;
+            this.Genre_Content.Text = "Family, Comedy";
+            // 
+            // Genre_Label
+            // 
+            this.Genre_Label.AutoSize = true;
+            this.Genre_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Genre_Label.Location = new System.Drawing.Point(607, 170);
+            this.Genre_Label.Name = "Genre_Label";
+            this.Genre_Label.Size = new System.Drawing.Size(74, 24);
+            this.Genre_Label.TabIndex = 11;
+            this.Genre_Label.Text = "Genre:";
+            // 
+            // Actor_Content
+            // 
+            this.Actor_Content.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Actor_Content.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Actor_Content.Location = new System.Drawing.Point(674, 111);
+            this.Actor_Content.Multiline = true;
+            this.Actor_Content.Name = "Actor_Content";
+            this.Actor_Content.ReadOnly = true;
+            this.Actor_Content.Size = new System.Drawing.Size(449, 77);
+            this.Actor_Content.TabIndex = 10;
+            this.Actor_Content.Text = "Huynh Lap, Phuong My Chi, Artist Hanh Thuy, Artist Huynh Dong, Puka, Dao Anh Tuan" +
+    ", Trung Dan,...";
+            // 
+            // Actor_Label
+            // 
+            this.Actor_Label.AutoSize = true;
+            this.Actor_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Actor_Label.Location = new System.Drawing.Point(609, 111);
+            this.Actor_Label.Name = "Actor_Label";
+            this.Actor_Label.Size = new System.Drawing.Size(65, 24);
+            this.Actor_Label.TabIndex = 8;
+            this.Actor_Label.Text = "Actor:";
+            // 
+            // Director_Content
+            // 
+            this.Director_Content.AutoSize = true;
+            this.Director_Content.Location = new System.Drawing.Point(693, 68);
+            this.Director_Content.Name = "Director_Content";
+            this.Director_Content.Size = new System.Drawing.Size(102, 24);
+            this.Director_Content.TabIndex = 7;
+            this.Director_Content.Text = "Huynh Lap";
+            // 
+            // Director_Label
+            // 
+            this.Director_Label.AutoSize = true;
+            this.Director_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Director_Label.Location = new System.Drawing.Point(607, 68);
+            this.Director_Label.Name = "Director_Label";
+            this.Director_Label.Size = new System.Drawing.Size(89, 24);
+            this.Director_Label.TabIndex = 6;
+            this.Director_Label.Text = "Director:";
             // 
             // Rated_Content
             // 
             this.Rated_Content.AutoSize = true;
             this.Rated_Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rated_Content.Location = new System.Drawing.Point(603, 568);
+            this.Rated_Content.Location = new System.Drawing.Point(681, 286);
             this.Rated_Content.Name = "Rated_Content";
             this.Rated_Content.Size = new System.Drawing.Size(418, 20);
             this.Rated_Content.TabIndex = 5;
@@ -119,7 +194,7 @@
             // 
             this.Rated_Label.AutoSize = true;
             this.Rated_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rated_Label.Location = new System.Drawing.Point(533, 565);
+            this.Rated_Label.Location = new System.Drawing.Point(611, 283);
             this.Rated_Label.Name = "Rated_Label";
             this.Rated_Label.Size = new System.Drawing.Size(70, 24);
             this.Rated_Label.TabIndex = 4;
@@ -130,11 +205,11 @@
             this.Movie_Content.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Movie_Content.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Movie_Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Movie_Content.Location = new System.Drawing.Point(539, 120);
+            this.Movie_Content.Location = new System.Drawing.Point(613, 326);
             this.Movie_Content.Multiline = true;
             this.Movie_Content.Name = "Movie_Content";
             this.Movie_Content.ReadOnly = true;
-            this.Movie_Content.Size = new System.Drawing.Size(510, 108);
+            this.Movie_Content.Size = new System.Drawing.Size(524, 139);
             this.Movie_Content.TabIndex = 3;
             this.Movie_Content.Text = resources.GetString("Movie_Content.Text");
             // 
@@ -144,7 +219,7 @@
             this.Movie_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Movie_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Movie_Name.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Movie_Name.Location = new System.Drawing.Point(533, 60);
+            this.Movie_Name.Location = new System.Drawing.Point(603, 26);
             this.Movie_Name.Name = "Movie_Name";
             this.Movie_Name.Size = new System.Drawing.Size(208, 31);
             this.Movie_Name.TabIndex = 2;
@@ -157,7 +232,7 @@
             this.Booking_Button.FlatAppearance.BorderSize = 0;
             this.Booking_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Booking_Button.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Booking_Button.Location = new System.Drawing.Point(161, 514);
+            this.Booking_Button.Location = new System.Drawing.Point(234, 522);
             this.Booking_Button.Name = "Booking_Button";
             this.Booking_Button.Size = new System.Drawing.Size(140, 50);
             this.Booking_Button.TabIndex = 1;
@@ -169,124 +244,18 @@
             // Poster
             // 
             this.Poster.Image = ((System.Drawing.Image)(resources.GetObject("Poster.Image")));
-            this.Poster.Location = new System.Drawing.Point(60, 60);
+            this.Poster.Location = new System.Drawing.Point(133, 68);
             this.Poster.Name = "Poster";
             this.Poster.Size = new System.Drawing.Size(348, 438);
             this.Poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Poster.TabIndex = 0;
             this.Poster.TabStop = false;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(600, 272);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 24);
-            this.label3.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(535, 272);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 24);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Actor:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(600, 272);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(449, 130);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(607, 414);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(146, 24);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Family, Comedy";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(533, 414);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 24);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Genre:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(643, 453);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 24);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "21/02/2025";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(535, 453);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(112, 24);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Screening:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(626, 489);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(111, 24);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "117 minutes";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(535, 489);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 24);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Duration:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(641, 524);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(264, 24);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Vietnamese - English Subtitles";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(535, 524);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(109, 24);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Language:";
-            // 
             // Movie_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 676);
+            this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.panel_Body);
             this.Controls.Add(this.panel_Top);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -298,6 +267,7 @@
             this.panel_Body.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Poster)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -311,18 +281,15 @@
         private System.Windows.Forms.TextBox Movie_Content;
         private System.Windows.Forms.Label Rated_Label;
         private System.Windows.Forms.Label Rated_Content;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label Director_Content;
+        private System.Windows.Forms.Label Director_Label;
+        private System.Windows.Forms.Label Screening_Content;
+        private System.Windows.Forms.Label Screening_Label;
+        private System.Windows.Forms.Label Genre_Content;
+        private System.Windows.Forms.Label Genre_Label;
+        private System.Windows.Forms.TextBox Actor_Content;
+        private System.Windows.Forms.Label Actor_Label;
+        private System.Windows.Forms.Label Duration_Content;
+        private System.Windows.Forms.Label Duration_Label;
     }
 }
