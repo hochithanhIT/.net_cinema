@@ -257,7 +257,6 @@ namespace Cinema.Admin.UserControls
         }
 
 
-
         private void FSchedule_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (FSchedule.SelectedItem == null || FMovie.SelectedValue == null)
@@ -320,9 +319,6 @@ ORDER BY t.theater_name";
                 MessageBox.Show($"Lỗi khi tải rạp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
 
 
         private void UC_Theaters_Load(object sender, EventArgs e)

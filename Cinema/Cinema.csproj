@@ -159,6 +159,7 @@
     <None Include="assets\icon\edit icon.png" />
     <None Include="assets\icon\eww.png" />
     <Content Include="assets\icon\free-movie-icon-850-thumb.png" />
+    <Content Include="assets\icon\gsearch.png" />
     <Content Include="assets\icon\images.png" />
     <Content Include="assets\icon\log.png" />
     <Content Include="assets\icon\logo.png" />
@@ -172,6 +173,7 @@
     <Content Include="assets\icon\png-clipart-users-group-computer-icons-membership-miscellaneous-user-interface-design-thumbnail.png" />
     <Content Include="assets\icon\screen.png" />
     <Content Include="assets\icon\Screenshot 2025-03-10 164134.png" />
+    <Content Include="assets\icon\search.png" />
     <Content Include="assets\icon\sta.jpg" />
     <Content Include="assets\icon\sta.png" />
     <Content Include="assets\icon\stad.png" />

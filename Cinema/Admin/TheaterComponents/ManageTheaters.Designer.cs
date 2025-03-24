@@ -56,7 +56,7 @@
             this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 32;
-            this.listBox1.Location = new System.Drawing.Point(82, 232);
+            this.listBox1.Location = new System.Drawing.Point(84, 232);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(262, 224);
             this.listBox1.TabIndex = 2;
@@ -65,10 +65,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(61, 164);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(61, 174);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(165, 29);
+            this.label2.Size = new System.Drawing.Size(138, 25);
             this.label2.TabIndex = 3;
             this.label2.Text = "Theaters List";
             // 
@@ -124,7 +124,7 @@
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.SeaGreen;
+            this.guna2Button1.FillColor = System.Drawing.Color.Black;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = global::Cinema.Properties.Resources.plusico;
@@ -140,7 +140,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(596, 331);
+            this.label3.Location = new System.Drawing.Point(596, 335);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 20);
             this.label3.TabIndex = 7;
@@ -149,7 +149,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.guna2Panel1.Location = new System.Drawing.Point(461, 341);
+            this.guna2Panel1.Location = new System.Drawing.Point(461, 345);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(120, 1);
             this.guna2Panel1.TabIndex = 8;
@@ -157,7 +157,7 @@
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.Gainsboro;
-            this.guna2Panel2.Location = new System.Drawing.Point(639, 341);
+            this.guna2Panel2.Location = new System.Drawing.Point(639, 345);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(120, 1);
             this.guna2Panel2.TabIndex = 9;
@@ -167,7 +167,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(827, 588);
+            this.ClientSize = new System.Drawing.Size(837, 588);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.label3);
@@ -178,7 +178,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2TextBox1);
             this.Name = "ManageTheaters";
-            this.Text = "ManageTheaters";
+            this.Text = "Manage Theaters";
             this.Load += new System.EventHandler(this.ManageTheaters_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

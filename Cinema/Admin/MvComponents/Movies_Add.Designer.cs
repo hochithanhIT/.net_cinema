@@ -149,7 +149,7 @@
             this.MvName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvName.FillColor = System.Drawing.Color.Gainsboro;
-            this.MvName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MvName.FocusedState.BorderColor = System.Drawing.Color.Black;
             this.MvName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MvName.ForeColor = System.Drawing.Color.Black;
             this.MvName.HoverState.BorderColor = System.Drawing.Color.Gray;
@@ -174,7 +174,7 @@
             this.MvDes.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvDes.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvDes.FillColor = System.Drawing.Color.Gainsboro;
-            this.MvDes.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MvDes.FocusedState.BorderColor = System.Drawing.Color.Black;
             this.MvDes.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MvDes.ForeColor = System.Drawing.Color.Black;
             this.MvDes.HoverState.BorderColor = System.Drawing.Color.Gray;
@@ -199,7 +199,7 @@
             this.MvDir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvDir.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvDir.FillColor = System.Drawing.Color.Gainsboro;
-            this.MvDir.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MvDir.FocusedState.BorderColor = System.Drawing.Color.Black;
             this.MvDir.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MvDir.ForeColor = System.Drawing.Color.Black;
             this.MvDir.HoverState.BorderColor = System.Drawing.Color.Gray;
@@ -223,7 +223,7 @@
             this.MvGen.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvGen.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvGen.FillColor = System.Drawing.Color.Gainsboro;
-            this.MvGen.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MvGen.FocusedState.BorderColor = System.Drawing.Color.Black;
             this.MvGen.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MvGen.ForeColor = System.Drawing.Color.Black;
             this.MvGen.HoverState.BorderColor = System.Drawing.Color.Gray;
@@ -248,7 +248,7 @@
             this.MvCas.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvCas.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvCas.FillColor = System.Drawing.Color.Gainsboro;
-            this.MvCas.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MvCas.FocusedState.BorderColor = System.Drawing.Color.Black;
             this.MvCas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MvCas.ForeColor = System.Drawing.Color.Black;
             this.MvCas.HoverState.BorderColor = System.Drawing.Color.Gray;
@@ -264,7 +264,6 @@
             // 
             // MvDate
             // 
-            this.MvDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MvDate.BorderRadius = 15;
             this.MvDate.BorderThickness = 1;
             this.MvDate.Checked = true;
@@ -291,7 +290,7 @@
             this.MvRtime.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvRtime.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvRtime.FillColor = System.Drawing.Color.Gainsboro;
-            this.MvRtime.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MvRtime.FocusedState.BorderColor = System.Drawing.Color.Black;
             this.MvRtime.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MvRtime.ForeColor = System.Drawing.Color.Black;
             this.MvRtime.HoverState.BorderColor = System.Drawing.Color.Gray;
@@ -315,7 +314,7 @@
             this.MvPos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvPos.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.MvPos.FillColor = System.Drawing.Color.Gainsboro;
-            this.MvPos.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MvPos.FocusedState.BorderColor = System.Drawing.Color.Black;
             this.MvPos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MvPos.ForeColor = System.Drawing.Color.Black;
             this.MvPos.HoverState.BorderColor = System.Drawing.Color.Gray;
@@ -336,7 +335,7 @@
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Black;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = global::Cinema.Properties.Resources.plusico;
@@ -345,7 +344,7 @@
             this.guna2Button1.PressedDepth = 60;
             this.guna2Button1.Size = new System.Drawing.Size(276, 58);
             this.guna2Button1.TabIndex = 17;
-            this.guna2Button1.Text = "Add Movies";
+            this.guna2Button1.Text = "Add Movie";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // Movies_Add

@@ -69,8 +69,8 @@
             this.TheaterCombobox.BorderThickness = 2;
             this.TheaterCombobox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.TheaterCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TheaterCombobox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.TheaterCombobox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TheaterCombobox.FocusedColor = System.Drawing.Color.Black;
+            this.TheaterCombobox.FocusedState.BorderColor = System.Drawing.Color.Black;
             this.TheaterCombobox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.TheaterCombobox.ForeColor = System.Drawing.Color.Black;
             this.TheaterCombobox.ItemHeight = 30;
@@ -117,7 +117,7 @@
             this.FDate.BackColor = System.Drawing.Color.Transparent;
             this.FDate.BorderRadius = 15;
             this.FDate.Checked = true;
-            this.FDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FDate.FillColor = System.Drawing.Color.Black;
             this.FDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.FDate.ForeColor = System.Drawing.Color.White;
             this.FDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
@@ -150,8 +150,8 @@
             this.FMovie.BorderThickness = 2;
             this.FMovie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.FMovie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.FMovie.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.FMovie.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FMovie.FocusedColor = System.Drawing.Color.Black;
+            this.FMovie.FocusedState.BorderColor = System.Drawing.Color.Black;
             this.FMovie.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.FMovie.ForeColor = System.Drawing.Color.Black;
             this.FMovie.ItemHeight = 30;
@@ -181,8 +181,8 @@
             this.FSchedule.BorderThickness = 2;
             this.FSchedule.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.FSchedule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.FSchedule.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.FSchedule.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FSchedule.FocusedColor = System.Drawing.Color.Black;
+            this.FSchedule.FocusedState.BorderColor = System.Drawing.Color.Black;
             this.FSchedule.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.FSchedule.ForeColor = System.Drawing.Color.Black;
             this.FSchedule.ItemHeight = 30;
@@ -272,7 +272,7 @@
             this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.guna2Button3.FillColor = System.Drawing.Color.Black;
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Location = new System.Drawing.Point(39, 648);
@@ -285,7 +285,6 @@
             // 
             // ResetFil
             // 
-            this.ResetFil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ResetFil.BorderRadius = 20;
             this.ResetFil.BorderThickness = 2;
             this.ResetFil.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -294,7 +293,7 @@
             this.ResetFil.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.ResetFil.FillColor = System.Drawing.Color.White;
             this.ResetFil.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.ResetFil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ResetFil.ForeColor = System.Drawing.Color.Black;
             this.ResetFil.Location = new System.Drawing.Point(194, 648);
             this.ResetFil.Name = "ResetFil";
             this.ResetFil.PressedDepth = 60;
@@ -322,7 +321,7 @@
             this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.guna2Button4.FillColor = System.Drawing.Color.Black;
             this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
             this.guna2Button4.Image = global::Cinema.Properties.Resources.eww2;
