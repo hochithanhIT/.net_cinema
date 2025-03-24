@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using Cinema.forms.Admin;
+using Cinema.forms.Customer;
 
 namespace Cinema.forms.SignUp_SignIn
 {
@@ -146,7 +148,7 @@ namespace Cinema.forms.SignUp_SignIn
 
             try
             {
-                string query = "SELECT PASS, FULL_NAME, EMAIL, PHONE, BIRTHDATE, SPENDING FROM THEATER_MEM WHERE EMAIL = @emailOrphone OR PHONE = @emailOrphone";
+                string query = "SELECT PASS, FULL_NAME, EMAIL, PHONE, BIRTHDATE, SPENDING, MEM_ROLE FROM THEATER_MEM WHERE EMAIL = @emailOrphone OR PHONE = @emailOrphone";
                 SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon);
                 cmd.Parameters.AddWithValue("@emailOrphone", emailOrPhone);
 
@@ -162,19 +164,31 @@ namespace Cinema.forms.SignUp_SignIn
                     string phone = dt.Rows[0]["PHONE"].ToString();
                     DateTime dob = Convert.ToDateTime(dt.Rows[0]["BIRTHDATE"]);
                     int spending = Convert.ToInt32(dt.Rows[0]["SPENDING"]);
+                    int role = Convert.ToInt32(dt.Rows[0]["MEM_ROLE"]);
 
                     // Verify password
                     if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
                     {
                         MessageBox.Show($"Welcome {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.ClearAllFields();
+                        Form nextForm;
+
+                        if (role == 0)
+                        {
+                            nextForm = new AdminForm();
+                        }
+                        else // Nếu role khác 0, mở form khách hàng
+                        {
+
+                            nextForm = new CustomerForm();
+                        }
 
                         // Get user rank and discount based on spending
                         var (rankName, discount) = GetUserRankAndDiscount(emailOrPhone);
-
-                        // Pass user data to ProfileForm
-                        ProfileForm profileForm = new ProfileForm(fullName, email, phone, dob, spending.ToString(), rankName, discount);
-                        profileForm.Show();
+                        nextForm.Show();
+                        //// Pass user data to ProfileForm
+                        //ProfileForm profileForm = new ProfileForm(fullName, email, phone, dob, spending.ToString(), rankName, discount);
+                        //profileForm.Show();
 
                         // Close the login form
                         Form parentForm = this.FindForm();
