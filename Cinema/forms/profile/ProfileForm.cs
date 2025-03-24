@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cinema.forms.profile;
+using Cinema.forms.SignUp_SignIn;
 
 namespace Cinema
     {

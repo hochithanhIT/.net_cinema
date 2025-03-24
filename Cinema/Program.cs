@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cinema.forms.profile;
+using Cinema.forms.SignUp_SignIn;
 
 namespace Cinema
 {
@@ -30,7 +31,7 @@ namespace Cinema
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormRegistration());
-            //Application.Run(new TicketHistoryForm());
+            //Application.Run(new TicketHistoryForm()); 
 
         }
     }

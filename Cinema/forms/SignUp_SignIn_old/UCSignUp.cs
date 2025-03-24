@@ -10,19 +10,17 @@ using System.Windows.Forms;
 using BCrypt.Net;
 using System.Text.RegularExpressions;
 
-namespace Cinema.forms.SignUp_SignIn
+namespace Cinema
 {
-    public partial class UCSignUp : UserControl
+    public partial class UCSignUp: UserControl
     {
         private FormRegistration formRegistration;
         private DataAccess dataAccess = new DataAccess();
-        
         public UCSignUp(FormRegistration formRegistration)
         {
             InitializeComponent();
             this.formRegistration = formRegistration;
-            this.Password.UseSystemPasswordChar = true;
-            this.txtConfirmPassword.UseSystemPasswordChar = true;
+            this.txtPassword.UseSystemPasswordChar = true;
         }
 
         // Check phone number (10 digits) and start with 0
@@ -39,12 +37,11 @@ namespace Cinema.forms.SignUp_SignIn
 
         private void ClearAllFields()
         {
-            this.FullName.Clear();
-            this.Email.Clear();
-            this.Phone.Clear();
-            this.Password.Clear();
-            this.txtConfirmPassword.Clear();
-            this.checkboxShowPassword.Checked = false;
+            this.txtFullName.Clear();
+            this.txtEmail.Clear();
+            this.txtPhone.Clear();
+            this.txtPassword.Clear();
+            this.cbShowPassword.Checked = false;
         }
 
         private void SignUp(string fullName, string phone, string email, DateTime birthDate, string password)
@@ -70,7 +67,7 @@ namespace Cinema.forms.SignUp_SignIn
                 return;
             }
 
-            if (birthDate.Date > DateTime.Today)
+            if (birthDate > DateTime.Today)
             {
                 MessageBox.Show("Birthdate cannot be in the future", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -109,48 +106,42 @@ namespace Cinema.forms.SignUp_SignIn
             }
         }
 
+
+
+        private void lblLogIn_Click(object sender, EventArgs e)
+        {
+            this.formRegistration.AddUserControl(new UCSignIn(this.formRegistration));
+        }
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             this.ClearAllFields();
         }
 
+        private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.cbShowPassword.Checked)
+            {
+                this.txtPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                this.txtPassword.UseSystemPasswordChar = true;
+            }
+        }
+
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             // Get data from input cells
-            string fullName = FullName.Text.Trim();
-            string phone = Phone.Text.Trim();
-            string email = Email.Text.Trim();
-            DateTime birthDate = dob.Value;
-            string password = Password.Text.Trim();
-            string confirmPassword = txtConfirmPassword.Text.Trim();
-
-            if (password!=confirmPassword)
-            {
-                MessageBox.Show("Your password and confirm password do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            string fullName = txtFullName.Text.Trim();
+            string phone = txtPhone.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            DateTime birthDate = dtpDoB.Value;
+            string password = txtPassword.Text.Trim();
 
             // Call the SignUp method with data from the user
             this.SignUp(fullName, phone, email, birthDate, password);
         }
 
-        private void lblSignIn_Click(object sender, EventArgs e)
-        {
-           this.formRegistration.AddUserControl(new UCSignIn(this.formRegistration));
-        }
-
-        private void checkboxShowPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.checkboxShowPassword.Checked)
-            {
-                this.Password.UseSystemPasswordChar = false;
-                this.txtConfirmPassword.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                this.Password.UseSystemPasswordChar = true;
-                this.txtConfirmPassword.UseSystemPasswordChar = true;
-            }
-        }
     }
 }

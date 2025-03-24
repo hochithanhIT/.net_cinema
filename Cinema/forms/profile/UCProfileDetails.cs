@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
-
+using Cinema.forms.SignUp_SignIn;
 
 namespace Cinema.forms.profile
 {
@@ -91,7 +91,7 @@ namespace Cinema.forms.profile
                         cmd.Parameters.AddWithValue("@fullName", txtFullName.Text);
                         cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
                         cmd.Parameters.AddWithValue("@dob", dtpDoB.Value);
-                        cmd.Parameters.AddWithValue("@originalEmail", Email); 
+                        cmd.Parameters.AddWithValue("@originalEmail", Email);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
 

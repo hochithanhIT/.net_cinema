@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using Cinema.forms.SignUp_SignIn;
 
 namespace Cinema.forms.profile
 {
@@ -130,7 +131,7 @@ namespace Cinema.forms.profile
 
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
         {
-          if (this.cbShowPassword.Checked)
+            if (this.cbShowPassword.Checked)
             {
                 this.txtCurrentPassword.UseSystemPasswordChar = false;
                 this.txtNewPassword.UseSystemPasswordChar = false;
@@ -142,6 +143,6 @@ namespace Cinema.forms.profile
                 this.txtNewPassword.UseSystemPasswordChar = true;
                 this.txtConfirmPassword.UseSystemPasswordChar = true;
             }
-    }
+        }
     }
 }

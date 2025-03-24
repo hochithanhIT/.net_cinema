@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cinema
+namespace Cinema.forms.SignUp_SignIn
 {
-    public partial class FormRegistration: Form
+    public partial class FormRegistration : Form
     {
         public FormRegistration()
         {
@@ -25,11 +25,6 @@ namespace Cinema
             uc.BringToFront();
         }
 
-        private void FormRegistration_Load(object sender, EventArgs e)
-        {
-            this.AddUserControl(new UCSignIn(this));
-        }
-
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             this.AddUserControl(new UCSignIn(this));
@@ -38,6 +33,35 @@ namespace Cinema
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             this.AddUserControl(new UCSignUp(this));
+        }
+
+        private void FormRegistration_Load_1(object sender, EventArgs e)
+        {
+            this.AddUserControl(new UCSignIn(this));
+        }
+
+        private void btnSignIn_MouseEnter(object sender, EventArgs e)
+        {
+            btnSignIn.BackColor = Color.White;
+            btnSignIn.ForeColor = Color.Black;
+        }
+
+        private void btnSignIn_MouseLeave(object sender, EventArgs e)
+        {
+            btnSignIn.BackColor = Color.Black;
+            btnSignIn.ForeColor = Color.White;
+        }
+
+        private void btnSignUp_MouseEnter(object sender, EventArgs e)
+        {
+            btnSignUp.BackColor = Color.WhiteSmoke;
+            btnSignUp.ForeColor = Color.Black;
+        }
+
+        private void btnSignUp_MouseLeave(object sender, EventArgs e)
+        {
+            btnSignUp.BackColor = Color.Black;
+            btnSignUp.ForeColor = Color.WhiteSmoke;
         }
     }
 }

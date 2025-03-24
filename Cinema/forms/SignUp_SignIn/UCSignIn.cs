@@ -10,14 +10,14 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 
-
-namespace Cinema
+namespace Cinema.forms.SignUp_SignIn
 {
-    public partial class UCSignIn: UserControl
+    public partial class UCSignIn : UserControl
     {
         private FormRegistration formRegistration;
         private ProfileForm profileForm = new ProfileForm();
         private DataAccess dataAccess = new DataAccess();
+
         public UCSignIn(FormRegistration formRegistration)
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace Cinema
         {
             this.txtEmailOrPhone.Clear();
             this.txtPassword.Clear();
-            this.cbShowPassword.Checked = false;
+            this.checkboxShowPassword.Checked = false;
         }
 
         private bool IsValidToSignIn()
@@ -145,72 +145,54 @@ namespace Cinema
             }
 
             try
+            {
+                string query = "SELECT PASS, FULL_NAME, EMAIL, PHONE, BIRTHDATE, SPENDING FROM THEATER_MEM WHERE EMAIL = @emailOrphone OR PHONE = @emailOrphone";
+                SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon);
+                cmd.Parameters.AddWithValue("@emailOrphone", emailOrPhone);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
                 {
-                    string query = "SELECT PASS, FULL_NAME, EMAIL, PHONE, BIRTHDATE, SPENDING FROM THEATER_MEM WHERE EMAIL = @emailOrphone OR PHONE = @emailOrphone";
-                    SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon);
-                    cmd.Parameters.AddWithValue("@emailOrphone", emailOrPhone);
+                    string hashedPassword = dt.Rows[0]["PASS"].ToString();
+                    string fullName = dt.Rows[0]["FULL_NAME"].ToString();
+                    string email = dt.Rows[0]["EMAIL"].ToString();
+                    string phone = dt.Rows[0]["PHONE"].ToString();
+                    DateTime dob = Convert.ToDateTime(dt.Rows[0]["BIRTHDATE"]);
+                    int spending = Convert.ToInt32(dt.Rows[0]["SPENDING"]);
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
-                    if (dt.Rows.Count == 1)
+                    // Verify password
+                    if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
                     {
-                        string hashedPassword = dt.Rows[0]["PASS"].ToString();
-                        string fullName = dt.Rows[0]["FULL_NAME"].ToString();
-                        string email = dt.Rows[0]["EMAIL"].ToString();
-                        string phone = dt.Rows[0]["PHONE"].ToString();
-                        DateTime dob = Convert.ToDateTime(dt.Rows[0]["BIRTHDATE"]);
-                        int spending = Convert.ToInt32(dt.Rows[0]["SPENDING"]);
+                        MessageBox.Show($"Welcome {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.ClearAllFields();
 
-                        // Verify password
-                        if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
-                        {
-                            MessageBox.Show($"Welcome {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.ClearAllFields();
+                        // Get user rank and discount based on spending
+                        var (rankName, discount) = GetUserRankAndDiscount(emailOrPhone);
 
-                            // Get user rank and discount based on spending
-                            var (rankName, discount) = GetUserRankAndDiscount(emailOrPhone);
+                        // Pass user data to ProfileForm
+                        ProfileForm profileForm = new ProfileForm(fullName, email, phone, dob, spending.ToString(), rankName, discount);
+                        profileForm.Show();
 
-                            // Pass user data to ProfileForm
-                            ProfileForm profileForm = new ProfileForm(fullName, email, phone, dob, spending.ToString(), rankName, discount);
-                            profileForm.Show();
-
-                            // Close the login form
-                            Form parentForm = this.FindForm();
-                            parentForm.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        // Close the login form
+                        Form parentForm = this.FindForm();
+                        parentForm.Hide();
                     }
                     else
                     {
-                        MessageBox.Show("Account not found.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Invalid password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "SignIn() Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Account not found.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-        }
-
-
-        private void lblSignUp_Click(object sender, EventArgs e)
-        {
-            this.formRegistration.AddUserControl(new UCSignUp(this.formRegistration));
-        }
-
-        private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.cbShowPassword.Checked)
-            {
-                this.txtPassword.UseSystemPasswordChar = false;
             }
-            else
+            catch (Exception ex)
             {
-                this.txtPassword.UseSystemPasswordChar = true;
+                MessageBox.Show(ex.Message, "SignIn() Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -224,6 +206,23 @@ namespace Cinema
             string emailOrphone = txtEmailOrPhone.Text.Trim();
             string password = txtPassword.Text.Trim();
             this.SignIn(emailOrphone, password);
+        }
+
+        private void lbSignUp_Click(object sender, EventArgs e)
+        {
+            this.formRegistration.AddUserControl(new UCSignUp(this.formRegistration));
+        }
+
+        private void checkboxShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkboxShowPassword.Checked)
+            {
+                this.txtPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                this.txtPassword.UseSystemPasswordChar = true;
+            }
         }
     }
 }

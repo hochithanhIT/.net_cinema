@@ -75,12 +75,6 @@
     <Compile Include="forms\profile\UCChangePass.Designer.cs">
       <DependentUpon>UCChangePass.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\profile\UCMemberRank.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="forms\profile\UCMemberRank.Designer.cs">
-      <DependentUpon>UCMemberRank.cs</DependentUpon>
-    </Compile>
     <Compile Include="forms\profile\UCProfileDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -99,8 +93,6 @@
     <Compile Include="forms\SignUp_SignIn\FormRegistration.Designer.cs">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="forms\SignUp_SignIn\UCSignIn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,14 +105,13 @@
     <Compile Include="forms\SignUp_SignIn\UCSignUp.Designer.cs">
       <DependentUpon>UCSignUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="forms\profile\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\profile\UCChangePass.resx">
       <DependentUpon>UCChangePass.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\profile\UCMemberRank.resx">
-      <DependentUpon>UCMemberRank.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\profile\UCProfileDetails.resx">
       <DependentUpon>UCProfileDetails.cs</DependentUpon>
@@ -131,16 +122,16 @@
     <EmbeddedResource Include="forms\SignUp_SignIn\FormRegistration.resx">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="forms\SignUp_SignIn\UCSignIn.resx">
       <DependentUpon>UCSignIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\SignUp_SignIn\UCSignUp.resx">
       <DependentUpon>UCSignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
