@@ -33,8 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +63,91 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connect_db\DataAccess.cs" />
+<!-- TamNgo -->
+    <Compile Include="forms\Admin\AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Admin\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Customer\CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Customer\CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\profile\ProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\profile\ProfileForm.Designer.cs">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\profile\UCChangePass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\profile\UCChangePass.Designer.cs">
+      <DependentUpon>UCChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\profile\UCProfileDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\profile\UCProfileDetails.Designer.cs">
+      <DependentUpon>UCProfileDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\profile\UCTicketHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\profile\UCTicketHistory.Designer.cs">
+      <DependentUpon>UCTicketHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\SignUp_SignIn\FormRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\SignUp_SignIn\FormRegistration.Designer.cs">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\SignUp_SignIn\UCSignIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\SignUp_SignIn\UCSignIn.Designer.cs">
+      <DependentUpon>UCSignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\SignUp_SignIn\UCSignUp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\SignUp_SignIn\UCSignUp.Designer.cs">
+      <DependentUpon>UCSignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="forms\Admin\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Customer\CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\profile\ProfileForm.resx">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\profile\UCChangePass.resx">
+      <DependentUpon>UCChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\profile\UCProfileDetails.resx">
+      <DependentUpon>UCProfileDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\profile\UCTicketHistory.resx">
+      <DependentUpon>UCTicketHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\SignUp_SignIn\FormRegistration.resx">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\SignUp_SignIn\UCSignIn.resx">
+      <DependentUpon>UCSignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\SignUp_SignIn\UCSignUp.resx">
+      <DependentUpon>UCSignUp.cs</DependentUpon>
+    <!-- ========== -->
+      <!-- LinhDao -->
     <Compile Include="homepage\HomepageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,12 +196,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MovieControl.resx">
       <DependentUpon>MovieControl.cs</DependentUpon>
+    <!-- ========= -->
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  <!-- TamNgo -->
+    <None Include="packages.config" />
+   <!-- ======= -->
+   <!-- LinhDao -->
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -108,10 +214,16 @@
     <None Include="assets\icon\log.opng" />
     <None Include="assets\icon\retro-cinema-background_52683-1701.avif" />
     <None Include="bin\Debug\Cinema.exe.config" />
+<!-- ======== -->
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -122,6 +234,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+   <!-- TamNgo -->
+    <Folder Include="assets\" />
+  <!-- ======= -->
+  <!-- LinhDao -->
     <Content Include="assets\icon\686458.png" />
     <Content Include="assets\icon\cin.jpg" />
     <Content Include="assets\icon\cinema.png" />
@@ -203,6 +319,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+   <!-- ========= -->
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

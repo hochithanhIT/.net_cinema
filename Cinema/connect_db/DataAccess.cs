@@ -43,6 +43,9 @@ namespace Cinema
         public DataAccess()
         {
             // Chuỗi kết nối đến SQL Server (Data Source, Database, User ID, Password)
+          //TamNgo
+            // this.Sqlcon = new SqlConnection(@"Data Source=DESKTOP-3JFU13I;Initial Catalog=Cinema;User ID=sa;Password=root;Encrypt=False;TrustServerCertificate=True");
+          //LinhDao
             this.Sqlcon = new SqlConnection(@"Data Source=NEKO;Initial Catalog=Cinema;User ID=sa;Password=root;TrustServerCertificate=True");
 
             // Mở kết nối đến database
@@ -84,3 +87,4 @@ namespace Cinema
         }
     }
 }
+

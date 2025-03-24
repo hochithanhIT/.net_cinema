@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cinema.forms.profile;
+using Cinema.forms.SignUp_SignIn;
 using Cinema.homepage;
 
 namespace Cinema
@@ -29,6 +31,10 @@ namespace Cinema
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+          //TamNgo
+            //Application.Run(new FormRegistration());
+            //Application.Run(new TicketHistoryForm()); 
+          //LinhDao
             Application.Run(new HomepageForm());
         }
     }
