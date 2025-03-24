@@ -18,6 +18,8 @@ namespace Cinema.Admin.UserControls
     public partial class UC_Movies : UserControl
     {
         private DataAccess dataAccess;
+        private List<DataRow> allMovies = new List<DataRow>(); // Lưu toàn bộ dữ liệu phim
+
         public UC_Movies()
         {
             InitializeComponent();
@@ -60,19 +62,26 @@ namespace Cinema.Admin.UserControls
             string query = "SELECT movie_name, poster FROM movie";
             DataTable dt = dataAccess.ExecuteQueryTable(query);
 
-            flowLayoutPanelMovies.Controls.Clear(); // Xóa dữ liệu cũ
+            allMovies = dt.AsEnumerable().ToList(); // Lưu danh sách phim gốc
 
-            foreach (DataRow row in dt.Rows)
+            DisplayMovies(allMovies); // Gọi hàm hiển thị phim
+        }
+
+        private void DisplayMovies(List<DataRow> movies)
+        {
+            flowLayoutPanelMovies.Controls.Clear(); // Xóa danh sách cũ
+
+            foreach (DataRow row in movies)
             {
                 Panel moviePanel = new Panel()
                 {
                     Width = 180,
-                    Height = 340, // Tăng chiều cao để có đủ khoảng trống
-                    Margin = new Padding(12, 35, 12, 35), // Tăng khoảng cách giữa các hàng
+                    Height = 340, // Giữ nguyên kích thước
+                    Margin = new Padding(12, 35, 12, 35),
                     BackColor = Color.White
                 };
 
-                // Bo tròn nhẹ (góc 6px)
+                // Bo tròn panel
                 int radius = 6;
                 GraphicsPath path = new GraphicsPath();
                 path.AddArc(0, 0, radius, radius, 180, 90);
@@ -82,6 +91,7 @@ namespace Cinema.Admin.UserControls
                 path.CloseFigure();
                 moviePanel.Region = new Region(path);
 
+                // Poster phim
                 PictureBox picBox = new PictureBox()
                 {
                     Width = 160,
@@ -92,7 +102,7 @@ namespace Cinema.Admin.UserControls
                     BackColor = Color.Black
                 };
 
-                // Bo tròn nhẹ hình ảnh
+                // Bo tròn ảnh
                 int imgRadius = 20;
                 GraphicsPath imgPath = new GraphicsPath();
                 imgPath.AddArc(0, 0, imgRadius, imgRadius, 180, 90);
@@ -102,6 +112,7 @@ namespace Cinema.Admin.UserControls
                 imgPath.CloseFigure();
                 picBox.Region = new Region(imgPath);
 
+                // Tên phim
                 Label lblTitle = new Label()
                 {
                     Text = row["movie_name"].ToString(),
@@ -109,26 +120,21 @@ namespace Cinema.Admin.UserControls
                     Height = 70, // Tăng chiều cao để chứa nhiều dòng hơn
                     AutoSize = false,
                     TextAlign = ContentAlignment.MiddleCenter,
-                    Font = new Font("Arial", 9, FontStyle.Bold), // Giữ nguyên font nhưng tăng cỡ chữ
+                    Font = new Font("Arial", 9, FontStyle.Bold),
                     Location = new Point(10, 230),
-                    BackColor = Color.Transparent,
                     ForeColor = Color.Black
                 };
 
-                lblTitle.MaximumSize = new Size(160, 70);
-                lblTitle.AutoEllipsis = false;
-                lblTitle.Padding = new Padding(2);
-                lblTitle.UseCompatibleTextRendering = true;
-
-                // Tăng khoảng cách giữa tên phim và nút bằng Panel chứa nút
+                // Panel chứa nút
                 Panel buttonPanel = new Panel()
                 {
                     Width = 160,
                     Height = 40,
-                    Location = new Point(10, 300), // Đẩy nút xuống thấp hơn
+                    Location = new Point(10, 300),
                     BackColor = Color.Transparent
                 };
 
+                // Nút Edit
                 Button btnEdit = new Button()
                 {
                     Text = "Edit",
@@ -137,36 +143,32 @@ namespace Cinema.Admin.UserControls
                     Location = new Point(0, 5),
                     BackColor = Color.LightBlue,
                     FlatStyle = FlatStyle.Flat,
-                    Font = new Font("Arial", 8, FontStyle.Bold) // Giữ font nhưng tăng size chữ
+                    Font = new Font("Arial", 8, FontStyle.Bold)
                 };
 
                 btnEdit.FlatAppearance.BorderSize = 0;
                 btnEdit.FlatAppearance.MouseDownBackColor = Color.LightBlue;
-                btnEdit.FlatAppearance.MouseOverBackColor = Color.FromArgb(210, 237, 241); // Màu nhạt hơn khi hover
-                btnEdit.FlatAppearance.BorderColor = Color.LightBlue;
+                btnEdit.FlatAppearance.MouseOverBackColor = Color.FromArgb(210, 237, 241);
 
-                GraphicsPath btnPath = new GraphicsPath();
+                // Bo tròn nút Edit
                 int btnRadius = 10;
-
+                GraphicsPath btnPath = new GraphicsPath();
                 btnPath.AddArc(0, 0, btnRadius, btnRadius, 180, 90);
                 btnPath.AddArc(btnEdit.Width - btnRadius, 0, btnRadius, btnRadius, 270, 90);
                 btnPath.AddArc(btnEdit.Width - btnRadius, btnEdit.Height - btnRadius, btnRadius, btnRadius, 0, 90);
                 btnPath.AddArc(0, btnEdit.Height - btnRadius, btnRadius, btnRadius, 90, 90);
                 btnPath.CloseFigure();
-
                 btnEdit.Region = new Region(btnPath);
-                btnEdit.MouseEnter += (s, e) => btnEdit.BackColor = Color.FromArgb(180, 220, 255); // Màu nhạt hơn LightBlue
-                btnEdit.MouseLeave += (s, e) => btnEdit.BackColor = Color.LightBlue; // Màu ban đầu
-
 
                 btnEdit.Click += (sender, e) => EditMovie(row["movie_name"].ToString());
 
+                // Nút Delete
                 Button btnDelete = new Button()
                 {
                     Text = "Delete",
                     Width = 75,
                     Height = 30,
-                    Location = new Point(85, 5), // Đẩy nút xuống thấp hơn
+                    Location = new Point(85, 5),
                     BackColor = Color.LightCoral,
                     FlatStyle = FlatStyle.Flat,
                     Font = new Font("Arial", 8, FontStyle.Bold)
@@ -174,20 +176,15 @@ namespace Cinema.Admin.UserControls
 
                 btnDelete.FlatAppearance.BorderSize = 0;
                 btnDelete.FlatAppearance.MouseDownBackColor = Color.LightCoral;
-                btnDelete.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 180, 180); // Màu nhạt hơn khi hover
-
-                btnDelete.FlatAppearance.BorderColor = Color.LightCoral;
+                btnDelete.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 180, 180);
 
                 // Bo tròn nút Delete
                 GraphicsPath btnPathDelete = new GraphicsPath();
-                int btnRadiusDelete = 10;
-
-                btnPathDelete.AddArc(0, 0, btnRadiusDelete, btnRadiusDelete, 180, 90);
-                btnPathDelete.AddArc(btnDelete.Width - btnRadiusDelete, 0, btnRadiusDelete, btnRadiusDelete, 270, 90);
-                btnPathDelete.AddArc(btnDelete.Width - btnRadiusDelete, btnDelete.Height - btnRadiusDelete, btnRadiusDelete, btnRadiusDelete, 0, 90);
-                btnPathDelete.AddArc(0, btnDelete.Height - btnRadiusDelete, btnRadiusDelete, btnRadiusDelete, 90, 90);
+                btnPathDelete.AddArc(0, 0, btnRadius, btnRadius, 180, 90);
+                btnPathDelete.AddArc(btnDelete.Width - btnRadius, 0, btnRadius, btnRadius, 270, 90);
+                btnPathDelete.AddArc(btnDelete.Width - btnRadius, btnDelete.Height - btnRadius, btnRadius, btnRadius, 0, 90);
+                btnPathDelete.AddArc(0, btnDelete.Height - btnRadius, btnRadius, btnRadius, 90, 90);
                 btnPathDelete.CloseFigure();
-
                 btnDelete.Region = new Region(btnPathDelete);
 
                 btnDelete.Click += (sender, e) => DeleteMovie(row["movie_name"].ToString());
@@ -202,8 +199,6 @@ namespace Cinema.Admin.UserControls
                 flowLayoutPanelMovies.Controls.Add(moviePanel);
             }
         }
-
-
 
         private void EditMovie(string movieName)
         {
@@ -269,9 +264,6 @@ namespace Cinema.Admin.UserControls
             }
         }
 
-
-
-
         private Image GetImageFromDatabase(object imageData)
         {
             if (imageData == DBNull.Value || imageData == null)
@@ -323,5 +315,17 @@ namespace Cinema.Admin.UserControls
         {
 
         }
+
+        private void SearchMovies_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = SearchMovies.Text.Trim().ToLower(); // Lấy từ khóa tìm kiếm
+
+            var filteredMovies = allMovies
+                .Where(row => row["movie_name"].ToString().ToLower().Contains(keyword))
+                .ToList();
+
+            DisplayMovies(filteredMovies); // Hiển thị danh sách phim đã lọc
+        }
+
     }
 }

@@ -73,6 +73,16 @@ namespace Cinema.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _36874121 {
+            get {
+                object obj = ResourceManager.GetObject("36874121", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _5935145 {
             get {
                 object obj = ResourceManager.GetObject("5935145", resourceCulture);
@@ -173,6 +183,16 @@ namespace Cinema.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eww2 {
+            get {
+                object obj = ResourceManager.GetObject("eww2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FLOW {
             get {
                 object obj = ResourceManager.GetObject("FLOW", resourceCulture);
@@ -186,6 +206,16 @@ namespace Cinema.Properties {
         internal static System.Drawing.Bitmap FLOW1 {
             get {
                 object obj = ResourceManager.GetObject("FLOW1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gsearch {
+            get {
+                object obj = ResourceManager.GetObject("gsearch", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
