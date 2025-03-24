@@ -154,6 +154,9 @@
     <None Include="assets\icon\5935145.png" />
     <None Include="assets\icon\3687412.png" />
     <Content Include="assets\icon\686458.png" />
+    <None Include="assets\icon\add-image-icon-2048x1908-0v5fxcb2.png" />
+    <Content Include="assets\icon\8467062.png" />
+    <None Include="assets\icon\bplusico.png" />
     <Content Include="assets\icon\cin.jpg" />
     <Content Include="assets\icon\cinema.png" />
     <None Include="assets\icon\edit icon.png" />
@@ -169,6 +172,9 @@
     <Content Include="assets\icon\movie.png" />
     <Content Include="assets\icon\movies.png" />
     <Content Include="assets\icon\moviesd.png" />
+    <None Include="assets\icon\noima.jpg" />
+    <None Include="assets\icon\no.png" />
+    <None Include="assets\icon\no1.png" />
     <Content Include="assets\icon\plusico.png" />
     <Content Include="assets\icon\png-clipart-users-group-computer-icons-membership-miscellaneous-user-interface-design-thumbnail.png" />
     <Content Include="assets\icon\screen.png" />

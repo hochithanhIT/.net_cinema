@@ -432,6 +432,10 @@ ORDER BY t.theater_name";
             manageTheatersForm.Location = new Point(650, 130);
         }
 
+        private void SeatPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

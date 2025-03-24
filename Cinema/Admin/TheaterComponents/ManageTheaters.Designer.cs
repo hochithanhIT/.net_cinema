@@ -134,6 +134,7 @@
             this.guna2Button1.Size = new System.Drawing.Size(298, 58);
             this.guna2Button1.TabIndex = 5;
             this.guna2Button1.Text = "Add New Theaters";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // label3
             // 

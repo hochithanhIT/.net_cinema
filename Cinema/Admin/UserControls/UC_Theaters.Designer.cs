@@ -86,6 +86,7 @@
             this.SeatPanel.Name = "SeatPanel";
             this.SeatPanel.Size = new System.Drawing.Size(925, 499);
             this.SeatPanel.TabIndex = 6;
+            this.SeatPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.SeatPanel_Paint);
             // 
             // label2
             // 

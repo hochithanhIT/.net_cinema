@@ -133,6 +133,26 @@ namespace Cinema.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_image_icon_2048x1908_0v5fxcb2 {
+            get {
+                object obj = ResourceManager.GetObject("add-image-icon-2048x1908-0v5fxcb2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bplusico {
+            get {
+                object obj = ResourceManager.GetObject("bplusico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CAPTAIN_AMERICA_BRAVE_NEW_WORLD {
             get {
                 object obj = ResourceManager.GetObject("CAPTAIN_AMERICA_BRAVE_NEW_WORLD", resourceCulture);
@@ -146,6 +166,16 @@ namespace Cinema.Properties {
         internal static System.Drawing.Bitmap cin {
             get {
                 object obj = ResourceManager.GetObject("cin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cinema {
+            get {
+                object obj = ResourceManager.GetObject("cinema", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,6 +306,36 @@ namespace Cinema.Properties {
         internal static System.Drawing.Bitmap moviesd {
             get {
                 object obj = ResourceManager.GetObject("moviesd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap no {
+            get {
+                object obj = ResourceManager.GetObject("no", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap no1 {
+            get {
+                object obj = ResourceManager.GetObject("no1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noima {
+            get {
+                object obj = ResourceManager.GetObject("noima", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
