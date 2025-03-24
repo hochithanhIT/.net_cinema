@@ -20,8 +20,8 @@ namespace Cinema
         private void button1_Click(object sender, EventArgs e)
         {
             // Mở Form1 khi click vào Button
-            Form1 form1 = new Form1();
-            form1.Show();
+            //homepage_test form1 = new homepage_test();
+            //form1.Show();
 
             Form ParentForm = this.FindForm();
             ParentForm.Hide();

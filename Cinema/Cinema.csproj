@@ -47,14 +47,55 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connect_db\DataAccess.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="homepage\HomepageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="homepage\HomepageForm.Designer.cs">
+      <DependentUpon>HomepageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="header_bar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="header_bar.Designer.cs">
+      <DependentUpon>header_bar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movie.cs" />
+    <Compile Include="MovieControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MovieControl.Designer.cs">
+      <DependentUpon>MovieControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserSession.cs" />
+    <EmbeddedResource Include="homepage\HomepageForm.resx">
+      <DependentUpon>HomepageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="header_bar.resx">
+      <DependentUpon>header_bar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovieControl.resx">
+      <DependentUpon>MovieControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -66,6 +107,7 @@
     </Compile>
     <None Include="assets\icon\log.opng" />
     <None Include="assets\icon\retro-cinema-background_52683-1701.avif" />
+    <None Include="bin\Debug\Cinema.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,26 +141,68 @@
     <Content Include="assets\icon\thea.png" />
     <Content Include="assets\icon\tải xuống.png" />
     <Content Include="assets\icon\user_icon_007.jpg" />
-
-    <Content Include="assets\poster\28_YEARS_LATER.jpg" />
-    <Content Include="assets\poster\ANH_TRAI_SAY_HI_VILLAINS_MADE_THE_HERO.jpg" />
-    <Content Include="assets\poster\ATTACK_ON_TITAN_THE_LAST_ATTACK.jpg" />
-    <Content Include="assets\poster\CAPTAIN_AMERICA_BRAVE_NEW_WORLD.jpg" />
-    <Content Include="assets\poster\DARK_NUNS.jpg" />
-    <Content Include="assets\poster\FLIGHT_RISK.jpg" />
-    <Content Include="assets\poster\FLOW.jpg" />
-    <Content Include="assets\poster\INTERSTELLAR_%28RERUN%29.jpg" />
-    <Content Include="assets\poster\JURASSIC_WORLD_REBIRTH.jpg" />
-    <Content Include="assets\poster\M3GAN_2.0.jpg" />
-    <Content Include="assets\poster\MOBILE_SUIT_GUNDAM_GQUUUUUUX_BEGINNING.jpg" />
-    <Content Include="assets\poster\NHA_GIA_TIEN.jpg" />
-    <Content Include="assets\poster\NOSFERATU.jpg" />
-    <Content Include="assets\poster\PADDINGTON_IN_PERU.jpg" />
-    <Content Include="assets\poster\PANOR.jpg" />
-    <Content Include="assets\poster\SUPERMAN.jpg" />
-    <Content Include="assets\poster\THE_BAD_GUYS_2.png" />
-    <Content Include="assets\poster\THE_SMURFS_MOVIE.jpg" />
-    <Content Include="assets\poster\THE_SUBSTANCE_%28RERUN%29.jpg" />
+    <Content Include="assets\poster\28_YEARS_LATER.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\ANH_TRAI_SAY_HI_VILLAINS_MADE_THE_HERO.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\ATTACK_ON_TITAN_THE_LAST_ATTACK.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\CAPTAIN_AMERICA_BRAVE_NEW_WORLD.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\DARK_NUNS.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\FLIGHT_RISK.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\FLOW.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\INTERSTELLAR_%28RERUN%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\JURASSIC_WORLD_REBIRTH.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\M3GAN_2.0.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\MOBILE_SUIT_GUNDAM_GQUUUUUUX_BEGINNING.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\NHA_GIA_TIEN.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\NOSFERATU.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\PADDINGTON_IN_PERU.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\PANOR.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\SUPERMAN.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\THE_BAD_GUYS_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\THE_SMURFS_MOVIE.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\poster\THE_SUBSTANCE_%28RERUN%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Cinema.exe" />
+    <Content Include="bin\Debug\Cinema.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
