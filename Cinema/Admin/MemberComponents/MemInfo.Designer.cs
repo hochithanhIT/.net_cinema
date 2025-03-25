@@ -44,10 +44,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(72, 153);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 25);
+            this.label2.Size = new System.Drawing.Size(100, 25);
             this.label2.TabIndex = 6;
             this.label2.Text = "Full Name";
             // 
@@ -64,54 +64,53 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(608, 153);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(155, 25);
+            this.label3.Size = new System.Drawing.Size(143, 25);
             this.label3.TabIndex = 8;
             this.label3.Text = "Phone Number";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(72, 316);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 25);
+            this.label4.Size = new System.Drawing.Size(138, 25);
             this.label4.TabIndex = 9;
             this.label4.Text = "Email Address";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(608, 316);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 25);
+            this.label5.Size = new System.Drawing.Size(89, 25);
             this.label5.TabIndex = 10;
             this.label5.Text = "Birthdate";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(72, 491);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 25);
+            this.label6.Size = new System.Drawing.Size(96, 25);
             this.label6.TabIndex = 11;
             this.label6.Text = "Spending";
             // 
             // NameTextBox
             // 
+            this.NameTextBox.BorderColor = System.Drawing.Color.Silver;
             this.NameTextBox.BorderRadius = 15;
-            this.NameTextBox.BorderThickness = 0;
             this.NameTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.NameTextBox.DefaultText = "";
             this.NameTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.NameTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.NameTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.NameTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.NameTextBox.Enabled = false;
             this.NameTextBox.FillColor = System.Drawing.Color.WhiteSmoke;
             this.NameTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.NameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -128,15 +127,14 @@
             // 
             // EmailTextBox
             // 
+            this.EmailTextBox.BorderColor = System.Drawing.Color.Silver;
             this.EmailTextBox.BorderRadius = 15;
-            this.EmailTextBox.BorderThickness = 0;
             this.EmailTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.EmailTextBox.DefaultText = "";
             this.EmailTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.EmailTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.EmailTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.EmailTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.EmailTextBox.Enabled = false;
             this.EmailTextBox.FillColor = System.Drawing.Color.WhiteSmoke;
             this.EmailTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.EmailTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -153,15 +151,14 @@
             // 
             // PhoneTextBox
             // 
+            this.PhoneTextBox.BorderColor = System.Drawing.Color.Silver;
             this.PhoneTextBox.BorderRadius = 15;
-            this.PhoneTextBox.BorderThickness = 0;
             this.PhoneTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.PhoneTextBox.DefaultText = "";
             this.PhoneTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.PhoneTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.PhoneTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.PhoneTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.PhoneTextBox.Enabled = false;
             this.PhoneTextBox.FillColor = System.Drawing.Color.WhiteSmoke;
             this.PhoneTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.PhoneTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -178,15 +175,14 @@
             // 
             // BDTextBox
             // 
+            this.BDTextBox.BorderColor = System.Drawing.Color.Silver;
             this.BDTextBox.BorderRadius = 15;
-            this.BDTextBox.BorderThickness = 0;
             this.BDTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.BDTextBox.DefaultText = "";
             this.BDTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.BDTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.BDTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.BDTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.BDTextBox.Enabled = false;
             this.BDTextBox.FillColor = System.Drawing.Color.WhiteSmoke;
             this.BDTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.BDTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -203,15 +199,14 @@
             // 
             // SpendTextBox
             // 
+            this.SpendTextBox.BorderColor = System.Drawing.Color.Silver;
             this.SpendTextBox.BorderRadius = 15;
-            this.SpendTextBox.BorderThickness = 0;
             this.SpendTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.SpendTextBox.DefaultText = "";
             this.SpendTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.SpendTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.SpendTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.SpendTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.SpendTextBox.Enabled = false;
             this.SpendTextBox.FillColor = System.Drawing.Color.WhiteSmoke;
             this.SpendTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SpendTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);

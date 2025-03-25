@@ -251,7 +251,7 @@ namespace Cinema.Admin.UserControls
         // Hàm xử lý sự kiện khi nhấn Delete
         private void DeleteMovie(int movieId)
         {
-            DialogResult result = MessageBox.Show($"Are you sure you want to delete the movie with ID: {movieId}?",
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete this movie??",
                                                   "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)

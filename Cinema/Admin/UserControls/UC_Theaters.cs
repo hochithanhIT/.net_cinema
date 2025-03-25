@@ -31,19 +31,27 @@ namespace Cinema.Admin.UserControls
 
         private void TheaterCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (TheaterCombobox.SelectedValue != null)
+            if (TheaterCombobox.SelectedValue == null || FMovie.SelectedValue == null || FSchedule.SelectedItem == null)
             {
-                if (TheaterCombobox.SelectedValue is DataRowView rowView)
-                {
-                    selectedTheaterId = Convert.ToInt32(rowView["theater_id"]);
-                }
-                else if (!int.TryParse(TheaterCombobox.SelectedValue.ToString(), out selectedTheaterId))
-                {
-                    MessageBox.Show("Lỗi: Không thể chuyển đổi giá trị của phòng chiếu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    selectedTheaterId = -1;
-                }
+                return;
             }
+
+            int selectedTheaterID = Convert.ToInt32(TheaterCombobox.SelectedValue);
+            int selectedMovieID = Convert.ToInt32(FMovie.SelectedValue);
+            DateTime selectedDate = FDate.Value.Date;
+            DateTime parsedTime;
+
+            if (!DateTime.TryParse(FSchedule.SelectedItem.ToString(), out parsedTime))
+            {
+                MessageBox.Show("Giờ chiếu không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string selectedTime = parsedTime.ToString("HH:mm");
+
+            // Gọi hàm LoadSeats với theaterId đúng
+            LoadSeats(selectedTheaterID, selectedMovieID, selectedDate, selectedTime);
         }
+
 
 
 
@@ -58,14 +66,15 @@ namespace Cinema.Admin.UserControls
 
             // Lấy danh sách ghế đã đặt theo lịch chiếu, phim và thời gian cụ thể
             string queryBookedSeats = $@"
-        SELECT SEAT_ID FROM TICKET 
-        WHERE SCHEDULE_ID IN (
-            SELECT ID FROM SCHEDULE 
-            WHERE THEATER_ID = {theaterId}
-            AND MOVIE_ID = {movieId}
-            AND CONVERT(date, START_TIME) = '{date:yyyy-MM-dd}'
-            AND FORMAT(START_TIME, 'HH:mm') = '{time}'
-        )";
+ SELECT SEAT_ID FROM TICKET 
+ WHERE SCHEDULE_ID IN (
+     SELECT ID FROM SCHEDULE 
+     WHERE THEATER_ID = {theaterId}  -- Thêm điều kiện này để lấy đúng phòng chiếu
+     AND MOVIE_ID = {movieId}
+     AND CONVERT(date, START_TIME) = '{date:yyyy-MM-dd}'
+     AND FORMAT(START_TIME, 'HH:mm') = '{time}'
+ )";
+
 
             DataTable bookedSeats = dataAccess.ExecuteQueryTable(queryBookedSeats);
 
