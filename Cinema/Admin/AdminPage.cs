@@ -74,25 +74,8 @@ namespace Cinema.Admin
 
         private void guna2Button4_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                // Tạo đối tượng DataAccess
-                DataAccess dataAccess = new DataAccess();
-
-                // Kiểm tra trạng thái kết nối
-                if (dataAccess.Sqlcon.State == ConnectionState.Open)
-                {
-                    MessageBox.Show("Kết nối đến cơ sở dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Không thể kết nối đến cơ sở dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            UC_Members uc = new UC_Members();
+            addUserControl(uc);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

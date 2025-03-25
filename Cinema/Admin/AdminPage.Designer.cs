@@ -40,7 +40,7 @@
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
-            
+            this.SuspendLayout();
             // 
             // guna2Separator1
             // 
@@ -79,7 +79,7 @@
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.Gainsboro;
-            this.guna2Panel2.Location = new System.Drawing.Point(27, 795);
+            this.guna2Panel2.Location = new System.Drawing.Point(27, 796);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(200, 1);
             this.guna2Panel2.TabIndex = 8;
