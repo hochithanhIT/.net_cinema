@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connect_db\DataAccess.cs" />
+    <Compile Include="Forms\Booking_Ticket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Booking_Ticket.Designer.cs">
+      <DependentUpon>Booking_Ticket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Movie_Detail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Booking_Ticket.resx">
+      <DependentUpon>Booking_Ticket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Movie_Detail.resx">
       <DependentUpon>Movie_Detail.cs</DependentUpon>
     </EmbeddedResource>
@@ -68,6 +77,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="bin\Debug\Cinema.exe.config" />
+    <None Include="packages.config" />
+    <None Include="packages\Guna.UI2.WinForms.2.0.4.7\.signature.p7s" />
+    <None Include="packages\Guna.UI2.WinForms.2.0.4.7\Guna.UI2.WinForms.2.0.4.7.nupkg" />
+    <None Include="packages\Guna.UI2.WinForms.2.0.4.7\README.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -82,6 +95,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\icon\screen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\poster\28_YEARS_LATER.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -139,8 +155,37 @@
     <Content Include="assets\poster\THE_SUBSTANCE_%28RERUN%29.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="bin\Debug\assets\poster\28_YEARS_LATER.jpg" />
+    <Content Include="bin\Debug\assets\poster\ANH_TRAI_SAY_HI_VILLAINS_MADE_THE_HERO.jpg" />
+    <Content Include="bin\Debug\assets\poster\ATTACK_ON_TITAN_THE_LAST_ATTACK.jpg" />
+    <Content Include="bin\Debug\assets\poster\CAPTAIN_AMERICA_BRAVE_NEW_WORLD.jpg" />
+    <Content Include="bin\Debug\assets\poster\DARK_NUNS.jpg" />
+    <Content Include="bin\Debug\assets\poster\FLIGHT_RISK.jpg" />
+    <Content Include="bin\Debug\assets\poster\FLOW.jpg" />
+    <Content Include="bin\Debug\assets\poster\INTERSTELLAR_%28RERUN%29.jpg" />
+    <Content Include="bin\Debug\assets\poster\JURASSIC_WORLD_REBIRTH.jpg" />
+    <Content Include="bin\Debug\assets\poster\M3GAN_2.0.jpg" />
+    <Content Include="bin\Debug\assets\poster\MOBILE_SUIT_GUNDAM_GQUUUUUUX_BEGINNING.jpg" />
+    <Content Include="bin\Debug\assets\poster\NHA_GIA_TIEN.jpg" />
+    <Content Include="bin\Debug\assets\poster\NOSFERATU.jpg" />
+    <Content Include="bin\Debug\assets\poster\PADDINGTON_IN_PERU.jpg" />
+    <Content Include="bin\Debug\assets\poster\PANOR.jpg" />
+    <Content Include="bin\Debug\assets\poster\SUPERMAN.jpg" />
+    <Content Include="bin\Debug\assets\poster\THE_BAD_GUYS_2.png" />
+    <Content Include="bin\Debug\assets\poster\THE_SMURFS_MOVIE.jpg" />
+    <Content Include="bin\Debug\assets\poster\THE_SUBSTANCE_%28RERUN%29.jpg" />
     <Content Include="bin\Debug\Cinema.exe" />
     <Content Include="bin\Debug\Cinema.pdb" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\icon.png" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net40\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net45\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net461\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net48\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net6.0-windows7.0\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net7.0-windows7.0\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\netcoreapp3.1\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
