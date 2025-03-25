@@ -92,21 +92,29 @@ namespace Cinema.Admin.Components
                 if (!string.IsNullOrEmpty(poster) && File.Exists(poster))
                 {
                     string fileName = $"{this.MovieId}_{Path.GetFileName(poster)}";
-
                     string destinationPath = Path.Combine(assetsFolderPath, fileName);
 
-                    // 🔹 Release the old image before overwriting
+                    // 🔹 Giải phóng hình ảnh trước khi ghi đè
                     if (guna2PictureBox1.Image != null)
                     {
                         guna2PictureBox1.Image.Dispose();
                         guna2PictureBox1.Image = null;
+                        GC.Collect();   // Thu gom bộ nhớ ngay lập tức
+                        GC.WaitForPendingFinalizers(); // Đảm bảo tất cả bộ nhớ được giải phóng
                     }
 
                     File.Copy(poster, destinationPath, true); // Overwrite the file
 
-                    // 🔹 Update the new path in the database
+                    // 🔹 Đọc ảnh mới mà không khóa file
+                    using (FileStream fs = new FileStream(destinationPath, FileMode.Open, FileAccess.Read))
+                    {
+                        guna2PictureBox1.Image = Image.FromStream(fs);
+                    }
+
+                    // 🔹 Cập nhật đường dẫn mới vào database
                     poster = $"assets/poster/{fileName}";
                 }
+
 
                 // 🔹 SQL UPDATE statement (now includes movie_name)
                 string query = $"UPDATE movie SET " +
