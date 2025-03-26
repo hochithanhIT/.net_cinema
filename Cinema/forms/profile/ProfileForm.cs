@@ -76,7 +76,7 @@ namespace Cinema
 
         private void Logout()
             {
-                DialogResult result = MessageBox.Show("Would you like to log out of your account?", "Yes",
+                DialogResult result = MessageBox.Show("Would you like to log out of your account?", "Confirm",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)

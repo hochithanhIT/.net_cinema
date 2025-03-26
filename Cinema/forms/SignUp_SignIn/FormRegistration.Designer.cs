@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.btnSignUp = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.panelLeft.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,18 @@
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(957, 1053);
             this.panelLeft.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(48, 588);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(711, 58);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Join us for the latest blockbuster and exclusive screenings.\r\nBook your tickets n" +
+    "ow and enjoy the ultimate cinematic adventure!\r\n";
             // 
             // btnSignIn
             // 
@@ -87,7 +99,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(47, 440);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(767, 78);
+            this.label2.Size = new System.Drawing.Size(739, 76);
             this.label2.TabIndex = 1;
             this.label2.Text = "Welcome to Ticket Booking!\r\nExperience the magic of movies like never before.\r\n";
             // 
@@ -110,18 +122,6 @@
             this.panelContainer.Size = new System.Drawing.Size(900, 1053);
             this.panelContainer.TabIndex = 1;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(48, 588);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(711, 58);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Join us for the latest blockbuster and exclusive screenings.\r\nBook your tickets n" +
-    "ow and enjoy the ultimate cinematic adventure!\r\n";
-            // 
             // FormRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -131,7 +131,7 @@
             this.Controls.Add(this.panelLeft);
             this.Name = "FormRegistration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormRegistration";
+            this.Text = "Sign Up - Sign In";
             this.Load += new System.EventHandler(this.FormRegistration_Load_1);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
