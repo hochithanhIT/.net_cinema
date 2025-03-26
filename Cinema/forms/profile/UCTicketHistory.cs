@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using Cinema.homepage;
 
 namespace Cinema.forms.profile
 {
@@ -18,6 +14,7 @@ namespace Cinema.forms.profile
         private DataAccess dataAccess = new DataAccess();
         private string userEmail;
         private string userPhone;
+        private Panel mainPanel;
 
         public UCTicketHistory(ProfileForm ProfileForm, string email, string phone)
         {
@@ -26,8 +23,51 @@ namespace Cinema.forms.profile
             this.userEmail = email;
             this.userPhone = phone;
 
-            // Load ticket history when the control is initialized
+            // Main panel with scroll
+            mainPanel = new Panel
+            {
+                Dock = DockStyle.Fill,
+                AutoScroll = true,
+                BackColor = Color.FromArgb(255, 224, 180)
+            };
+            this.Controls.Add(mainPanel);
+
+            // Add header
+            AddHeader();
+
+            // Load ticket history
             LoadTicketHistory();
+        }
+
+        private void AddHeader()
+        {
+            Panel headerPanel = new Panel
+            {
+                Dock = DockStyle.Top,
+                Height = 60,
+                BackColor = Color.White
+            };
+
+            Label lblTitle = new Label
+            {
+                Text = "TICKET HISTORY",
+                Dock = DockStyle.Left,
+                Font = new Font("Segoe UI", 16, FontStyle.Bold),
+                ForeColor = Color.FromArgb(50, 50, 50),
+                Padding = new Padding(20, 15, 0, 0),
+                AutoSize = true
+            };
+
+            Panel divider = new Panel
+            {
+                Dock = DockStyle.Bottom,
+                Height = 1,
+                BackColor = Color.FromArgb(230, 230, 230)
+            };
+
+            headerPanel.Controls.Add(divider);
+            headerPanel.Controls.Add(lblTitle);
+            mainPanel.Controls.Add(headerPanel);
         }
 
         private void LoadTicketHistory()
@@ -43,21 +83,20 @@ namespace Cinema.forms.profile
                 object userIdResult = userIdCmd.ExecuteScalar();
                 if (userIdResult == null)
                 {
-                    // Nếu không tìm thấy user, hiển thị thông điệp
                     DisplayEmptyMessage();
                     return;
                 }
 
                 int userId = Convert.ToInt32(userIdResult);
 
-                // Query to get ticket history with all required information
+                // Query to get ticket history
                 string query = @"
                     SELECT 
                         m.movie_name,
                         t.theater_name,
                         s.SEAT_CODE,
                         sch.START_TIME as date,
-                        mr.DISCOUNT as disount_percent,
+                        mr.DISCOUNT as discount_percent,
                         ti.FIRST_AMOUNT,
                         (ti.FIRST_AMOUNT * mr.DISCOUNT) as applied_discount,
                         (ti.FIRST_AMOUNT - ti.DISCOUNT) as total_price,
@@ -71,7 +110,7 @@ namespace Cinema.forms.profile
                     JOIN 
                         theater t ON sch.THEATER_ID = t.id
                     JOIN 
-                        SEAT s ON ti.SEAT_CODE = s.ID
+                        SEAT s ON ti.SEAT_ID = s.ID
                     JOIN 
                         THEATER_MEM tm ON ti.MEM_ID = tm.ID
                     LEFT JOIN 
@@ -94,52 +133,42 @@ namespace Cinema.forms.profile
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
-                // Remove the template panel
-                panelMovie.Visible = false;
-
-                // Clear any existing ticket panels (for refreshes)
-                foreach (Control control in Controls)
+                // Clear existing tickets (except header)
+                for (int i = mainPanel.Controls.Count - 1; i >= 0; i--)
                 {
-                    if (control is Panel && control.Name.StartsWith("ticketPanel_"))
+                    if (mainPanel.Controls[i].Tag?.ToString() == "ticket")
                     {
-                        Controls.Remove(control);
-                    }
-                    if (control is Label && control.Name == "lblEmptyMessage")
-                    {
-                        Controls.Remove(control);
+                        mainPanel.Controls.RemoveAt(i);
                     }
                 }
 
-                // Check if user have no ticket
+                // Check if user has no tickets
                 if (dt.Rows.Count == 0)
                 {
                     DisplayEmptyMessage();
                     return;
                 }
 
-                // Create a panel for each ticket
-                int panelHeight = 153; // Height of each ticket panel
-                int panelGap = 30;     // Increased gap between panels for more spacing
-                int startY = 101;      // Starting Y position (adjust based on your layout)
-
-                for (int i = 0; i < dt.Rows.Count; i++)
+                // Create a card for each ticket
+                int yPos = 70; // Below header
+                foreach (DataRow row in dt.Rows)
                 {
-                    DataRow row = dt.Rows[i];
-
                     Panel ticketPanel = CreateTicketPanel(
                         row["movie_name"].ToString(),
                         row["theater_name"].ToString(),
                         row["SEAT_CODE"].ToString(),
-                        Convert.ToDateTime(row["purchase_date"]),
-                        Convert.ToDecimal(row["disount_percent"]),
+                        Convert.ToDateTime(row["date"]),
+                        Convert.ToDecimal(row["discount_percent"]),
                         Convert.ToInt32(row["FIRST_AMOUNT"]),
                         Convert.ToInt32(row["applied_discount"]),
                         Convert.ToInt32(row["total_price"]),
-                        startY + (i * (panelHeight + panelGap))
+                        Convert.ToDateTime(row["purchase_date"])
                     );
 
-                    Controls.Add(ticketPanel);
-                    ticketPanel.BringToFront();
+                    ticketPanel.Location = new Point(20, yPos);
+                    ticketPanel.Tag = "ticket";
+                    mainPanel.Controls.Add(ticketPanel);
+                    yPos += ticketPanel.Height + 20;
                 }
             }
             catch (Exception ex)
@@ -148,75 +177,198 @@ namespace Cinema.forms.profile
             }
         }
 
-        private void DisplayEmptyMessage()
-        {
-            Label lblEmptyMessage = new Label();
-            lblEmptyMessage.Name = "lblEmptyMessage";
-            lblEmptyMessage.Text = "Your ticket is empty. Booking now!";
-            lblEmptyMessage.AutoSize = true;
-            lblEmptyMessage.Font = new Font("Arial", 14, FontStyle.Bold);
-            lblEmptyMessage.ForeColor = Color.Red;
-            lblEmptyMessage.Location = new Point(500, 200); 
-
-            Controls.Add(lblEmptyMessage);
-            lblEmptyMessage.BringToFront();
-        }
-
         private Panel CreateTicketPanel(string movieName, string theaterName, string seatCode,
                                        DateTime showDate, decimal discountRate, int firstAmount,
-                                       int appliedDiscount, int totalPrice, int yPosition)
+                                       int appliedDiscount, int totalPrice, DateTime purchaseDate)
         {
             CultureInfo vnCulture = new CultureInfo("vi-VN");
-            Panel panel = new Panel();
-            panel.Name = $"ticketPanel_{Guid.NewGuid()}";
-            panel.Size = panelMovie.Size;
-            panel.Location = new Point(panelMovie.Location.X, yPosition);
-            panel.BorderStyle = BorderStyle.FixedSingle;
 
-            Label lblMovie = new Label();
-            lblMovie.AutoSize = true;
-            lblMovie.Location = new Point(30, 23);
-            lblMovie.Text = $"Movie: {movieName}";
-            lblMovie.Font = lblMovieName.Font;
+            // Main ticket panel
+            Panel panel = new Panel
+            {
+                Size = new Size(760, 180),
+                BackColor = Color.White,
+                Padding = new Padding(0),
+                BorderStyle = BorderStyle.None
+            };
 
-            Label lblTheater = new Label();
-            lblTheater.AutoSize = true;
-            lblTheater.Location = new Point(30, 66);
-            lblTheater.Text = $"Theater: {theaterName}";
-            lblTheater.Font = lblTheaterName.Font;
+            // Add shadow effect
+            panel.Paint += (s, e) =>
+            {
+                int shadowSize = 5;
+                int shadowSpread = 3;
+                for (int i = 0; i < shadowSize; i++)
+                {
+                    Rectangle shadowRect = new Rectangle(
+                        i + shadowSpread,
+                        i + shadowSpread,
+                        panel.Width - (i * 2 + shadowSpread * 2),
+                        panel.Height - (i * 2 + shadowSpread * 2));
+                    using (Pen pen = new Pen(Color.FromArgb(10 * i, 0, 0, 0)))
+                    {
+                        e.Graphics.DrawRectangle(pen, shadowRect);
+                    }
+                }
+                e.Graphics.FillRectangle(Brushes.White, 0, 0, panel.Width, panel.Height);
+            };
 
-            Label lblSeat = new Label();
-            lblSeat.AutoSize = true;
-            lblSeat.Location = new Point(30, 108);
-            lblSeat.Text = $"Seat code: {seatCode}";
-            lblSeat.Font = blbSeatCode.Font;
+            // Movie title and purchase date
+            Label lblMovie = new Label
+            {
+                Text = movieName.ToUpper(),
+                Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                ForeColor = Color.FromArgb(50, 50, 50),
+                Location = new Point(20, 15),
+                AutoSize = true
+            };
 
-            Label lblShowDate = new Label();
-            lblShowDate.AutoSize = true;
-            lblShowDate.Location = new Point(480, 23);
-            lblShowDate.Text = $"Date: {showDate.ToString("yyyy-MM-dd HH:mm")}";
-            lblShowDate.Font = lblDate.Font;
+            Label lblPurchaseDate = new Label
+            {
+                Text = $"Purchased on {purchaseDate.ToString("dd MMM yyyy 'at' HH:mm")}",
+                Font = new Font("Segoe UI", 9, FontStyle.Italic),
+                ForeColor = Color.FromArgb(120, 120, 120),
+                Location = new Point(20, 45),
+                AutoSize = true
+            };
 
-            Label lblDiscountValue = new Label();
-            lblDiscountValue.AutoSize = true;
-            lblDiscountValue.Location = new Point(480, 66);
-            lblDiscountValue.Text = $"Discount: {discountRate:P0} ({appliedDiscount.ToString("C0", vnCulture)})";
-            lblDiscountValue.Font = lblDiscount.Font;
+            // Divider line
+            Panel divider = new Panel
+            {
+                Size = new Size(720, 1),
+                Location = new Point(20, 70),
+                BackColor = Color.FromArgb(230, 230, 230)
+            };
 
-            Label lblTotalPrice = new Label();
-            lblTotalPrice.AutoSize = true;
-            lblTotalPrice.Location = new Point(480, 108);
-            lblTotalPrice.Text = $"Total Price: {totalPrice.ToString("C0", vnCulture)} (Original: {firstAmount.ToString("C0", vnCulture)})";
-            lblTotalPrice.Font = lnlTotalPrice.Font;
+            // Ticket details table
+            TableLayoutPanel detailsTable = new TableLayoutPanel
+            {
+                RowCount = 2,
+                ColumnCount = 4,
+                Size = new Size(720, 80),
+                Location = new Point(20, 80),
+                CellBorderStyle = TableLayoutPanelCellBorderStyle.None,
+                Margin = new Padding(0)
+            };
 
+            detailsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            detailsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            detailsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            detailsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            detailsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            detailsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+
+            // Header row
+            AddTableHeader(detailsTable, "THEATER", 0, 0);
+            AddTableHeader(detailsTable, "SEAT", 0, 1);
+            AddTableHeader(detailsTable, "SHOW TIME", 0, 2);
+            AddTableHeader(detailsTable, "DISCOUNT", 0, 3);
+
+            // Values row
+            AddTableCell(detailsTable, theaterName, 1, 0);
+            AddTableCell(detailsTable, seatCode, 1, 1);
+            AddTableCell(detailsTable, showDate.ToString("dd MMM yyyy HH:mm"), 1, 2);
+            AddTableCell(detailsTable, $"{discountRate:P0}", 1, 3);
+
+            // Price row
+            AddTableHeader(detailsTable, "ORIGINAL PRICE", 2, 0);
+            AddTableHeader(detailsTable, "DISCOUNT AMOUNT", 2, 1);
+            AddTableHeader(detailsTable, "TOTAL PRICE", 2, 2);
+
+            // Price values
+            AddTableCell(detailsTable, firstAmount.ToString("C0", vnCulture), 3, 0);
+            AddTableCell(detailsTable, appliedDiscount.ToString("C0", vnCulture), 3, 1);
+            AddTableCell(detailsTable, totalPrice.ToString("C0", vnCulture), 3, 2, true);
+
+            // Add controls to panel
             panel.Controls.Add(lblMovie);
-            panel.Controls.Add(lblTheater);
-            panel.Controls.Add(lblSeat);
-            panel.Controls.Add(lblShowDate);
-            panel.Controls.Add(lblDiscountValue);
-            panel.Controls.Add(lblTotalPrice);
+            panel.Controls.Add(lblPurchaseDate);
+            panel.Controls.Add(divider);
+            panel.Controls.Add(detailsTable);
 
             return panel;
+        }
+
+        private void AddTableHeader(TableLayoutPanel table, string text, int row, int col)
+        {
+            Label lbl = new Label
+            {
+                Text = text,
+                Font = new Font("Segoe UI", 8, FontStyle.Bold),
+                ForeColor = Color.FromArgb(120, 120, 120),
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.BottomLeft,
+                Margin = new Padding(5, 0, 5, 0)
+            };
+            table.Controls.Add(lbl, col, row);
+        }
+
+        private void AddTableCell(TableLayoutPanel table, string text, int row, int col, bool highlight = false)
+        {
+            Label lbl = new Label
+            {
+                Text = text,
+                Font = new Font("Segoe UI", 9, highlight ? FontStyle.Bold : FontStyle.Regular),
+                ForeColor = highlight ? Color.FromArgb(0, 120, 215) : Color.FromArgb(70, 70, 70),
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.TopLeft,
+                Margin = new Padding(5, 0, 5, 0)
+            };
+            table.Controls.Add(lbl, col, row);
+        }
+
+        private void DisplayEmptyMessage()
+        {
+            Panel emptyPanel = new Panel
+            {
+                Size = new Size(760, 200),
+                Location = new Point(20, 70),
+                BackColor = Color.White
+            };
+
+            Label lblEmptyMessage = new Label
+            {
+                Text = "NO TICKETS FOUND",
+                Font = new Font("Segoe UI", 16, FontStyle.Bold),
+                ForeColor = Color.FromArgb(70, 70, 70),
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Top,
+                Height = 40
+            };
+
+            Label lblSubMessage = new Label
+            {
+                Text = "Your ticket history is empty.\nStart booking now to see your tickets here!",
+                Font = new Font("Segoe UI", 11),
+                ForeColor = Color.FromArgb(120, 120, 120),
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Top,
+                Height = 60
+            };
+
+            Button btnBookNow = new Button
+            {
+                Text = "BOOK NOW",
+                Size = new Size(180, 45),
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                BackColor = Color.FromArgb(0, 120, 215),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Dock = DockStyle.Top,
+                Margin = new Padding(0, 20, 0, 0)
+            };
+            btnBookNow.FlatAppearance.BorderSize = 0;
+            btnBookNow.Click += (s, e) =>
+            {
+                HomepageForm homepageForm = new HomepageForm(userEmail, userEmail, userPhone, DateTime.Now, "0", "N/A", 0);
+                homepageForm.Show();
+                this.ProfileForm.Close();
+            };
+
+            emptyPanel.Controls.Add(btnBookNow);
+            emptyPanel.Controls.Add(lblSubMessage);
+            emptyPanel.Controls.Add(lblEmptyMessage);
+
+            mainPanel.Controls.Add(emptyPanel);
         }
     }
 }

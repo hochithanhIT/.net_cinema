@@ -64,28 +64,29 @@ namespace Cinema.homepage
 
             try
             {
-                string query = "SELECT id, movie_name, poster, release_date FROM movie";
+                string query = "SELECT id, movie_name, poster, release_date, isDeleted FROM movie WHERE isDeleted = 0"; // Only select non-deleted movies
                 DataTable dt = dataAccess.ExecuteQueryTable(query);
 
                 List<Movie> movies = new List<Movie>();
                 foreach (DataRow row in dt.Rows)
                 {
+                    // No need to check isDeleted here since we filtered in SQL query
                     movies.Add(new Movie
                     {
                         id = Convert.ToInt32(row["id"]),
                         movie_name = row["movie_name"].ToString(),
                         poster = row["poster"]?.ToString() ?? string.Empty,
-                        release_date = Convert.ToDateTime(row["release_date"])
+                        release_date = Convert.ToDateTime(row["release_date"]),
                     });
                 }
 
+                // Filter based on showing status (now only works with non-deleted movies)
                 var filteredMovies = showShowingMovies
                     ? movies.Where(m => m.IsShowing).ToList()
                     : movies.Where(m => !m.IsShowing).ToList();
 
                 foreach (var movie in filteredMovies)
                 {
-                    // Truyền thông tin người dùng vào MovieControl
                     MovieControl movieControl = new MovieControl(
                         movie,
                         this.FullName,
