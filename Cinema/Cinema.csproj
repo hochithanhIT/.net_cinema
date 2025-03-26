@@ -175,6 +175,8 @@
     <None Include="assets\icon\add-image-icon-2048x1908-0v5fxcb2.png" />
     <Content Include="assets\icon\8467062.png" />
     <None Include="assets\icon\bplusico.png" />
+    <None Include="assets\icon\ad.png" />
+    <Content Include="assets\icon\admin.png" />
     <Content Include="assets\icon\cin.jpg" />
     <Content Include="assets\icon\cinema.png" />
     <None Include="assets\icon\edit icon.png" />

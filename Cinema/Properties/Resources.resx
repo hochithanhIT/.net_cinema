@@ -169,6 +169,9 @@
   <data name="eww1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\icon\eww.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ad1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\icon\ad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="memd1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\icon\memd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -205,11 +208,20 @@
   <data name="screen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\icon\screen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\icon\admin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FLOW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\poster\FLOW.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add-image-icon-2048x1908-0v5fxcb2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\icon\add-image-icon-2048x1908-0v5fxcb2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bplusico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\icon\bplusico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\icon\ad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\icon\cin.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,7 +235,7 @@
   <data name="3687412" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\icon\3687412.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bplusico" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\icon\bplusico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="admin1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\icon\admin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
