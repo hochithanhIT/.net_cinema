@@ -26,7 +26,7 @@ namespace Cinema.Admin.UserControls
             try
             {
                 // Truy vấn danh sách thành viên từ database
-                string query = "SELECT ID, FULL_NAME, PHONE FROM THEATER_MEM;";
+                string query = "SELECT ID, FULL_NAME, PHONE FROM THEATER_MEM WHERE MEM_ROLE = 1;";
                 DataTable members = dataAccess.ExecuteQueryTable(query);
 
                 // Xóa các control cũ trong flowLayoutPanel1

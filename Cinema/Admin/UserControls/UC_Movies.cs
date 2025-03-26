@@ -302,13 +302,13 @@ namespace Cinema.Admin.UserControls
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Lỗi khi tải ảnh: " + ex.Message);
+                        Console.WriteLine("Error when uploading images: " + ex.Message);
                         return null;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Không tìm thấy ảnh: " + fullPath);
+                    Console.WriteLine("No Image was found: " + fullPath);
                     return null;
                 }
             }

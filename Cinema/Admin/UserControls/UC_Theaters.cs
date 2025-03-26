@@ -43,7 +43,7 @@ namespace Cinema.Admin.UserControls
 
             if (!DateTime.TryParse(FSchedule.SelectedItem.ToString(), out parsedTime))
             {
-                MessageBox.Show("Giờ chiếu không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid Schedule.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             string selectedTime = parsedTime.ToString("HH:mm");
@@ -161,7 +161,7 @@ namespace Cinema.Admin.UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi chọn phim: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error when choosing movie: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -229,7 +229,7 @@ namespace Cinema.Admin.UserControls
         {
             if (FDate.Value == null)
             {
-                MessageBox.Show("Vui lòng chọn ngày hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select valid date!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -256,12 +256,12 @@ namespace Cinema.Admin.UserControls
                 // Kiểm tra nếu không có suất chiếu
                 if (FSchedule.Items.Count == 0)
                 {
-                    FSchedule.Items.Add("Không có suất chiếu nào");
+                    FSchedule.Items.Add("No schedule was found");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải suất chiếu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error when fetching schedule: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -278,7 +278,7 @@ namespace Cinema.Admin.UserControls
                 DateTime parsedTime;
                 if (!DateTime.TryParse(FSchedule.SelectedItem.ToString(), out parsedTime))
                 {
-                    MessageBox.Show("Giờ chiếu không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid Schedule.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 string selectedTime = parsedTime.ToString("HH:mm");
@@ -325,7 +325,7 @@ ORDER BY t.theater_name";
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải rạp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error when fetching theater: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -359,7 +359,7 @@ ORDER BY t.theater_name";
         {
             if (TheaterCombobox.SelectedValue == null)
             {
-                MessageBox.Show("Vui lòng chọn phòng chiếu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select theater.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -375,14 +375,14 @@ ORDER BY t.theater_name";
             }
             else
             {
-                MessageBox.Show("Lỗi: Không thể chuyển đổi giá trị của phòng chiếu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: Cannot parse theater values", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Kiểm tra xem FMovie và FSchedule đã chọn hay chưa
             if (FMovie.SelectedValue == null || FSchedule.SelectedItem == null)
             {
-                MessageBox.Show("Vui lòng chọn phim và suất chiếu trước.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select shcedule.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
