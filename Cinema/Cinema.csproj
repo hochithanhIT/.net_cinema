@@ -63,92 +63,54 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connect_db\DataAccess.cs" />
-    <Compile Include="forms\Admin\AdminForm.cs">
+    <Compile Include="Forms\Booking_Ticket.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\Admin\AdminForm.Designer.cs">
-      <DependentUpon>AdminForm.cs</DependentUpon>
+    <Compile Include="Forms\Booking_Ticket.Designer.cs">
+      <DependentUpon>Booking_Ticket.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\Customer\CustomerForm.cs">
+    <Compile Include="Forms\Movie_Schedule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\Customer\CustomerForm.Designer.cs">
-      <DependentUpon>CustomerForm.cs</DependentUpon>
+    <Compile Include="Forms\Movie_Schedule.Designer.cs">
+      <DependentUpon>Movie_Schedule.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\profile\ProfileForm.cs">
+    <Compile Include="Forms\Movie_Detail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\profile\ProfileForm.Designer.cs">
-      <DependentUpon>ProfileForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\profile\UCChangePass.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="forms\profile\UCChangePass.Designer.cs">
-      <DependentUpon>UCChangePass.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\profile\UCProfileDetails.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="forms\profile\UCProfileDetails.Designer.cs">
-      <DependentUpon>UCProfileDetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\profile\UCTicketHistory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="forms\profile\UCTicketHistory.Designer.cs">
-      <DependentUpon>UCTicketHistory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\SignUp_SignIn\FormRegistration.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\SignUp_SignIn\FormRegistration.Designer.cs">
-      <DependentUpon>FormRegistration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\SignUp_SignIn\UCSignIn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="forms\SignUp_SignIn\UCSignIn.Designer.cs">
-      <DependentUpon>UCSignIn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\SignUp_SignIn\UCSignUp.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="forms\SignUp_SignIn\UCSignUp.Designer.cs">
-      <DependentUpon>UCSignUp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="homepage\HomepageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="homepage\HomepageForm.Designer.cs">
-      <DependentUpon>HomepageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="header_bar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="header_bar.Designer.cs">
-      <DependentUpon>header_bar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="homepage\moviedetailTemp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="homepage\moviedetailTemp.Designer.cs">
-      <DependentUpon>moviedetailTemp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="homepage\Movie.cs" />
-    <Compile Include="homepage\MovieControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="homepage\MovieControl.Designer.cs">
-      <DependentUpon>MovieControl.cs</DependentUpon>
+    <Compile Include="Forms\Movie_Detail.Designer.cs">
+      <DependentUpon>Movie_Detail.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Booking_Ticket.resx">
+      <DependentUpon>Booking_Ticket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Movie_Detail.resx">
+      <DependentUpon>Movie_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Movie_Schedule.resx">
+      <DependentUpon>Movie_Schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="bin\Debug\Cinema.exe.config" />
+    <None Include="packages.config" />
+    <None Include="packages\Guna.UI2.WinForms.2.0.4.7\.signature.p7s" />
+    <None Include="packages\Guna.UI2.WinForms.2.0.4.7\Guna.UI2.WinForms.2.0.4.7.nupkg" />
+    <None Include="packages\Guna.UI2.WinForms.2.0.4.7\README.md" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -215,25 +177,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\icon\686458.png" />
-    <Content Include="assets\icon\cin.jpg" />
-    <Content Include="assets\icon\cinema.png" />
-    <Content Include="assets\icon\free-movie-icon-850-thumb.png" />
-    <Content Include="assets\icon\images.png" />
-    <Content Include="assets\icon\log.png" />
-    <Content Include="assets\icon\logo.png" />
-    <Content Include="assets\icon\mem.png" />
-    <Content Include="assets\icon\movie-theater.svg" />
-    <Content Include="assets\icon\movie.png" />
-    <Content Include="assets\icon\movies.png" />
-    <Content Include="assets\icon\png-clipart-users-group-computer-icons-membership-miscellaneous-user-interface-design-thumbnail.png" />
-    <Content Include="assets\icon\Screenshot 2025-03-10 164134.png" />
-    <Content Include="assets\icon\sta.jpg" />
-    <Content Include="assets\icon\sta.png" />
-    <Content Include="assets\icon\stas.png" />
-    <Content Include="assets\icon\thea.png" />
-    <Content Include="assets\icon\tải xuống.png" />
-    <Content Include="assets\icon\user_icon_007.jpg" />
+    <Content Include="assets\icon\screen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\poster\28_YEARS_LATER.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -291,11 +237,46 @@
     <Content Include="assets\poster\THE_SUBSTANCE_%28RERUN%29.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="bin\Debug\assets\icon\screen.png" />
+    <Content Include="bin\Debug\assets\poster\28_YEARS_LATER.jpg" />
+    <Content Include="bin\Debug\assets\poster\ANH_TRAI_SAY_HI_VILLAINS_MADE_THE_HERO.jpg" />
+    <Content Include="bin\Debug\assets\poster\ATTACK_ON_TITAN_THE_LAST_ATTACK.jpg" />
+    <Content Include="bin\Debug\assets\poster\CAPTAIN_AMERICA_BRAVE_NEW_WORLD.jpg" />
+    <Content Include="bin\Debug\assets\poster\DARK_NUNS.jpg" />
+    <Content Include="bin\Debug\assets\poster\FLIGHT_RISK.jpg" />
+    <Content Include="bin\Debug\assets\poster\FLOW.jpg" />
+    <Content Include="bin\Debug\assets\poster\INTERSTELLAR_%28RERUN%29.jpg" />
+    <Content Include="bin\Debug\assets\poster\JURASSIC_WORLD_REBIRTH.jpg" />
+    <Content Include="bin\Debug\assets\poster\M3GAN_2.0.jpg" />
+    <Content Include="bin\Debug\assets\poster\MOBILE_SUIT_GUNDAM_GQUUUUUUX_BEGINNING.jpg" />
+    <Content Include="bin\Debug\assets\poster\NHA_GIA_TIEN.jpg" />
+    <Content Include="bin\Debug\assets\poster\NOSFERATU.jpg" />
+    <Content Include="bin\Debug\assets\poster\PADDINGTON_IN_PERU.jpg" />
+    <Content Include="bin\Debug\assets\poster\PANOR.jpg" />
+    <Content Include="bin\Debug\assets\poster\SUPERMAN.jpg" />
+    <Content Include="bin\Debug\assets\poster\THE_BAD_GUYS_2.png" />
+    <Content Include="bin\Debug\assets\poster\THE_SMURFS_MOVIE.jpg" />
+    <Content Include="bin\Debug\assets\poster\THE_SUBSTANCE_%28RERUN%29.jpg" />
     <Content Include="bin\Debug\Cinema.exe" />
     <Content Include="bin\Debug\Cinema.pdb" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\icon.png" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net40\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net45\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net461\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net48\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net6.0-windows7.0\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net7.0-windows7.0\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\netcoreapp3.1\Guna.UI2.dll" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="assets\poster\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
