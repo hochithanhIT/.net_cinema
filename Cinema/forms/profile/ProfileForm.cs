@@ -71,8 +71,7 @@ namespace Cinema
             private void btnTransactionHistory_Click(object sender, EventArgs e)
             {
             // Load UCTicketHistory
-            this.AddUserControl(new UCTicketHistory(this, Email, Phone));
-
+            this.AddUserControl(new UCTicketHistory(this, FullName, Email, Phone, DoB, Spending, RankName, Discount));
         }
 
         private void Logout()

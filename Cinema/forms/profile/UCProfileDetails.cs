@@ -80,11 +80,11 @@ namespace Cinema.Forms.profile
                 {
                     // Update the database
                     string query = @"
-            UPDATE THEATER_MEM 
-            SET FULL_NAME = @fullName, 
-                PHONE = @phone, 
-                BIRTHDATE = @dob 
-            WHERE EMAIL = @originalEmail";
+                    UPDATE THEATER_MEM 
+                    SET FULL_NAME = @fullName, 
+                        PHONE = @phone, 
+                        BIRTHDATE = @dob 
+                    WHERE EMAIL = @originalEmail";
 
                     using (SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon))
                     {

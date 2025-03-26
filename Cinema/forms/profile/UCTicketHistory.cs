@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using Cinema.homepage;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cinema.Forms.profile
 {
@@ -12,17 +13,26 @@ namespace Cinema.Forms.profile
     {
         private ProfileForm ProfileForm;
         private DataAccess dataAccess = new DataAccess();
-        private string userEmail;
-        private string userPhone;
+        private string email;
+        private string phone;
+        private string FullName;
+        private DateTime DoB;
+        private string Spending;
+        private string RankName;
+        private int Discount;
         private Panel mainPanel;
+        private decimal discount;
 
-        public UCTicketHistory(ProfileForm ProfileForm, string email, string phone)
+        public UCTicketHistory(ProfileForm profileForm, string fullName, string email, string phone, DateTime doB, string spending, string rankName, decimal discount)
         {
-            InitializeComponent();
-            this.ProfileForm = ProfileForm;
-            this.userEmail = email;
-            this.userPhone = phone;
-
+            ProfileForm = profileForm;
+            FullName = fullName;
+            this.email = email;
+            this.phone = phone;
+            DoB = doB;
+            Spending = spending;
+            RankName = rankName;
+            this.discount = discount;
             // Main panel with scroll
             mainPanel = new Panel
             {
@@ -77,8 +87,8 @@ namespace Cinema.Forms.profile
                 // Get user ID based on email or phone
                 string userIdQuery = "SELECT ID FROM THEATER_MEM WHERE EMAIL = @email OR PHONE = @phone";
                 SqlCommand userIdCmd = new SqlCommand(userIdQuery, dataAccess.Sqlcon);
-                userIdCmd.Parameters.AddWithValue("@email", userEmail);
-                userIdCmd.Parameters.AddWithValue("@phone", userPhone);
+                userIdCmd.Parameters.AddWithValue("@email", email);
+                userIdCmd.Parameters.AddWithValue("@phone", phone);
 
                 object userIdResult = userIdCmd.ExecuteScalar();
                 if (userIdResult == null)
@@ -359,8 +369,8 @@ namespace Cinema.Forms.profile
             btnBookNow.FlatAppearance.BorderSize = 0;
             btnBookNow.Click += (s, e) =>
             {
-                HomepageForm homepageForm = new HomepageForm(userEmail, userEmail, userPhone, DateTime.Now, "0", "N/A", 0);
-                homepageForm.Show();
+                HomepageForm homepage = new HomepageForm(FullName, email, phone, DoB, Spending, RankName, Discount);
+                homepage.Show();
                 this.ProfileForm.Close();
             };
 
