@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cinema.forms.SignUp_SignIn
+namespace Cinema.Forms.SignUp_SignIn
 {
     public partial class FormRegistration : Form
     {

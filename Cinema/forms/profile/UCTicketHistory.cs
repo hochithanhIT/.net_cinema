@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
 
-namespace Cinema.forms.profile
+namespace Cinema.Forms.profile
 {
     public partial class UCTicketHistory : UserControl
     {

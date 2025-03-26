@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cinema.forms.profile;
-using Cinema.forms.SignUp_SignIn;
+using Cinema.Forms.profile;
+using Cinema.Forms.SignUp_SignIn;
 using Cinema.homepage;
 
 namespace Cinema

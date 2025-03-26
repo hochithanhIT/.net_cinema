@@ -1,4 +1,4 @@
-﻿namespace Cinema.forms.Customer
+﻿namespace Cinema.Forms.Customer
 {
     partial class CustomerForm
     {

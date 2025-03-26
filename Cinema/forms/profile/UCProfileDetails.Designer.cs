@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Cinema.forms.profile
+namespace Cinema.Forms.profile
 {
     partial class UCProfileDetails
     {

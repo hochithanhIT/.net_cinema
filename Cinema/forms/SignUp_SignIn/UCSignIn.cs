@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-using Cinema.forms.Admin;
+using Cinema.Forms.Admin;
 using Cinema.homepage;
 
-namespace Cinema.forms.SignUp_SignIn
+namespace Cinema.Forms.SignUp_SignIn
 {
     public partial class UCSignIn : UserControl
     {

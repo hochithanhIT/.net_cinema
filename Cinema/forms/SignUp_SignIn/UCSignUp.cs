@@ -11,7 +11,7 @@ using BCrypt.Net;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
 
-namespace Cinema.forms.SignUp_SignIn
+namespace Cinema.Forms.SignUp_SignIn
 {
     public partial class UCSignUp : UserControl
     {

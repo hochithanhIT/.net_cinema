@@ -1,4 +1,4 @@
-﻿namespace Cinema.forms.Admin
+﻿namespace Cinema.Forms.Admin
 {
     partial class AdminForm
     {

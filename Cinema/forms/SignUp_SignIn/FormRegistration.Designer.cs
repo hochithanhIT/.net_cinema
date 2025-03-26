@@ -1,4 +1,4 @@
-﻿namespace Cinema.forms.SignUp_SignIn
+﻿namespace Cinema.Forms.SignUp_SignIn
 {
     partial class FormRegistration
     {

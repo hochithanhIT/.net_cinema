@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cinema.forms.Admin
+namespace Cinema.Forms.Admin
 {
     public partial class AdminForm: Form
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Cinema.forms.SignUp_SignIn;
+using Cinema.Forms.SignUp_SignIn;
 using Cinema.homepage;
 
 namespace Cinema

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cinema.forms.Customer
+namespace Cinema.Forms.Customer
 {
     public partial class CustomerForm: Form
     {

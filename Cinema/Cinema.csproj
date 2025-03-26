@@ -141,12 +141,6 @@
     <Compile Include="header_bar.Designer.cs">
       <DependentUpon>header_bar.cs</DependentUpon>
     </Compile>
-    <Compile Include="homepage\FormRegistration.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="homepage\FormRegistration.Designer.cs">
-      <DependentUpon>FormRegistration.cs</DependentUpon>
-    </Compile>
     <Compile Include="homepage\HomepageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,18 +160,7 @@
     <Compile Include="homepage\moviedetailTemp.Designer.cs">
       <DependentUpon>moviedetailTemp.cs</DependentUpon>
     </Compile>
-    <Compile Include="homepage\UCSignIn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="homepage\UCSignIn.Designer.cs">
-      <DependentUpon>UCSignIn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="homepage\UCSignUp.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="homepage\UCSignUp.Designer.cs">
-      <DependentUpon>UCSignUp.cs</DependentUpon>
-    </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Booking_Ticket.resx">
@@ -189,6 +172,26 @@
     <EmbeddedResource Include="Forms\Movie_Schedule.resx">
       <DependentUpon>Movie_Schedule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SignUp_SignIn\UCSignIn.resx">
+      <DependentUpon>UCSignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\Cinema.Forms.Admin.AdminForm.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.Forms.Booking_Ticket.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.Forms.Customer.CustomerForm.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.Forms.Movie_Detail.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.Forms.Movie_Schedule.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.Forms.profile.UCChangePass.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.Forms.profile.UCProfileDetails.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.Forms.profile.UCTicketHistory.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.Forms.SignUp_SignIn.FormRegistration.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.forms.SignUp_SignIn.UCSignIn.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.Forms.SignUp_SignIn.UCSignUp.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.header_bar.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.homepage.HomepageForm.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.homepage.moviedetailTemp.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.MovieControl.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.ProfileForm.resources" />
+    <EmbeddedResource Include="obj\Debug\Cinema.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -200,6 +203,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="bin\Debug\Cinema.exe.config" />
+    <None Include="obj\Debug\build.force" />
+    <None Include="obj\Debug\Cinema.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\Cinema.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\Cinema.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="packages.config" />
     <None Include="packages\Guna.UI2.WinForms.2.0.4.7\.signature.p7s" />
     <None Include="packages\Guna.UI2.WinForms.2.0.4.7\Guna.UI2.WinForms.2.0.4.7.nupkg" />
@@ -236,9 +245,6 @@
     <EmbeddedResource Include="forms\SignUp_SignIn\FormRegistration.resx">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\SignUp_SignIn\UCSignIn.resx">
-      <DependentUpon>UCSignIn.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="forms\SignUp_SignIn\UCSignUp.resx">
       <DependentUpon>UCSignUp.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,21 +260,12 @@
     <EmbeddedResource Include="homepage\MovieControl.resx">
       <DependentUpon>MovieControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="assets\icon\log.opng" />
     <None Include="assets\icon\retro-cinema-background_52683-1701.avif" />
     <None Include="bin\Debug\Cinema.exe.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -375,6 +372,8 @@
     <Content Include="bin\Debug\assets\poster\THE_SUBSTANCE_%28RERUN%29.jpg" />
     <Content Include="bin\Debug\Cinema.exe" />
     <Content Include="bin\Debug\Cinema.pdb" />
+    <Content Include="obj\Debug\Cinema.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
     <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\icon.png" />
     <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net40\Guna.UI2.dll" />
     <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\lib\net45\Guna.UI2.dll" />

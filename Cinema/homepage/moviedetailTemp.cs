@@ -101,14 +101,6 @@ namespace Cinema.homepage
         //    this.Close();
         //}
 
-        private void btnBack_Click_1(object sender, EventArgs e)
-        {
-            // Quay lại HomepageForm
-            HomepageForm homepageForm = new HomepageForm(userFullName, userEmail, userPhone, userDoB, userSpending, userRankName, userDiscount);
-            homepageForm.Show();
-            this.Close();
-        }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             // Quay lại HomepageForm

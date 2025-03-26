@@ -46,7 +46,7 @@ namespace Cinema
           //TamNgo
             // this.Sqlcon = new SqlConnection(@"Data Source=DESKTOP-3JFU13I;Initial Catalog=Cinema;User ID=sa;Password=root;Encrypt=False;TrustServerCertificate=True");
           //LinhDao
-            this.Sqlcon = new SqlConnection(@"Data Source=NEKO;Initial Catalog=Cinema;User ID=sa;Password=root;TrustServerCertificate=True");
+            this.Sqlcon = new SqlConnection(@"Data Source=MSI;Initial Catalog=Cinema;User ID=sa;Password=hv3!Epad;TrustServerCertificate=True");
 
             // Mở kết nối đến database
             Sqlcon.Open();

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Cinema.forms.SignUp_SignIn;
+using Cinema.Forms.SignUp_SignIn;
 
 namespace Cinema
 {

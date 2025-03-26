@@ -50,13 +50,16 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cinema.Forms;
 using Cinema.homepage;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cinema
 {
@@ -71,6 +74,7 @@ namespace Cinema
         private string _spending;
         private string _rankName;
         private decimal _discount;
+        private DataAccess dataAccess = new DataAccess();
 
         public MovieControl(Movie movie, string fullName = null, string email = null, string phone = null, DateTime? dob = null, string spending = null, string rankName = null, decimal discount = 0)
         {
@@ -120,17 +124,17 @@ namespace Cinema
 
         private void MovieControl_Click(object sender, EventArgs e)
         {
+            // Get user ID based on email or phone
+            string userIdQuery = "SELECT ID FROM THEATER_MEM WHERE EMAIL = @email OR PHONE = @phone";
+            SqlCommand userIdCmd = new SqlCommand(userIdQuery, dataAccess.Sqlcon);
+            userIdCmd.Parameters.AddWithValue("@email", _email);
+            userIdCmd.Parameters.AddWithValue("@phone", _phone);
+
+            object userIdResult = userIdCmd.ExecuteScalar();
+            int userId = Convert.ToInt32(userIdResult);
+
             // Mở form moviedetailTemp và truyền thông tin phim cùng thông tin người dùng
-            var movieDetailForm = new moviedetailTemp(
-                _movie.id,
-                _fullName,
-                _email,
-                _phone,
-                _dob,
-                _spending,
-                _rankName,
-                _discount
-            );
+            var movieDetailForm = new Movie_Detail(_movie.id, userId);
             movieDetailForm.Show();
 
             // Đóng HomepageForm (nếu cần)
