@@ -135,6 +135,7 @@
     <Compile Include="Forms\SignUp_SignIn\UCSignUp.Designer.cs">
       <DependentUpon>UCSignUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SignUp_SignIn\UserSession.cs" />
     <Compile Include="header_bar.cs">
       <SubType>UserControl</SubType>
     </Compile>

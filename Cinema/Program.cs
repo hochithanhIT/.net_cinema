@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Cinema.Forms.SignUp_SignIn;
+using Cinema.homepage;
 
 namespace Cinema
 {
@@ -24,7 +25,6 @@ namespace Cinema
             Application.SetCompatibleTextRenderingDefault(false);
             //TamNgo
             Application.Run(new FormRegistration());
-            //Application.Run(new TicketHistoryForm());
         }
     }
 }

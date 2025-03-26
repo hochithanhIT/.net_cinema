@@ -24,7 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Movie_Detail));
-            this.panel_Top = new System.Windows.Forms.Panel();
             this.panel_Body = new System.Windows.Forms.Panel();
             this.Duration_Content = new System.Windows.Forms.Label();
             this.Duration_Label = new System.Windows.Forms.Label();
@@ -45,15 +44,6 @@
             this.panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Poster)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel_Top
-            // 
-            this.panel_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(173)))), ((int)(((byte)(120)))));
-            this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Top.Location = new System.Drawing.Point(0, 0);
-            this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(1200, 55);
-            this.panel_Top.TabIndex = 0;
             // 
             // panel_Body
             // 
@@ -76,17 +66,17 @@
             this.panel_Body.Controls.Add(this.Booking_Button);
             this.panel_Body.Controls.Add(this.Poster);
             this.panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Body.Location = new System.Drawing.Point(0, 55);
+            this.panel_Body.Location = new System.Drawing.Point(0, 0);
             this.panel_Body.Name = "panel_Body";
-            this.panel_Body.Size = new System.Drawing.Size(1200, 645);
+            this.panel_Body.Size = new System.Drawing.Size(1924, 1055);
             this.panel_Body.TabIndex = 1;
             // 
             // Duration_Content
             // 
             this.Duration_Content.AutoSize = true;
-            this.Duration_Content.Location = new System.Drawing.Point(700, 245);
+            this.Duration_Content.Location = new System.Drawing.Point(733, 245);
             this.Duration_Content.Name = "Duration_Content";
-            this.Duration_Content.Size = new System.Drawing.Size(111, 24);
+            this.Duration_Content.Size = new System.Drawing.Size(142, 29);
             this.Duration_Content.TabIndex = 16;
             this.Duration_Content.Text = "117 minutes";
             // 
@@ -96,16 +86,16 @@
             this.Duration_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Duration_Label.Location = new System.Drawing.Point(609, 245);
             this.Duration_Label.Name = "Duration_Label";
-            this.Duration_Label.Size = new System.Drawing.Size(94, 24);
+            this.Duration_Label.Size = new System.Drawing.Size(118, 29);
             this.Duration_Label.TabIndex = 15;
             this.Duration_Label.Text = "Duration:";
             // 
             // Screening_Content
             // 
             this.Screening_Content.AutoSize = true;
-            this.Screening_Content.Location = new System.Drawing.Point(717, 209);
+            this.Screening_Content.Location = new System.Drawing.Point(754, 209);
             this.Screening_Content.Name = "Screening_Content";
-            this.Screening_Content.Size = new System.Drawing.Size(100, 24);
+            this.Screening_Content.Size = new System.Drawing.Size(131, 29);
             this.Screening_Content.TabIndex = 14;
             this.Screening_Content.Text = "21/02/2025";
             // 
@@ -115,16 +105,16 @@
             this.Screening_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Screening_Label.Location = new System.Drawing.Point(609, 209);
             this.Screening_Label.Name = "Screening_Label";
-            this.Screening_Label.Size = new System.Drawing.Size(112, 24);
+            this.Screening_Label.Size = new System.Drawing.Size(139, 29);
             this.Screening_Label.TabIndex = 13;
             this.Screening_Label.Text = "Screening:";
             // 
             // Genre_Content
             // 
             this.Genre_Content.AutoSize = true;
-            this.Genre_Content.Location = new System.Drawing.Point(681, 170);
+            this.Genre_Content.Location = new System.Drawing.Point(705, 170);
             this.Genre_Content.Name = "Genre_Content";
-            this.Genre_Content.Size = new System.Drawing.Size(146, 24);
+            this.Genre_Content.Size = new System.Drawing.Size(186, 29);
             this.Genre_Content.TabIndex = 12;
             this.Genre_Content.Text = "Family, Comedy";
             // 
@@ -134,7 +124,7 @@
             this.Genre_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Genre_Label.Location = new System.Drawing.Point(607, 170);
             this.Genre_Label.Name = "Genre_Label";
-            this.Genre_Label.Size = new System.Drawing.Size(74, 24);
+            this.Genre_Label.Size = new System.Drawing.Size(92, 29);
             this.Genre_Label.TabIndex = 11;
             this.Genre_Label.Text = "Genre:";
             // 
@@ -142,7 +132,7 @@
             // 
             this.Actor_Content.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Actor_Content.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Actor_Content.Location = new System.Drawing.Point(674, 111);
+            this.Actor_Content.Location = new System.Drawing.Point(695, 111);
             this.Actor_Content.Multiline = true;
             this.Actor_Content.Name = "Actor_Content";
             this.Actor_Content.ReadOnly = true;
@@ -157,16 +147,16 @@
             this.Actor_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Actor_Label.Location = new System.Drawing.Point(609, 111);
             this.Actor_Label.Name = "Actor_Label";
-            this.Actor_Label.Size = new System.Drawing.Size(65, 24);
+            this.Actor_Label.Size = new System.Drawing.Size(80, 29);
             this.Actor_Label.TabIndex = 8;
             this.Actor_Label.Text = "Actor:";
             // 
             // Director_Content
             // 
             this.Director_Content.AutoSize = true;
-            this.Director_Content.Location = new System.Drawing.Point(693, 68);
+            this.Director_Content.Location = new System.Drawing.Point(726, 68);
             this.Director_Content.Name = "Director_Content";
-            this.Director_Content.Size = new System.Drawing.Size(102, 24);
+            this.Director_Content.Size = new System.Drawing.Size(126, 29);
             this.Director_Content.TabIndex = 7;
             this.Director_Content.Text = "Huynh Lap";
             // 
@@ -176,7 +166,7 @@
             this.Director_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Director_Label.Location = new System.Drawing.Point(607, 68);
             this.Director_Label.Name = "Director_Label";
-            this.Director_Label.Size = new System.Drawing.Size(89, 24);
+            this.Director_Label.Size = new System.Drawing.Size(113, 29);
             this.Director_Label.TabIndex = 6;
             this.Director_Label.Text = "Director:";
             // 
@@ -184,9 +174,9 @@
             // 
             this.Rated_Content.AutoSize = true;
             this.Rated_Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rated_Content.Location = new System.Drawing.Point(681, 286);
+            this.Rated_Content.Location = new System.Drawing.Point(705, 286);
             this.Rated_Content.Name = "Rated_Content";
-            this.Rated_Content.Size = new System.Drawing.Size(418, 20);
+            this.Rated_Content.Size = new System.Drawing.Size(510, 25);
             this.Rated_Content.TabIndex = 5;
             this.Rated_Content.Text = "The movie is popular with viewers aged 18 and over";
             // 
@@ -196,7 +186,7 @@
             this.Rated_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rated_Label.Location = new System.Drawing.Point(611, 283);
             this.Rated_Label.Name = "Rated_Label";
-            this.Rated_Label.Size = new System.Drawing.Size(70, 24);
+            this.Rated_Label.Size = new System.Drawing.Size(89, 29);
             this.Rated_Label.TabIndex = 4;
             this.Rated_Label.Text = "Rated:";
             // 
@@ -209,7 +199,7 @@
             this.Movie_Content.Multiline = true;
             this.Movie_Content.Name = "Movie_Content";
             this.Movie_Content.ReadOnly = true;
-            this.Movie_Content.Size = new System.Drawing.Size(524, 139);
+            this.Movie_Content.Size = new System.Drawing.Size(1069, 300);
             this.Movie_Content.TabIndex = 3;
             this.Movie_Content.Text = resources.GetString("Movie_Content.Text");
             // 
@@ -221,7 +211,7 @@
             this.Movie_Name.ForeColor = System.Drawing.Color.SeaGreen;
             this.Movie_Name.Location = new System.Drawing.Point(603, 26);
             this.Movie_Name.Name = "Movie_Name";
-            this.Movie_Name.Size = new System.Drawing.Size(208, 31);
+            this.Movie_Name.Size = new System.Drawing.Size(258, 39);
             this.Movie_Name.TabIndex = 2;
             this.Movie_Name.Text = "NHÀ GIA TIÊN";
             // 
@@ -254,12 +244,11 @@
             // 
             // Movie_Detail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.panel_Body);
-            this.Controls.Add(this.panel_Top);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Movie_Detail";
             this.Text = "MovieDetail";
@@ -273,8 +262,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel_Top;
         private System.Windows.Forms.Panel panel_Body;
         private System.Windows.Forms.PictureBox Poster;
         private System.Windows.Forms.Button Booking_Button;
