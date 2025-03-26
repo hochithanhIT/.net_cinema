@@ -240,6 +240,7 @@
             this.Booking_Button.UseVisualStyleBackColor = false;
             this.Booking_Button.MouseEnter += new System.EventHandler(this.Booking_Button_MouseEnter);
             this.Booking_Button.MouseLeave += new System.EventHandler(this.Booking_Button_MouseLeave);
+            this.Booking_Button.Click += new System.EventHandler(this.Booking_Button_Click);
             // 
             // Poster
             // 

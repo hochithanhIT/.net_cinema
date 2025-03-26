@@ -10,12 +10,13 @@ using System.Windows.Forms;
 
 namespace Cinema.Forms {
     public partial class Movie_Detail : Form {
-
         private int movieId;
+        private int memberId; // Thêm memberId
 
-        public Movie_Detail(int movieId = 1) {
+        public Movie_Detail(int movieId = 2, int memberId = 1) { // Thêm tham số memberId
             InitializeComponent();
             this.movieId = movieId;
+            this.memberId = memberId;
         }
 
         private void Movie_Detail_Load(object sender, EventArgs e) {
@@ -122,5 +123,10 @@ namespace Cinema.Forms {
             Booking_Button.ForeColor = Color.SeaGreen;
         }
 
+        private void Booking_Button_Click(object sender, EventArgs e) {
+            // Mở form Movie_Schedule và truyền movieId, memberId
+            Movie_Schedule scheduleForm = new Movie_Schedule(memberId, movieId);
+            scheduleForm.ShowDialog();
+        }
     }
 }
