@@ -63,11 +63,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connect_db\DataAccess.cs" />
+    <Compile Include="Forms\Admin\AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Booking_Ticket.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Booking_Ticket.Designer.cs">
       <DependentUpon>Booking_Ticket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Customer\CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer\CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Movie_Schedule.cs">
       <SubType>Form</SubType>
@@ -80,6 +92,91 @@
     </Compile>
     <Compile Include="Forms\Movie_Detail.Designer.cs">
       <DependentUpon>Movie_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\profile\ProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\profile\ProfileForm.Designer.cs">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\profile\UCChangePass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\profile\UCChangePass.Designer.cs">
+      <DependentUpon>UCChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\profile\UCProfileDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\profile\UCProfileDetails.Designer.cs">
+      <DependentUpon>UCProfileDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\profile\UCTicketHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\profile\UCTicketHistory.Designer.cs">
+      <DependentUpon>UCTicketHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SignUp_SignIn\FormRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SignUp_SignIn\FormRegistration.Designer.cs">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SignUp_SignIn\UCSignIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SignUp_SignIn\UCSignIn.Designer.cs">
+      <DependentUpon>UCSignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SignUp_SignIn\UCSignUp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SignUp_SignIn\UCSignUp.Designer.cs">
+      <DependentUpon>UCSignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="header_bar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="header_bar.Designer.cs">
+      <DependentUpon>header_bar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="homepage\FormRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="homepage\FormRegistration.Designer.cs">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="homepage\HomepageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="homepage\HomePageForm.Designer.cs">
+      <DependentUpon>HomepageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="homepage\Movie.cs" />
+    <Compile Include="homepage\MovieControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="homepage\MovieControl.Designer.cs">
+      <DependentUpon>MovieControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="homepage\moviedetailTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="homepage\moviedetailTemp.Designer.cs">
+      <DependentUpon>moviedetailTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="homepage\UCSignIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="homepage\UCSignIn.Designer.cs">
+      <DependentUpon>UCSignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="homepage\UCSignUp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="homepage\UCSignUp.Designer.cs">
+      <DependentUpon>UCSignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,9 +274,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\icon\686458.png" />
+    <Content Include="assets\icon\cin.jpg" />
+    <Content Include="assets\icon\cinema.png" />
+    <Content Include="assets\icon\free-movie-icon-850-thumb.png" />
+    <Content Include="assets\icon\images.png" />
+    <Content Include="assets\icon\log.png" />
+    <Content Include="assets\icon\logo.png" />
+    <Content Include="assets\icon\mem.png" />
+    <Content Include="assets\icon\movie-theater.svg" />
+    <Content Include="assets\icon\movie.png" />
+    <Content Include="assets\icon\movies.png" />
+    <Content Include="assets\icon\png-clipart-users-group-computer-icons-membership-miscellaneous-user-interface-design-thumbnail.png" />
     <Content Include="assets\icon\screen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="assets\icon\Screenshot 2025-03-10 164134.png" />
+    <Content Include="assets\icon\sta.jpg" />
+    <Content Include="assets\icon\sta.png" />
+    <Content Include="assets\icon\stas.png" />
+    <Content Include="assets\icon\thea.png" />
+    <Content Include="assets\icon\tải xuống.png" />
+    <Content Include="assets\icon\user_icon_007.jpg" />
     <Content Include="assets\poster\28_YEARS_LATER.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
