@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BCrypt.Net;
 using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 
 namespace Cinema.forms.SignUp_SignIn
 {
@@ -47,6 +48,26 @@ namespace Cinema.forms.SignUp_SignIn
             this.checkboxShowPassword.Checked = false;
         }
 
+        private bool CheckDuplicateEmailOrPhone(string email, string phone)
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM THEATER_MEM WHERE EMAIL = @email OR PHONE = @phone";
+                using (SqlCommand cmd = new SqlCommand(query, dataAccess.Sqlcon))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0; // return true if email or phone number are exist
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking duplicate email/phone: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true; // If there is an error, not let user register
+            }
+        }
         private void SignUp(string fullName, string phone, string email, DateTime birthDate, string password)
         {
             if (string.IsNullOrWhiteSpace(fullName) ||
@@ -82,11 +103,17 @@ namespace Cinema.forms.SignUp_SignIn
                 return;
             }
 
+            if (CheckDuplicateEmailOrPhone(email, phone))
+            {
+                MessageBox.Show("Email or phone number already exists. Please use a different email or phone number.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
                 // Hash password with BCrypt
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-
+                
                 string sql = $@"INSERT INTO THEATER_MEM (FULL_NAME, PHONE, EMAIL, BIRTHDATE, PASS, SPENDING) VALUES (N'{fullName}', '{phone}', '{email}', '{birthDate:yyyy-MM-dd}', '{hashedPassword}', '0')";
 
                 // Execute query

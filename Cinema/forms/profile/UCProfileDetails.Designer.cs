@@ -150,7 +150,7 @@ namespace Cinema.forms.profile
             this.lblMemRank.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblMemRank.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMemRank.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblMemRank.Location = new System.Drawing.Point(39, 569);
+            this.lblMemRank.Location = new System.Drawing.Point(39, 551);
             this.lblMemRank.Name = "lblMemRank";
             this.lblMemRank.Size = new System.Drawing.Size(126, 25);
             this.lblMemRank.TabIndex = 26;

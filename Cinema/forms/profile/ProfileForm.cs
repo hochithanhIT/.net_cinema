@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cinema.forms.profile;
 using Cinema.forms.SignUp_SignIn;
+using Cinema.homepage;
 
 namespace Cinema
     {
@@ -97,5 +98,16 @@ namespace Cinema
             {
                 Logout();
             }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        { 
+            this.Hide();
+
+            HomepageForm homepage = new HomepageForm(FullName, Email, Phone, DoB, Spending, RankName, Discount);
+            homepage.Show();
+
+            this.Close();
+            
         }
+    }
     }

@@ -32,10 +32,8 @@ namespace Cinema
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
           //TamNgo
-            //Application.Run(new FormRegistration());
-            //Application.Run(new TicketHistoryForm()); 
-          //LinhDao
-            Application.Run(new HomepageForm());
+            Application.Run(new FormRegistration());
+            //Application.Run(new TicketHistoryForm());
         }
     }
 }

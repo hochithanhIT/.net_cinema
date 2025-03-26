@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connect_db\DataAccess.cs" />
-<!-- TamNgo -->
     <Compile Include="forms\Admin\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,8 +117,45 @@
     <Compile Include="forms\SignUp_SignIn\UCSignUp.Designer.cs">
       <DependentUpon>UCSignUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="homepage\HomepageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="homepage\HomepageForm.Designer.cs">
+      <DependentUpon>HomepageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="header_bar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="header_bar.Designer.cs">
+      <DependentUpon>header_bar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="homepage\moviedetailTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="homepage\moviedetailTemp.Designer.cs">
+      <DependentUpon>moviedetailTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="homepage\Movie.cs" />
+    <Compile Include="homepage\MovieControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="homepage\MovieControl.Designer.cs">
+      <DependentUpon>MovieControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="forms\Admin\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,98 +182,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\SignUp_SignIn\UCSignUp.resx">
       <DependentUpon>UCSignUp.cs</DependentUpon>
-    <!-- ========== -->
-      <!-- LinhDao -->
-    <Compile Include="homepage\HomepageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="homepage\HomepageForm.Designer.cs">
-      <DependentUpon>HomepageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="header_bar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="header_bar.Designer.cs">
-      <DependentUpon>header_bar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movie.cs" />
-    <Compile Include="MovieControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MovieControl.Designer.cs">
-      <DependentUpon>MovieControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserSession.cs" />
+    </EmbeddedResource>
     <EmbeddedResource Include="homepage\HomepageForm.resx">
       <DependentUpon>HomepageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="header_bar.resx">
       <DependentUpon>header_bar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MovieControl.resx">
+    <EmbeddedResource Include="homepage\moviedetailTemp.resx">
+      <DependentUpon>moviedetailTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="homepage\MovieControl.resx">
       <DependentUpon>MovieControl.cs</DependentUpon>
-    <!-- ========= -->
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  <!-- TamNgo -->
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
-   <!-- ======= -->
-   <!-- LinhDao -->
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <None Include="assets\icon\log.opng" />
     <None Include="assets\icon\retro-cinema-background_52683-1701.avif" />
     <None Include="bin\Debug\Cinema.exe.config" />
-<!-- ======== -->
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-   <!-- TamNgo -->
-    <Folder Include="assets\" />
-  <!-- ======= -->
-  <!-- LinhDao -->
     <Content Include="assets\icon\686458.png" />
     <Content Include="assets\icon\cin.jpg" />
     <Content Include="assets\icon\cinema.png" />
@@ -319,7 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
-   <!-- ========= -->
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

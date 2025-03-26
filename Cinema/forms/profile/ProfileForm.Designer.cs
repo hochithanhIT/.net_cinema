@@ -37,7 +37,7 @@
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(5);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(385, 1175);
+            this.panelMenu.Size = new System.Drawing.Size(385, 1055);
             this.panelMenu.TabIndex = 0;
             // 
             // btnLogOut
@@ -112,6 +112,7 @@
             this.btnHome.Text = "Home";
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // panelUC
             // 
@@ -119,7 +120,7 @@
             this.panelUC.Location = new System.Drawing.Point(209, 0);
             this.panelUC.Margin = new System.Windows.Forms.Padding(5);
             this.panelUC.Name = "panelUC";
-            this.panelUC.Size = new System.Drawing.Size(1715, 1175);
+            this.panelUC.Size = new System.Drawing.Size(1715, 1055);
             this.panelUC.TabIndex = 1;
             // 
             // ProfileForm
@@ -127,7 +128,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1924, 1175);
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.panelUC);
             this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
