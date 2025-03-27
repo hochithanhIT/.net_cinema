@@ -67,7 +67,7 @@
             this.panelContainer.Location = new System.Drawing.Point(249, 2);
             this.panelContainer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1209, 819);
+            this.panelContainer.Size = new System.Drawing.Size(1300, 1024);
             this.panelContainer.TabIndex = 4;
             // 
             // guna2Panel1
@@ -246,7 +246,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1492, 774);
+            this.ClientSize = new System.Drawing.Size(1682, 977);
             this.Controls.Add(this.guna2Button4);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2Panel2);

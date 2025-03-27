@@ -82,5 +82,34 @@ namespace Cinema
             int u = this.Sqlcom.ExecuteNonQuery(); // Thực thi lệnh DML và trả về số dòng bị ảnh hưởng
             return u;
         }
+
+        // Phương thức thực thi truy vấn với tham số
+        public DataTable ExecuteQueryWithParams(string sql, SqlParameter[] parameters)
+        {
+            using (SqlCommand cmd = new SqlCommand(sql, this.Sqlcon))
+            {
+                if (parameters != null)
+                    cmd.Parameters.AddRange(parameters); // Thêm các tham số vào truy vấn
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+        public int ExecuteDMLQueryWithParams(string sql, SqlParameter[] parameters)
+        {
+            using (SqlCommand cmd = new SqlCommand(sql, this.Sqlcon))
+            {
+                if (parameters != null)
+                    cmd.Parameters.AddRange(parameters); // Thêm các tham số vào truy vấn
+
+                int rowsAffected = cmd.ExecuteNonQuery(); // Thực thi lệnh DML và trả về số dòng bị ảnh hưởng
+                return rowsAffected;
+            }
+        }
+
     }
 }

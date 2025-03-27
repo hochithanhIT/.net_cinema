@@ -70,6 +70,12 @@
     <Compile Include="Admin\MvComponents\Movies_Edit.Designer.cs">
       <DependentUpon>Movies_Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\SchedulesComponents\Schedule_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\SchedulesComponents\Schedule_Add.Designer.cs">
+      <DependentUpon>Schedule_Add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\TheaterComponents\ManageTheaters.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\MvComponents\Movies_Edit.resx">
       <DependentUpon>Movies_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\SchedulesComponents\Schedule_Add.resx">
+      <DependentUpon>Schedule_Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\TheaterComponents\ManageTheaters.resx">
       <DependentUpon>ManageTheaters.cs</DependentUpon>
