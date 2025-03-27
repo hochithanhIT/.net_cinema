@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cinema.Forms.profile;
 
@@ -34,24 +28,28 @@ namespace Cinema.homepage
             {
                 Text = "OUR POLICIES",
                 Font = new Font("Segoe UI", 24, FontStyle.Bold),
-                ForeColor = Color.FromArgb(0, 120, 215),
-                AutoSize = true,
-                Anchor = AnchorStyles.None
+                ForeColor = Color.FromArgb(0, 120, 215), // Màu xanh dương giống giao diện
+                AutoSize = true
             };
+            // Căn giữa tiêu đề chính
             lblMainTitle.Location = new Point(
-                (this.Width - lblMainTitle.Width) / 2,
-                20
+                (this.ClientSize.Width - lblMainTitle.Width) / 2,
+                60
             );
             this.Controls.Add(lblMainTitle);
 
             // Policy content container
             Panel contentPanel = new Panel
             {
-                Size = new Size(700, 500),
-                Location = new Point(50, 80),
+                Size = new Size(500, 500), // Thu hẹp chiều rộng để dễ căn giữa
                 AutoScroll = true,
                 BackColor = Color.White
             };
+            // Căn giữa contentPanel trong form
+            contentPanel.Location = new Point(
+                (this.ClientSize.Width - contentPanel.Width) / 2,
+                100
+            );
 
             // Policy sections
             string[] sections = new string[]
@@ -89,20 +87,19 @@ namespace Cinema.homepage
             int yPos = 20;
             for (int i = 0; i < sections.Length; i++)
             {
-                // Section title
+                // Section title (căn trái)
                 Label lblSection = new Label
                 {
                     Text = sections[i],
                     Font = new Font("Segoe UI", 14, FontStyle.Bold),
                     ForeColor = Color.FromArgb(50, 50, 50),
                     AutoSize = true,
-                    Location = new Point((contentPanel.Width - TextRenderer.MeasureText(sections[i],
-                        new Font("Segoe UI", 14, FontStyle.Bold)).Width) / 2, yPos)
+                    Location = new Point(20, yPos) // Căn trái trong contentPanel
                 };
                 contentPanel.Controls.Add(lblSection);
                 yPos += 40;
 
-                // Policy items
+                // Policy items (căn trái)
                 foreach (string policy in policies[i])
                 {
                     Label lblPolicy = new Label
@@ -111,21 +108,20 @@ namespace Cinema.homepage
                         Font = new Font("Segoe UI", 11),
                         ForeColor = Color.FromArgb(70, 70, 70),
                         AutoSize = true,
-                        Location = new Point((contentPanel.Width - TextRenderer.MeasureText(policy,
-                            new Font("Segoe UI", 11)).Width) / 2, yPos)
+                        Location = new Point(20, yPos) // Căn trái trong contentPanel
                     };
                     contentPanel.Controls.Add(lblPolicy);
                     yPos += 30;
                 }
 
-                // Separator (except after last section)
+                // Separator (căn giữa trong contentPanel)
                 if (i < sections.Length - 1)
                 {
                     Panel separator = new Panel
                     {
-                        Size = new Size(500, 1),
+                        Size = new Size(460, 1),
                         BackColor = Color.FromArgb(230, 230, 230),
-                        Location = new Point((contentPanel.Width - 500) / 2, yPos + 10)
+                        Location = new Point(20, yPos + 10) // Căn trái nhưng chiều dài gần bằng contentPanel
                     };
                     contentPanel.Controls.Add(separator);
                     yPos += 30;
@@ -133,6 +129,19 @@ namespace Cinema.homepage
             }
 
             this.Controls.Add(contentPanel);
+
+            //// Đảm bảo tiêu đề chính luôn căn giữa khi form thay đổi kích thước
+            //this.SizeChanged += (s, e) =>
+            //{
+            //    lblMainTitle.Location = new Point(
+            //        (this.ClientSize.Width - lblMainTitle.Width) / 2,
+            //        20
+            //    );
+            //    contentPanel.Location = new Point(
+            //        (this.ClientSize.Width - contentPanel.Width) / 2,
+            //        80
+            //    );
+            //};
         }
     }
 }

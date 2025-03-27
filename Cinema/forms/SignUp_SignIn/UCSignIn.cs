@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-using Cinema.Forms.Admin;
+//using Cinema.Forms.Admin;
 using Cinema.homepage;
 
 namespace Cinema.Forms.SignUp_SignIn
@@ -170,14 +170,14 @@ namespace Cinema.Forms.SignUp_SignIn
                                 
                                 Form nextForm;
 
-                                if (role == 0)
-                                {
-                                    nextForm = new AdminForm();
-                                }
-                                else
-                                {
+                                //if (role == 0)
+                                //{
+                                //    nextForm = new AdminForm();
+                                //}
+                                //else
+                                //{
                                     nextForm = new HomepageForm();
-                                }
+                                //}
 
                                 nextForm.Show();
                                 Form parentForm = this.FindForm();
