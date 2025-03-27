@@ -380,6 +380,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using Cinema.homepage;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Cinema.Forms.SignUp_SignIn;
 
 namespace Cinema.Forms.profile
@@ -389,6 +390,7 @@ namespace Cinema.Forms.profile
         private ProfileForm ProfileForm;
         private DataAccess dataAccess = new DataAccess();
         private Panel mainPanel;
+        private decimal discount;
 
         public UCTicketHistory(ProfileForm profileForm)
         {

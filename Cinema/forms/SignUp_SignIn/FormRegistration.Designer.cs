@@ -131,7 +131,7 @@
             this.Controls.Add(this.panelLeft);
             this.Name = "FormRegistration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormRegistration";
+            this.Text = "Sign Up - Sign In";
             this.Load += new System.EventHandler(this.FormRegistration_Load_1);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
