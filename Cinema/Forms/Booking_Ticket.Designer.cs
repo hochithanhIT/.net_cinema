@@ -76,7 +76,7 @@ namespace Cinema.Forms {
             this.labelScreen.ForeColor = System.Drawing.Color.Black;
             this.labelScreen.Location = new System.Drawing.Point(350, 5);
             this.labelScreen.Name = "labelScreen";
-            this.labelScreen.Size = new System.Drawing.Size(111, 26);
+            this.labelScreen.Size = new System.Drawing.Size(134, 31);
             this.labelScreen.TabIndex = 1;
             this.labelScreen.Text = "SCREEN";
             this.labelScreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -87,7 +87,7 @@ namespace Cinema.Forms {
             this.labelMovieName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.labelMovieName.Location = new System.Drawing.Point(900, 100);
             this.labelMovieName.Name = "labelMovieName";
-            this.labelMovieName.Size = new System.Drawing.Size(122, 24);
+            this.labelMovieName.Size = new System.Drawing.Size(155, 29);
             this.labelMovieName.TabIndex = 2;
             this.labelMovieName.Text = "Movie Name:";
             // 
@@ -97,7 +97,7 @@ namespace Cinema.Forms {
             this.labelSelectedSeats.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.labelSelectedSeats.Location = new System.Drawing.Point(900, 150);
             this.labelSelectedSeats.Name = "labelSelectedSeats";
-            this.labelSelectedSeats.Size = new System.Drawing.Size(140, 24);
+            this.labelSelectedSeats.Size = new System.Drawing.Size(182, 29);
             this.labelSelectedSeats.TabIndex = 3;
             this.labelSelectedSeats.Text = "Selected Seats:";
             // 
@@ -107,7 +107,7 @@ namespace Cinema.Forms {
             this.labelTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.labelTotalPrice.Location = new System.Drawing.Point(900, 351);
             this.labelTotalPrice.Name = "labelTotalPrice";
-            this.labelTotalPrice.Size = new System.Drawing.Size(104, 24);
+            this.labelTotalPrice.Size = new System.Drawing.Size(136, 29);
             this.labelTotalPrice.TabIndex = 4;
             this.labelTotalPrice.Text = "Total Price:";
             // 
@@ -117,7 +117,7 @@ namespace Cinema.Forms {
             this.labelBooked.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelBooked.Location = new System.Drawing.Point(10, 10);
             this.labelBooked.Name = "labelBooked";
-            this.labelBooked.Size = new System.Drawing.Size(64, 20);
+            this.labelBooked.Size = new System.Drawing.Size(79, 25);
             this.labelBooked.TabIndex = 5;
             this.labelBooked.Text = "Booked";
             // 
@@ -127,7 +127,7 @@ namespace Cinema.Forms {
             this.labelAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelAvailable.Location = new System.Drawing.Point(120, 10);
             this.labelAvailable.Name = "labelAvailable";
-            this.labelAvailable.Size = new System.Drawing.Size(72, 20);
+            this.labelAvailable.Size = new System.Drawing.Size(92, 25);
             this.labelAvailable.TabIndex = 6;
             this.labelAvailable.Text = "Available";
             // 
@@ -160,51 +160,50 @@ namespace Cinema.Forms {
             // 
             // buttonConfirmBooking
             // 
+            this.buttonConfirmBooking.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonConfirmBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.buttonConfirmBooking.Location = new System.Drawing.Point(904, 389);
+            this.buttonConfirmBooking.Location = new System.Drawing.Point(953, 408);
             this.buttonConfirmBooking.Name = "buttonConfirmBooking";
             this.buttonConfirmBooking.Size = new System.Drawing.Size(200, 50);
             this.buttonConfirmBooking.TabIndex = 8;
             this.buttonConfirmBooking.Text = "Confirm Booking";
-            this.buttonConfirmBooking.UseVisualStyleBackColor = true;
+            this.buttonConfirmBooking.UseVisualStyleBackColor = false;
             this.buttonConfirmBooking.Click += new System.EventHandler(this.buttonConfirmBooking_Click);
             // 
             // labelMovieNameValue
             // 
             this.labelMovieNameValue.AutoSize = true;
             this.labelMovieNameValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.labelMovieNameValue.Location = new System.Drawing.Point(1050, 100);
+            this.labelMovieNameValue.Location = new System.Drawing.Point(1061, 99);
             this.labelMovieNameValue.Name = "labelMovieNameValue";
-            this.labelMovieNameValue.Size = new System.Drawing.Size(71, 24);
+            this.labelMovieNameValue.Size = new System.Drawing.Size(92, 29);
             this.labelMovieNameValue.TabIndex = 9;
             this.labelMovieNameValue.Text = "[Movie]";
             // 
             // labelSelectedSeatsValue
             // 
-            this.labelSelectedSeatsValue.AutoSize = false; // Keep AutoSize false to control the size
             this.labelSelectedSeatsValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.labelSelectedSeatsValue.Location = new System.Drawing.Point(1050, 150);
+            this.labelSelectedSeatsValue.Location = new System.Drawing.Point(1088, 150);
             this.labelSelectedSeatsValue.Name = "labelSelectedSeatsValue";
-            this.labelSelectedSeatsValue.Size = new System.Drawing.Size(100, 200); // Increase width and height to accommodate more seats
+            this.labelSelectedSeatsValue.Size = new System.Drawing.Size(100, 200);
             this.labelSelectedSeatsValue.TabIndex = 10;
             this.labelSelectedSeatsValue.Text = "None";
-            this.labelSelectedSeatsValue.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             // 
             // labelTotalPriceValue
             // 
             this.labelTotalPriceValue.AutoSize = true;
             this.labelTotalPriceValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.labelTotalPriceValue.Location = new System.Drawing.Point(1010, 351);
+            this.labelTotalPriceValue.Location = new System.Drawing.Point(1050, 351);
             this.labelTotalPriceValue.Name = "labelTotalPriceValue";
-            this.labelTotalPriceValue.Size = new System.Drawing.Size(65, 24);
+            this.labelTotalPriceValue.Size = new System.Drawing.Size(82, 29);
             this.labelTotalPriceValue.TabIndex = 11;
             this.labelTotalPriceValue.Text = "0 VND";
             // 
             // Booking_Ticket
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.ClientSize = new System.Drawing.Size(1282, 653);
             this.Controls.Add(this.labelTotalPriceValue);
             this.Controls.Add(this.labelSelectedSeatsValue);
             this.Controls.Add(this.labelMovieNameValue);

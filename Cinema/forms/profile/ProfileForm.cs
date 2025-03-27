@@ -225,6 +225,8 @@ namespace Cinema
 
         private void btnHome_Click(object sender, EventArgs e)
         {
+            Console.WriteLine($"UserSession before opening Homepage: IsLoggedIn={UserSession.IsLoggedIn}, MemberId={UserSession.MemberId}, Email={UserSession.Email}");
+                
             if (!UserSession.IsLoggedIn)
             {
                 MessageBox.Show("Please login to continue.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

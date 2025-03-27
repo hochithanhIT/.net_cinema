@@ -27,41 +27,42 @@
             // panelDateSelector
             // 
             this.panelDateSelector.AutoScroll = true;
-            this.panelDateSelector.Location = new System.Drawing.Point(16, 119);
-            this.panelDateSelector.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelDateSelector.Location = new System.Drawing.Point(343, 210);
+            this.panelDateSelector.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.panelDateSelector.Name = "panelDateSelector";
-            this.panelDateSelector.Size = new System.Drawing.Size(1533, 62);
+            this.panelDateSelector.Size = new System.Drawing.Size(1255, 59);
             this.panelDateSelector.TabIndex = 1;
             // 
             // panelMovies
             // 
             this.panelMovies.AutoScroll = true;
-            this.panelMovies.Location = new System.Drawing.Point(16, 203);
-            this.panelMovies.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMovies.Location = new System.Drawing.Point(343, 333);
+            this.panelMovies.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.panelMovies.Name = "panelMovies";
-            this.panelMovies.Size = new System.Drawing.Size(1533, 547);
+            this.panelMovies.Size = new System.Drawing.Size(1255, 689);
             this.panelMovies.TabIndex = 2;
             // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
-            this.labelTitle.Location = new System.Drawing.Point(13, 75);
-            this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(894, 101);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(135, 31);
+            this.labelTitle.Size = new System.Drawing.Size(195, 46);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Schedule";
             // 
             // Movie_Schedule
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.panelMovies);
             this.Controls.Add(this.panelDateSelector);
             this.Controls.Add(this.labelTitle);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.Name = "Movie_Schedule";
             this.Text = "Movie Schedule";
             this.Load += new System.EventHandler(this.MovieSchedule_Load);

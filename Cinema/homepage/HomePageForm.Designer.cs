@@ -53,7 +53,7 @@
             this.lblShow.AutoSize = true;
             this.lblShow.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lblShow.LinkColor = System.Drawing.Color.Black;
-            this.lblShow.Location = new System.Drawing.Point(457, 247);
+            this.lblShow.Location = new System.Drawing.Point(458, 219);
             this.lblShow.Name = "lblShow";
             this.lblShow.Size = new System.Drawing.Size(158, 29);
             this.lblShow.TabIndex = 6;
@@ -67,7 +67,7 @@
             this.lblCome.AutoSize = true;
             this.lblCome.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lblCome.LinkColor = System.Drawing.Color.Black;
-            this.lblCome.Location = new System.Drawing.Point(705, 247);
+            this.lblCome.Location = new System.Drawing.Point(706, 219);
             this.lblCome.Name = "lblCome";
             this.lblCome.Size = new System.Drawing.Size(160, 29);
             this.lblCome.TabIndex = 7;
@@ -79,7 +79,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(197, 238);
+            this.label3.Location = new System.Drawing.Point(211, 212);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(134, 36);
             this.label3.TabIndex = 5;
@@ -88,9 +88,9 @@
             // flpMovies
             // 
             this.flpMovies.AutoScroll = true;
-            this.flpMovies.Location = new System.Drawing.Point(216, 364);
+            this.flpMovies.Location = new System.Drawing.Point(217, 326);
             this.flpMovies.Name = "flpMovies";
-            this.flpMovies.Size = new System.Drawing.Size(1476, 629);
+            this.flpMovies.Size = new System.Drawing.Size(1429, 629);
             this.flpMovies.TabIndex = 9;
             // 
             // HomepageForm

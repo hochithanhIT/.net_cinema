@@ -136,10 +136,10 @@
       <DependentUpon>UCSignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SignUp_SignIn\UserSession.cs" />
-    <Compile Include="header_bar.cs">
+    <Compile Include="homepage\header_bar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="header_bar.Designer.cs">
+    <Compile Include="homepage\header_bar.Designer.cs">
       <DependentUpon>header_bar.cs</DependentUpon>
     </Compile>
     <Compile Include="homepage\HomepageForm.cs">
@@ -154,12 +154,6 @@
     </Compile>
     <Compile Include="homepage\MovieControl.Designer.cs">
       <DependentUpon>MovieControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="homepage\moviedetailTemp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="homepage\moviedetailTemp.Designer.cs">
-      <DependentUpon>moviedetailTemp.cs</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
@@ -189,7 +183,6 @@
     <EmbeddedResource Include="obj\Debug\Cinema.Forms.SignUp_SignIn.UCSignUp.resources" />
     <EmbeddedResource Include="obj\Debug\Cinema.header_bar.resources" />
     <EmbeddedResource Include="obj\Debug\Cinema.homepage.HomepageForm.resources" />
-    <EmbeddedResource Include="obj\Debug\Cinema.homepage.moviedetailTemp.resources" />
     <EmbeddedResource Include="obj\Debug\Cinema.MovieControl.resources" />
     <EmbeddedResource Include="obj\Debug\Cinema.ProfileForm.resources" />
     <EmbeddedResource Include="obj\Debug\Cinema.Properties.Resources.resources" />
@@ -252,11 +245,8 @@
     <EmbeddedResource Include="homepage\HomepageForm.resx">
       <DependentUpon>HomepageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="header_bar.resx">
+    <EmbeddedResource Include="homepage\header_bar.resx">
       <DependentUpon>header_bar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="homepage\moviedetailTemp.resx">
-      <DependentUpon>moviedetailTemp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="homepage\MovieControl.resx">
       <DependentUpon>MovieControl.cs</DependentUpon>
@@ -279,11 +269,15 @@
     <Content Include="assets\icon\images.png" />
     <Content Include="assets\icon\log.png" />
     <Content Include="assets\icon\logo.png" />
+    <Content Include="assets\icon\logout.png" />
+    <Content Include="assets\icon\loyalty-program.png" />
     <Content Include="assets\icon\mem.png" />
     <Content Include="assets\icon\movie-theater.svg" />
     <Content Include="assets\icon\movie.png" />
     <Content Include="assets\icon\movies.png" />
     <Content Include="assets\icon\png-clipart-users-group-computer-icons-membership-miscellaneous-user-interface-design-thumbnail.png" />
+    <Content Include="assets\icon\policy.png" />
+    <Content Include="assets\icon\schedule.png" />
     <Content Include="assets\icon\screen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -293,6 +287,7 @@
     <Content Include="assets\icon\stas.png" />
     <Content Include="assets\icon\thea.png" />
     <Content Include="assets\icon\tải xuống.png" />
+    <Content Include="assets\icon\user.png" />
     <Content Include="assets\icon\user_icon_007.jpg" />
     <Content Include="assets\poster\28_YEARS_LATER.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

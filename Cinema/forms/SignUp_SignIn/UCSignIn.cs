@@ -176,9 +176,6 @@ namespace Cinema.Forms.SignUp_SignIn
                                 }
                                 else
                                 {
-                                    //var (rankName, discount) = GetUserRankAndDiscount(emailOrPhone);
-                                    // Truyền đầy đủ 7 tham số vào HomepageForm
-                                    //nextForm = new HomepageForm(fullName, email, phone, dob, spending.ToString(), rankName, discount, memberId);
                                     nextForm = new HomepageForm();
                                 }
 
