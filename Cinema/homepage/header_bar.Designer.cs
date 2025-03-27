@@ -77,6 +77,7 @@
             this.lblMem.TabIndex = 8;
             this.lblMem.TabStop = true;
             this.lblMem.Text = "Membership";
+            this.lblMem.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblMem_LinkClicked);
             // 
             // lblPoli
             // 
@@ -92,6 +93,7 @@
             this.lblPoli.TabIndex = 7;
             this.lblPoli.TabStop = true;
             this.lblPoli.Text = "Policies";
+            this.lblPoli.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPoli_LinkClicked);
             // 
             // lblName
             // 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Cinema.Forms.profile;
@@ -12,6 +13,7 @@ namespace Cinema.homepage
     {
         private DataAccess dataAccess = new DataAccess();
         private header_bar headerBar;
+        private Panel contentPanel;
 
         public HomepageForm()
         {
@@ -21,6 +23,15 @@ namespace Cinema.homepage
             headerBar = new header_bar();
             headerBar.Dock = DockStyle.Top;
             this.Controls.Add(headerBar);
+
+            // Thêm contentPanel để hiển thị UserControl
+            contentPanel = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Location = new Point(0, headerBar.Height),
+                Size = new Size(this.ClientSize.Width, this.ClientSize.Height - headerBar.Height)
+            };
+            this.Controls.Add(contentPanel);
 
             // Kết nối database
             try
@@ -83,6 +94,25 @@ namespace Cinema.homepage
         private void lblCome_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LoadMovies(false);
+        }
+
+        // Phương thức để hiển thị UserControl
+        public void ShowUserControl(UserControl userControl)
+        {
+            contentPanel.Controls.Clear();
+            userControl.Dock = DockStyle.Fill;
+            contentPanel.Controls.Add(userControl);
+            flpMovies.Visible = false; // Ẩn danh sách phim khi hiển thị UserControl
+            lblMovie.Visible = false;
+            lblName.Visible = false;
+            lblShow.Visible = false;
+            lblCome.Visible = false;
+        }
+
+        // Phương thức để lấy ProfileForm (dùng trong UCPolicies và UCMembership)
+        public ProfileForm GetProfileForm()
+        {
+            return new ProfileForm(); // Trả về một instance mới của ProfileForm
         }
     }
 }

@@ -91,9 +91,19 @@ namespace Cinema.Forms.SignUp_SignIn
                 return;
             }
 
-            if (birthDate.Date > DateTime.Today)
+            // Validate Date of Birth 
+            DateTime currentDate = DateTime.Now;
+            if (birthDate.Date > currentDate)
             {
-                MessageBox.Show("Birthdate cannot be in the future", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Date of Birth cannot be in the future.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int minimumAge = 13;
+            if (birthDate.Date > currentDate.AddYears(-minimumAge))
+            {
+                MessageBox.Show($"You must be at least {minimumAge} years old to register.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             // Check password has at least 8 characters

@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.lblShow = new System.Windows.Forms.LinkLabel();
             this.lblCome = new System.Windows.Forms.LinkLabel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblMovie = new System.Windows.Forms.Label();
             this.flpMovies = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // label2
+            // lblName
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(811, 107);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(320, 51);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Ticket Booking";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(811, 107);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(320, 51);
+            this.lblName.TabIndex = 5;
+            this.lblName.Text = "Ticket Booking";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblShow
             // 
@@ -75,15 +75,15 @@
             this.lblCome.Text = "Coming Soon";
             this.lblCome.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblCome_LinkClicked);
             // 
-            // label3
+            // lblMovie
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(211, 212);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 36);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "| Movies";
+            this.lblMovie.AutoSize = true;
+            this.lblMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMovie.Location = new System.Drawing.Point(211, 212);
+            this.lblMovie.Name = "lblMovie";
+            this.lblMovie.Size = new System.Drawing.Size(134, 36);
+            this.lblMovie.TabIndex = 5;
+            this.lblMovie.Text = "| Movies";
             // 
             // flpMovies
             // 
@@ -99,10 +99,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.flpMovies);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblMovie);
             this.Controls.Add(this.lblCome);
             this.Controls.Add(this.lblShow);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblName);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "HomepageForm";
@@ -114,10 +114,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.LinkLabel lblShow;
         private System.Windows.Forms.LinkLabel lblCome;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblMovie;
         private System.Windows.Forms.FlowLayoutPanel flpMovies;
     }
 }

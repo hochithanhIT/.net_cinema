@@ -102,7 +102,7 @@ namespace Cinema
 
         private void lblSignOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Would you like to log out of your account?", "Yes",
+            DialogResult result = MessageBox.Show("Would you like to log out of your account?", "Confirm",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
@@ -132,6 +132,24 @@ namespace Cinema
             if (currentForm != null)
             {
                 currentForm.Close();
+            }
+        }
+
+        private void lblPoli_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form currentForm = this.FindForm();
+            if (currentForm is HomepageForm homepageForm)
+            {
+                homepageForm.ShowUserControl(new UCPolicies(homepageForm.GetProfileForm()));
+            }
+        }
+
+        private void lblMem_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form currentForm = this.FindForm();
+            if (currentForm is HomepageForm homepageForm)
+            {
+                homepageForm.ShowUserControl(new UCMembership(homepageForm.GetProfileForm()));
             }
         }
     }

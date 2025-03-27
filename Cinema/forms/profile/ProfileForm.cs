@@ -48,16 +48,6 @@ namespace Cinema
             // Load UCProfileDetails với thông tin từ UserSession
             if (UserSession.IsLoggedIn)
             {
-                //this.AddUserControl(new UCProfileDetails(
-                //    this,
-                //    UserSession.FullName,
-                //    UserSession.Email,
-                //    UserSession.Phone,
-                //    UserSession.Dob ?? DateTime.Now,
-                //    UserSession.Spending,
-                //    UserSession.RankName,
-                //    UserSession.Discount
-                //));
                 this.AddUserControl(new UCProfileDetails(this));
             }
         }
@@ -65,10 +55,7 @@ namespace Cinema
 
             private void btnTransactionHistory_Click(object sender, EventArgs e)
             {
-            // Load UCTicketHistory
-            // this.AddUserControl(new UCTicketHistory(this, Email, Phone));
-
-// Load UCTicketHistory với thông tin từ UserSession
+            // Load UCTicketHistory với thông tin từ UserSession
             if (UserSession.IsLoggedIn)
             {
                 //this.AddUserControl(new UCTicketHistory(this, UserSession.Email, UserSession.Phone));
