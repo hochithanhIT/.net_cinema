@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,16 +19,15 @@ namespace Cinema.Admin.Components
         public Movies_Add()
         {
             InitializeComponent();
+            MvDate.Value = DateTime.Now;
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            // Show confirmation dialog
             DialogResult result = MessageBox.Show("Are you sure you want to add this movie?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                // Retrieve data from textboxes
                 string movieName = MvName.Text.Trim();
                 string movieDescription = MvDes.Text.Trim();
                 string director = MvDir.Text.Trim();
@@ -36,29 +36,26 @@ namespace Cinema.Admin.Components
                 DateTime releaseDate = MvDate.Value;
                 int runningTime;
                 bool isNumeric = int.TryParse(MvRtime.Text.Trim(), out runningTime);
-                string poster = MvPos.Text.Trim();
+                string moviePoster = MvPos.Text.Trim(); // Lấy đường dẫn ảnh
 
-                // Validate input data
                 if (string.IsNullOrEmpty(movieName) || string.IsNullOrEmpty(movieDescription) || string.IsNullOrEmpty(director) ||
-                    string.IsNullOrEmpty(genre) || string.IsNullOrEmpty(movieCast) || !isNumeric || string.IsNullOrEmpty(poster))
+                    string.IsNullOrEmpty(genre) || string.IsNullOrEmpty(movieCast) || !isNumeric || string.IsNullOrEmpty(moviePoster))
                 {
-                    MessageBox.Show("Please fill in all required fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Please fill in all required fields, including movie poster!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Create INSERT query
                 string query = $"INSERT INTO movie (movie_name, director, movie_cast, genre, release_date, running_time, movie_description, poster) " +
-                               $"VALUES (N'{movieName}', N'{director}', N'{movieCast}', N'{genre}', '{releaseDate:yyyy-MM-dd}', {runningTime}, N'{movieDescription}', N'{poster}')";
+                               $"VALUES (N'{movieName}', N'{director}', N'{movieCast}', N'{genre}', '{releaseDate:yyyy-MM-dd}', {runningTime}, N'{movieDescription}', N'{moviePoster}')";
 
                 try
                 {
-                    // Execute INSERT using DataAccess
                     int rowsAffected = dataAccess.ExecuteDMLQuery(query);
 
                     if (rowsAffected > 0)
                     {
                         MessageBox.Show("Movie added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close(); // Close form after successful addition
+                        this.Close();
                     }
                     else
                     {
@@ -72,5 +69,84 @@ namespace Cinema.Admin.Components
             }
         }
 
+
+
+
+        private void MvPos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Title = "Select a movie poster";
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string sourcePath = openFileDialog.FileName;
+
+                    // **Sửa đường dẫn assetsFolderPath để về đúng thư mục gốc**
+                    string projectDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+                    string assetsFolderPath = Path.Combine(projectDirectory, "assets", "poster");
+                    Directory.CreateDirectory(assetsFolderPath); // Tạo thư mục nếu chưa có
+
+                    string fileName = Path.GetFileName(sourcePath);
+                    string destinationPath = Path.Combine(assetsFolderPath, fileName);
+
+                    try
+                    {
+                        // Copy ảnh vào thư mục chính xác
+                        if (!File.Exists(destinationPath))
+                        {
+                            File.Copy(sourcePath, destinationPath, true);
+                        }
+
+                        // Lưu đường dẫn cần insert vào database
+                        string dbPath = $"assets/poster/{fileName}";
+                        MvPos.Text = dbPath;
+
+                        // Kiểm tra file đã được copy chưa
+                        if (File.Exists(destinationPath))
+                        {
+                            guna2PictureBox1.Image = Image.FromFile(destinationPath);
+                            guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                            MessageBox.Show($"Image copied successfully to: {destinationPath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                           
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error copying image: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+
+        private void Movies_Add_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MvPos_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

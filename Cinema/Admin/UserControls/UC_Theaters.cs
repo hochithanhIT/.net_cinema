@@ -21,8 +21,8 @@ namespace Cinema.Admin.UserControls
         public UC_Theaters()
         {
             InitializeComponent();
-            
-            
+            FDate.Value = DateTime.Now;
+
         }
 
 
@@ -31,19 +31,27 @@ namespace Cinema.Admin.UserControls
 
         private void TheaterCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (TheaterCombobox.SelectedValue != null)
+            if (TheaterCombobox.SelectedValue == null || FMovie.SelectedValue == null || FSchedule.SelectedItem == null)
             {
-                if (TheaterCombobox.SelectedValue is DataRowView rowView)
-                {
-                    selectedTheaterId = Convert.ToInt32(rowView["theater_id"]);
-                }
-                else if (!int.TryParse(TheaterCombobox.SelectedValue.ToString(), out selectedTheaterId))
-                {
-                    MessageBox.Show("Lỗi: Không thể chuyển đổi giá trị của phòng chiếu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    selectedTheaterId = -1;
-                }
+                return;
             }
+
+            int selectedTheaterID = Convert.ToInt32(TheaterCombobox.SelectedValue);
+            int selectedMovieID = Convert.ToInt32(FMovie.SelectedValue);
+            DateTime selectedDate = FDate.Value.Date;
+            DateTime parsedTime;
+
+            if (!DateTime.TryParse(FSchedule.SelectedItem.ToString(), out parsedTime))
+            {
+                MessageBox.Show("Invalid Schedule.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string selectedTime = parsedTime.ToString("HH:mm");
+
+            // Gọi hàm LoadSeats với theaterId đúng
+            LoadSeats(selectedTheaterID, selectedMovieID, selectedDate, selectedTime);
         }
+
 
 
 
@@ -58,14 +66,15 @@ namespace Cinema.Admin.UserControls
 
             // Lấy danh sách ghế đã đặt theo lịch chiếu, phim và thời gian cụ thể
             string queryBookedSeats = $@"
-        SELECT SEAT_ID FROM TICKET 
-        WHERE SCHEDULE_ID IN (
-            SELECT ID FROM SCHEDULE 
-            WHERE THEATER_ID = {theaterId}
-            AND MOVIE_ID = {movieId}
-            AND CONVERT(date, START_TIME) = '{date:yyyy-MM-dd}'
-            AND FORMAT(START_TIME, 'HH:mm') = '{time}'
-        )";
+ SELECT SEAT_ID FROM TICKET 
+ WHERE SCHEDULE_ID IN (
+     SELECT ID FROM SCHEDULE 
+     WHERE THEATER_ID = {theaterId}  -- Thêm điều kiện này để lấy đúng phòng chiếu
+     AND MOVIE_ID = {movieId}
+     AND CONVERT(date, START_TIME) = '{date:yyyy-MM-dd}'
+     AND FORMAT(START_TIME, 'HH:mm') = '{time}'
+ )";
+
 
             DataTable bookedSeats = dataAccess.ExecuteQueryTable(queryBookedSeats);
 
@@ -152,7 +161,7 @@ namespace Cinema.Admin.UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi chọn phim: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error when choosing movie: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -220,7 +229,7 @@ namespace Cinema.Admin.UserControls
         {
             if (FDate.Value == null)
             {
-                MessageBox.Show("Vui lòng chọn ngày hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select valid date!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -247,12 +256,12 @@ namespace Cinema.Admin.UserControls
                 // Kiểm tra nếu không có suất chiếu
                 if (FSchedule.Items.Count == 0)
                 {
-                    FSchedule.Items.Add("Không có suất chiếu nào");
+                    FSchedule.Items.Add("No schedule was found");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải suất chiếu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error when fetching schedule: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -269,7 +278,7 @@ namespace Cinema.Admin.UserControls
                 DateTime parsedTime;
                 if (!DateTime.TryParse(FSchedule.SelectedItem.ToString(), out parsedTime))
                 {
-                    MessageBox.Show("Giờ chiếu không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid Schedule.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 string selectedTime = parsedTime.ToString("HH:mm");
@@ -316,7 +325,7 @@ ORDER BY t.theater_name";
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải rạp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error when fetching theater: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -350,7 +359,7 @@ ORDER BY t.theater_name";
         {
             if (TheaterCombobox.SelectedValue == null)
             {
-                MessageBox.Show("Vui lòng chọn phòng chiếu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select theater.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -366,14 +375,14 @@ ORDER BY t.theater_name";
             }
             else
             {
-                MessageBox.Show("Lỗi: Không thể chuyển đổi giá trị của phòng chiếu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: Cannot parse theater values", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Kiểm tra xem FMovie và FSchedule đã chọn hay chưa
             if (FMovie.SelectedValue == null || FSchedule.SelectedItem == null)
             {
-                MessageBox.Show("Vui lòng chọn phim và suất chiếu trước.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select shcedule.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -432,6 +441,10 @@ ORDER BY t.theater_name";
             manageTheatersForm.Location = new Point(650, 130);
         }
 
+        private void SeatPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 
