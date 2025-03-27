@@ -25,16 +25,11 @@ namespace Cinema.Admin.TheaterComponents
             LoadTheaters();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DeleteTheaBut.Enabled = listBox1.SelectedIndex != -1;
-        }
-
         private void LoadTheaters()
         {
             try
             {
-                string query = "SELECT id, theater_name FROM theater WHERE isDeleted = 0";
+                string query = "SELECT id, theater_name FROM theater";
                 DataTable theaters = dataAccess.ExecuteQueryTable(query);
 
                 listBox1.Items.Clear();
@@ -72,48 +67,8 @@ namespace Cinema.Admin.TheaterComponents
 
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            // Check if a theater is selected
-            if (listBox1.SelectedItem == null)
-            {
-                MessageBox.Show("Please select a theater to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Get the selected theater
-            TheaterItem selectedTheater = (TheaterItem)listBox1.SelectedItem;
-            int theaterId = selectedTheater.TheaterID;
-
-            // Show confirmation dialog
-            DialogResult result = MessageBox.Show($"Are you sure you want to delete the theater '{selectedTheater.TheaterName}'?",
-                                                  "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    // Update isDeleted = 1 in the theater table
-                    string query = $"UPDATE theater SET isDeleted = 1 WHERE id = {theaterId}";
-                    int rowsAffected = dataAccess.ExecuteDMLQuery(query);
-
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("The theater has been successfully hidden!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadTheaters(); // Reload the list
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to hide the theater!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
+        
+        
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             try

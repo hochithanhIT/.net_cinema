@@ -28,6 +28,38 @@ namespace Cinema.Admin.SchedulesComponents
             {
                 string query = @"Select * from THEATER";
                 DataTable screen = dataAccess.ExecuteQueryTable(query);
+                
+                try
+                {
+                    DataTable movies = LoadMovies(sender, e);
+
+                    if (movies.Rows.Count > 0)
+                    {
+                        FMovie.DataSource = movies;
+                        FMovie.DisplayMember = "Movie Name";
+                        FMovie.ValueMember = "Movie ID";
+                        FMovie.SelectedIndex = 0;
+
+                        const int maxAllowedWidth = 450;
+                        using (Graphics g = FMovie.CreateGraphics())
+                        {
+                            int maxItemWidth = FMovie.Items.Cast<DataRowView>()
+                                .Max(item => (int)g.MeasureString(item["Movie Name"].ToString(), FMovie.Font).Width + 50);
+
+                            FMovie.DropDownWidth = maxItemWidth > maxAllowedWidth ? maxItemWidth : Math.Max(FMovie.Width, maxItemWidth);
+                        }
+                    }
+                    else
+                    {
+                        FMovie.DataSource = null;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi load phim: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    FMovie.DataSource = null;
+                }
                 if (screen.Rows.Count > 0) {
                     FTheater.DataSource = null;
                     FTheater.DataSource = screen;
@@ -73,7 +105,7 @@ namespace Cinema.Admin.SchedulesComponents
                 }
 
             } catch (Exception ex) {
-                MessageBox.Show($"Lỗi khi load phim theo rạp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Lỗi khi load phim: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 FMovie.DataSource = null;
             }
             
@@ -86,29 +118,11 @@ namespace Cinema.Admin.SchedulesComponents
 
         private DataTable LoadMovies(object sender, EventArgs e)
         {
-            string theaterId;
-            if (FTheater.SelectedValue != null)
-            {
-                if (FTheater.SelectedValue is DataRowView rowView)
-                {
-                    theaterId = rowView["id"].ToString(); 
-                }
-                else
-                {
-                    theaterId = FTheater.SelectedValue.ToString();
-                }
-            }
-            else
-            {
-                theaterId = null; 
-            }
-            DateTime selectedDate = FDate.Value;
-
             string query = @"
                     SELECT
                         id AS [Movie ID],
                         movie_name AS [Movie name]
-                    FROM movie";
+                    FROM movie WHERE isDeleted = 0";
 
             DataTable result = dataAccess.ExecuteQueryTable(query);
 
@@ -316,7 +330,7 @@ namespace Cinema.Admin.SchedulesComponents
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi load phim theo rạp: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Lỗi khi load phim: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 FMovie.DataSource = null;
             }
         }
@@ -501,15 +515,19 @@ namespace Cinema.Admin.SchedulesComponents
                 MessageBox.Show($"Lỗi khi thêm lịch chiếu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
-        
+
+
 
         private void maskedTextBox2_Leave(object sender, EventArgs e)
         {
-            string movieId = null;
-            if (string.IsNullOrEmpty(maskedTextBox2.Text)) { return; }
+            if (string.IsNullOrEmpty(maskedTextBox2.Text) || !maskedTextBox2.MaskFull) { 
+                maskedTextBox2.Text = string.Empty;
+                return; }
+
             try
             {
+                // Lấy movieId
+                string movieId = null;
                 if (FMovie.DataSource != null)
                 {
                     if (FMovie.SelectedValue is DataRowView movieRowView)
@@ -521,48 +539,155 @@ namespace Cinema.Admin.SchedulesComponents
                         movieId = FMovie.SelectedValue?.ToString();
                     }
                 }
+                if (string.IsNullOrEmpty(movieId))
+                {
+                    MessageBox.Show("Vui lòng chọn phim trước khi nhập thời gian!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Lấy theaterId
+                string theaterId = null;
+                if (FTheater.DataSource != null)
+                {
+                    if (FTheater.SelectedValue is DataRowView theaterRowView)
+                    {
+                        theaterId = theaterRowView["id"].ToString();
+                    }
+                    else
+                    {
+                        theaterId = FTheater.SelectedValue?.ToString();
+                    }
+                }
+                if (string.IsNullOrEmpty(theaterId))
+                {
+                    MessageBox.Show("Vui lòng chọn rạp trước khi nhập thời gian!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Kiểm tra thời gian nhập vào
+                if (string.IsNullOrWhiteSpace(maskedTextBox2.Text) || maskedTextBox2.Text.Contains("_"))
+                {
+                    MessageBox.Show("Vui lòng nhập thời gian hợp lệ (HH:mm)", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!TimeSpan.TryParse(maskedTextBox2.Text, out TimeSpan startTime))
+                {
+                    MessageBox.Show("Thời gian nhập không hợp lệ! Vui lòng nhập theo định dạng HH:mm (ví dụ: 14:30).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Kiểm tra giá trị thời gian hợp lệ (giờ từ 0-23, phút từ 0-59)
+                if (startTime.Hours < 0 || startTime.Hours > 23 || startTime.Minutes < 0 || startTime.Minutes > 59)
+                {
+                    MessageBox.Show("Thời gian không hợp lệ! Giờ phải từ 00 đến 23, phút phải từ 00 đến 59.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Lấy thời lượng phim
+                string query2 = "SELECT DISTINCT running_time FROM movie WHERE id = @movieId AND isDeleted = 0";
+                SqlParameter[] parameters2 = { new SqlParameter("@movieId", movieId) };
+                DataTable durationTable = dataAccess.ExecuteQueryWithParams(query2, parameters2);
+
+                int duration;
+                if (durationTable.Rows.Count > 0)
+                {
+                    duration = Convert.ToInt32(durationTable.Rows[0]["running_time"]);
+                }
+                else
+                {
+                    throw new Exception("Không tìm thấy thời lượng phim cho movieId đã chọn.");
+                }
+
+                // Tính thời gian kết thúc
+                TimeSpan endTime = startTime.Add(TimeSpan.FromMinutes(duration));
+                DateTime selectedDate = FDate.Value;
+                DateTime startDateTime = selectedDate.Date.Add(startTime);
+                DateTime endDateTime = selectedDate.Date.Add(endTime);
+
+                // Định nghĩa giới hạn thời gian
+                TimeSpan dayStart = TimeSpan.FromHours(7); // 07:00
+                TimeSpan dayEnd = TimeSpan.FromHours(23);  // 23:00
+
+                // Kiểm tra thời gian bắt đầu và kết thúc trong khoảng 07:00 - 23:00
+                if (startTime < dayStart)
+                {
+                    MessageBox.Show("Thời gian bắt đầu phải từ 07:00 trở đi!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    maskedTextBox2.Clear();
+                    maskedTextBox1.Clear();
+                    return;
+                }
+
+                if (endTime > dayEnd)
+                {
+                    MessageBox.Show("Thời gian kết thúc không được vượt quá 23:00!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    maskedTextBox2.Clear();
+                    maskedTextBox1.Clear();
+                    return;
+                }
+
+                // Truy vấn lịch chiếu hiện có
+                string query = @"
+            SELECT DISTINCT
+                FORMAT(s.start_time, 'HH:mm') AS [Start time],
+                FORMAT(s.end_time, 'HH:mm') AS [End time]
+            FROM SCHEDULE s
+            JOIN THEATER t ON s.THEATER_ID = t.ID
+            WHERE 
+                s.THEATER_ID = @theaterId
+                AND CAST(s.START_TIME AS DATE) = @selectedDate";
+                SqlParameter[] parameters = {
+            new SqlParameter("@theaterId", theaterId),
+            new SqlParameter("@selectedDate", selectedDate.Date)
+        };
+                DataTable occupiedSchedules = dataAccess.ExecuteQueryWithParams(query, parameters);
+
+                // Tính khoảng cấm
+                var forbiddenSlots = occupiedSchedules.AsEnumerable()
+                    .Select(row => new
+                    {
+                        Start = TimeSpan.Parse(row.Field<string>("Start time")),
+                        End = TimeSpan.Parse(row.Field<string>("End time")),
+                    })
+                    .Select(slot => new
+                    {
+                        ForbiddenStart = selectedDate.Date.Add(slot.Start).AddMinutes(-30),
+                        ForbiddenEnd = slot.End > slot.Start
+                            ? selectedDate.Date.Add(slot.End).AddMinutes(30)
+                            : selectedDate.Date.Add(slot.End).AddMinutes(30).AddDays(1)
+                    })
+                    .OrderBy(slot => slot.ForbiddenStart)
+                    .ToList();
+
+                // Kiểm tra xung đột
+                bool isConflict = false;
+                foreach (var slot in forbiddenSlots)
+                {
+                    if (startDateTime < slot.ForbiddenEnd && endDateTime > slot.ForbiddenStart)
+                    {
+                        isConflict = true;
+                        break;
+                    }
+                }
+
+                if (isConflict)
+                {
+                    MessageBox.Show("Thời gian nhập vào trùng với một lịch chiếu hiện có (bao gồm khoảng giải lao 30 phút trước và sau)! Vui lòng chọn thời gian khác.",
+                                   "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    maskedTextBox2.Clear();
+                    maskedTextBox1.Clear();
+                    return;
+                }
+
+                // Nếu không có xung đột, gán thời gian kết thúc
+                maskedTextBox1.Text = endTime.ToString(@"hh\:mm");
             }
             catch (Exception ex)
             {
+                MessageBox.Show($"Lỗi khi kiểm tra thời gian: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                maskedTextBox2.Clear();
+                maskedTextBox1.Clear();
             }
-            if (string.IsNullOrEmpty(movieId))
-            {
-                MessageBox.Show("Vui lòng chọn phim trước khi nhập thời gian!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            string query2 = "SELECT DISTINCT running_time FROM movie WHERE id = @movieId";
-            SqlParameter[] parameters2 = { new SqlParameter("@movieId", movieId) };
-            DataTable durationTable = dataAccess.ExecuteQueryWithParams(query2, parameters2);
-
-            int duration;
-            if (durationTable.Rows.Count > 0)
-            {
-                duration = Convert.ToInt32(durationTable.Rows[0]["running_time"]);
-            }
-            else
-            {
-                throw new Exception("Không tìm thấy thời lượng phim cho movieId đã chọn.");
-            }
-            if (string.IsNullOrWhiteSpace(maskedTextBox2.Text) || maskedTextBox2.Text.Contains("_"))
-            {
-                MessageBox.Show("Vui lòng nhập thời gian hợp lệ (HH:mm)", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!TimeSpan.TryParse(maskedTextBox2.Text, out TimeSpan startTime))
-            {
-                MessageBox.Show("Thời gian nhập không hợp lệ! Vui lòng nhập theo định dạng HH:mm (ví dụ: 14:30).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Kiểm tra giá trị thời gian hợp lệ (giờ từ 0-23, phút từ 0-59)
-            if (startTime.Hours < 0 || startTime.Hours > 23 || startTime.Minutes < 0 || startTime.Minutes > 59)
-            {
-                MessageBox.Show("Thời gian không hợp lệ! Giờ phải từ 00 đến 23, phút phải từ 00 đến 59.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            startTime = TimeSpan.Parse(maskedTextBox2.Text);
-            TimeSpan endTime = startTime.Add(TimeSpan.FromMinutes(duration));
-            maskedTextBox1.Text = endTime.ToString(@"hh\:mm");
         }
 
         private void maskedTextBox2_KeyDown(object sender, KeyEventArgs e)

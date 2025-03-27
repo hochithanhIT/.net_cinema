@@ -82,6 +82,12 @@
     <Compile Include="Admin\SchedulesComponents\Schedule_Add.Designer.cs">
       <DependentUpon>Schedule_Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\SchedulesComponents\Schedule_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\SchedulesComponents\Schedule_Edit.Designer.cs">
+      <DependentUpon>Schedule_Edit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\TheaterComponents\ManageTheaters.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\SchedulesComponents\Schedule_Add.resx">
       <DependentUpon>Schedule_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\SchedulesComponents\Schedule_Edit.resx">
+      <DependentUpon>Schedule_Edit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\TheaterComponents\ManageTheaters.resx">
       <DependentUpon>ManageTheaters.cs</DependentUpon>

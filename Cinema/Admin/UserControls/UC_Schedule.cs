@@ -22,17 +22,21 @@ namespace Cinema.Admin.UserControls
         public UC_Schedule()
         {
             InitializeComponent();
+            UpdateMovieAndTheaterData(FDate.Value);
         }
         
         private void FDate_ValueChanged(object sender, EventArgs e)
         {
-            
-            DateTime selectedDate = FDate.Value;
+            UpdateMovieAndTheaterData(FDate.Value);
+        }
+
+        private void UpdateMovieAndTheaterData(DateTime selectedDate)
+        {
             string query = $@"
-                SELECT DISTINCT m.id, m.movie_name
-                FROM schedule s
-                JOIN movie m ON s.movie_id = m.id
-                WHERE CAST(s.start_time AS DATE) = '{selectedDate:yyyy-MM-dd}'";
+        SELECT DISTINCT m.id, m.movie_name
+        FROM schedule s
+        JOIN movie m ON s.movie_id = m.id
+        WHERE CAST(s.start_time AS DATE) = '{selectedDate:yyyy-MM-dd}'";
 
             DataTable moviesByDate = dataAccess.ExecuteQueryTable(query);
 
@@ -49,10 +53,10 @@ namespace Cinema.Admin.UserControls
             FMovie.SelectedIndex = -1;
 
             string query2 = $@"
-                SELECT DISTINCT t.id, t.theater_name
-                FROM schedule s
-                JOIN theater t ON s.theater_id = t.id
-                WHERE CAST(s.start_time AS DATE) = '{selectedDate:yyyy-MM-dd}'";
+        SELECT DISTINCT t.id, t.theater_name
+        FROM schedule s
+        JOIN theater t ON s.theater_id = t.id
+        WHERE CAST(s.start_time AS DATE) = '{selectedDate:yyyy-MM-dd}'";
 
             DataTable screensByDate = dataAccess.ExecuteQueryTable(query2);
 
@@ -68,7 +72,7 @@ namespace Cinema.Admin.UserControls
             FTheater.ValueMember = "id";
             FTheater.SelectedIndex = -1;
 
-            const int maxAllowedWidth = 800; 
+            const int maxAllowedWidth = 800;
             using (Graphics g = FMovie.CreateGraphics())
             {
                 int maxItemWidth = FMovie.Items.Cast<DataRowView>()
@@ -146,6 +150,7 @@ namespace Cinema.Admin.UserControls
 
                 string query = $@"
                     SELECT 
+                        s.id AS [Schedule id],
                         t.theater_name AS [Screen name],
                         m.movie_name AS [Movie name], 
                         FORMAT(s.start_time, 'HH:mm') AS [Start time], 
@@ -173,13 +178,14 @@ namespace Cinema.Admin.UserControls
                     dataGridView1.DataSource = selectedSchedule;
                     dataGridView1.Visible = true;
 
-                    dataGridView1.Columns["Screen name"].Width = 150;
+                    dataGridView1.Columns["Schedule id"].Width = 75;
+                    dataGridView1.Columns["Screen name"].Width = 125;
 
                     dataGridView1.Columns["Movie name"].Width = 372;
 
-                    dataGridView1.Columns["Start time"].Width = 150;
+                    dataGridView1.Columns["Start time"].Width = 125;
 
-                    dataGridView1.Columns["End time"].Width = 150;
+                    dataGridView1.Columns["End time"].Width = 125;
 
                     int rowHeight = dataGridView1.RowTemplate.Height;
                     int headerHeight = dataGridView1.ColumnHeadersHeight;
@@ -215,7 +221,8 @@ namespace Cinema.Admin.UserControls
                 dataGridView1.Visible = false;
 
                 FDate.Value = DateTime.Today;
-                
+                UpdateMovieAndTheaterData(FDate.Value);
+
             }
             catch (Exception ex)
             {
@@ -229,11 +236,24 @@ namespace Cinema.Admin.UserControls
         }
 
         private void dataGridView1_CellContentDoubleClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            Schedule_Edit scheduleEditForm = new Schedule_Edit();
-            scheduleEditForm.FormClosed += (s, args) => ResetFil_Click(s, args);
-            scheduleEditForm.ShowDialog();
+        {            
+            if (e.RowIndex >= 0) // Kiểm tra hàng hợp lệ
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                if (row.DataBoundItem is DataRowView drv && drv.Row["Schedule id"] != DBNull.Value)
+                {
+                    int scheduleId = Convert.ToInt32(drv.Row["Schedule id"]); // Lấy scheduleId
+                    Schedule_Edit scheduleEditForm = new Schedule_Edit(scheduleId); // Truyền sang Schedule_Edit
+                    scheduleEditForm.FormClosed += (s, args) => check_Click(sender, e); // Cập nhật lại danh sách sau khi đóng
+                    scheduleEditForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy Schedule ID trong hàng đã chọn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
+        
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
