@@ -48,44 +48,41 @@
             this.guna2Separator1.Location = new System.Drawing.Point(225, 18);
             this.guna2Separator1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(1, 720);
+            this.guna2Separator1.Size = new System.Drawing.Size(1, 900);
             this.guna2Separator1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(78, 33);
+            this.label1.Location = new System.Drawing.Point(103, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.Size = new System.Drawing.Size(73, 25);
             this.label1.TabIndex = 2;
-            this.label1.Text = "HC Cinema";
+            this.label1.Text = "Admin";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panelContainer
             // 
-            this.panelContainer.Location = new System.Drawing.Point(249, 2);
-            this.panelContainer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelContainer.Location = new System.Drawing.Point(280, 2);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1209, 819);
+            this.panelContainer.Size = new System.Drawing.Size(1360, 1024);
             this.panelContainer.TabIndex = 4;
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.guna2Panel1.Location = new System.Drawing.Point(24, 81);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Panel1.Location = new System.Drawing.Point(27, 101);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(178, 1);
+            this.guna2Panel1.Size = new System.Drawing.Size(200, 1);
             this.guna2Panel1.TabIndex = 0;
             // 
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.Gainsboro;
-            this.guna2Panel2.Location = new System.Drawing.Point(24, 636);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Panel2.Location = new System.Drawing.Point(27, 796);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(178, 1);
+            this.guna2Panel2.Size = new System.Drawing.Size(200, 1);
             this.guna2Panel2.TabIndex = 8;
             // 
             // guna2Button4
@@ -107,12 +104,11 @@
             this.guna2Button4.Image = global::Cinema.Properties.Resources.memd1;
             this.guna2Button4.ImageOffset = new System.Drawing.Point(0, -2);
             this.guna2Button4.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button4.Location = new System.Drawing.Point(24, 284);
-            this.guna2Button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Button4.Location = new System.Drawing.Point(27, 355);
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.PressedColor = System.Drawing.Color.Gainsboro;
             this.guna2Button4.PressedDepth = 0;
-            this.guna2Button4.Size = new System.Drawing.Size(164, 44);
+            this.guna2Button4.Size = new System.Drawing.Size(184, 55);
             this.guna2Button4.TabIndex = 10;
             this.guna2Button4.Text = "Members";
             this.guna2Button4.TextOffset = new System.Drawing.Point(0, -2);
@@ -136,12 +132,11 @@
             this.guna2Button3.HoverState.FillColor = System.Drawing.Color.Gainsboro;
             this.guna2Button3.Image = global::Cinema.Properties.Resources.Screenshot_2025_03_10_1641341;
             this.guna2Button3.ImageOffset = new System.Drawing.Point(0, -2);
-            this.guna2Button3.Location = new System.Drawing.Point(24, 224);
-            this.guna2Button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Button3.Location = new System.Drawing.Point(27, 280);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.PressedColor = System.Drawing.Color.Gainsboro;
             this.guna2Button3.PressedDepth = 0;
-            this.guna2Button3.Size = new System.Drawing.Size(164, 44);
+            this.guna2Button3.Size = new System.Drawing.Size(184, 55);
             this.guna2Button3.TabIndex = 9;
             this.guna2Button3.Text = "Theaters";
             this.guna2Button3.TextOffset = new System.Drawing.Point(0, -2);
@@ -165,12 +160,11 @@
             this.guna2Button2.HoverState.FillColor = System.Drawing.Color.Gainsboro;
             this.guna2Button2.Image = global::Cinema.Properties.Resources._6864582;
             this.guna2Button2.ImageOffset = new System.Drawing.Point(0, -2);
-            this.guna2Button2.Location = new System.Drawing.Point(24, 159);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Button2.Location = new System.Drawing.Point(27, 199);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.PressedColor = System.Drawing.Color.Gainsboro;
             this.guna2Button2.PressedDepth = 0;
-            this.guna2Button2.Size = new System.Drawing.Size(164, 44);
+            this.guna2Button2.Size = new System.Drawing.Size(184, 55);
             this.guna2Button2.TabIndex = 4;
             this.guna2Button2.Text = "Schedule";
             this.guna2Button2.TextOffset = new System.Drawing.Point(0, -2);
@@ -189,12 +183,11 @@
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
             this.guna2Button6.Image = global::Cinema.Properties.Resources.logo;
             this.guna2Button6.ImageOffset = new System.Drawing.Point(0, -2);
-            this.guna2Button6.Location = new System.Drawing.Point(31, 678);
-            this.guna2Button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Button6.Location = new System.Drawing.Point(35, 848);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.PressedColor = System.Drawing.Color.Transparent;
             this.guna2Button6.PressedDepth = 0;
-            this.guna2Button6.Size = new System.Drawing.Size(164, 44);
+            this.guna2Button6.Size = new System.Drawing.Size(184, 55);
             this.guna2Button6.TabIndex = 7;
             this.guna2Button6.Text = "Log Out";
             this.guna2Button6.TextOffset = new System.Drawing.Point(0, -2);
@@ -217,12 +210,11 @@
             this.guna2Button1.HoverState.FillColor = System.Drawing.Color.Gainsboro;
             this.guna2Button1.Image = global::Cinema.Properties.Resources.moviesd;
             this.guna2Button1.ImageOffset = new System.Drawing.Point(0, -2);
-            this.guna2Button1.Location = new System.Drawing.Point(24, 94);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Button1.Location = new System.Drawing.Point(27, 118);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.PressedColor = System.Drawing.Color.Gainsboro;
             this.guna2Button1.PressedDepth = 0;
-            this.guna2Button1.Size = new System.Drawing.Size(164, 44);
+            this.guna2Button1.Size = new System.Drawing.Size(184, 55);
             this.guna2Button1.TabIndex = 3;
             this.guna2Button1.Text = "Movies";
             this.guna2Button1.TextOffset = new System.Drawing.Point(0, -2);
@@ -230,23 +222,22 @@
             // 
             // guna2CirclePictureBox1
             // 
-            this.guna2CirclePictureBox1.Image = global::Cinema.Properties.Resources.cin;
+            this.guna2CirclePictureBox1.Image = global::Cinema.Properties.Resources.admin1;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(24, 26);
-            this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(35, 33);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(40, 36);
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(55, 50);
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox1.TabIndex = 1;
             this.guna2CirclePictureBox1.TabStop = false;
             // 
             // AdminPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1492, 774);
+            this.ClientSize = new System.Drawing.Size(1678, 968);
             this.Controls.Add(this.guna2Button4);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2Panel2);
@@ -258,7 +249,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2CirclePictureBox1);
             this.Controls.Add(this.guna2Separator1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AdminPage";
             this.Text = "AdminPage";
             this.Load += new System.EventHandler(this.AdminPage_Load);

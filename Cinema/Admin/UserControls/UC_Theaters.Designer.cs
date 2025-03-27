@@ -86,6 +86,7 @@
             this.SeatPanel.Name = "SeatPanel";
             this.SeatPanel.Size = new System.Drawing.Size(925, 499);
             this.SeatPanel.TabIndex = 6;
+            this.SeatPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.SeatPanel_Paint);
             // 
             // label2
             // 
@@ -152,7 +153,7 @@
             this.FMovie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FMovie.FocusedColor = System.Drawing.Color.Black;
             this.FMovie.FocusedState.BorderColor = System.Drawing.Color.Black;
-            this.FMovie.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.FMovie.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.FMovie.ForeColor = System.Drawing.Color.Black;
             this.FMovie.ItemHeight = 30;
             this.FMovie.Location = new System.Drawing.Point(40, 344);

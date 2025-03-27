@@ -59,7 +59,8 @@ namespace Cinema.Admin.UserControls
         private void LoadMovies()
         {
             DataAccess dataAccess = new DataAccess();
-            string query = "SELECT movie_name, poster FROM movie";
+            string query = "SELECT id, movie_name, poster FROM movie WHERE isDeleted = 0";
+
             DataTable dt = dataAccess.ExecuteQueryTable(query);
 
             allMovies = dt.AsEnumerable().ToList(); // Lưu danh sách phim gốc
@@ -160,7 +161,10 @@ namespace Cinema.Admin.UserControls
                 btnPath.CloseFigure();
                 btnEdit.Region = new Region(btnPath);
 
-                btnEdit.Click += (sender, e) => EditMovie(row["movie_name"].ToString());
+                btnEdit.Click += (sender, e) => EditMovie(Convert.ToInt32(row["id"]));
+
+
+
 
                 // Nút Delete
                 Button btnDelete = new Button()
@@ -187,7 +191,7 @@ namespace Cinema.Admin.UserControls
                 btnPathDelete.CloseFigure();
                 btnDelete.Region = new Region(btnPathDelete);
 
-                btnDelete.Click += (sender, e) => DeleteMovie(row["movie_name"].ToString());
+                btnDelete.Click += (sender, e) => DeleteMovie(Convert.ToInt32(row["id"]));
 
                 buttonPanel.Controls.Add(btnEdit);
                 buttonPanel.Controls.Add(btnDelete);
@@ -200,61 +204,71 @@ namespace Cinema.Admin.UserControls
             }
         }
 
-        private void EditMovie(string movieName)
+        private void EditMovie(int id)  // Sửa kiểu dữ liệu từ string → int
         {
-            // Lấy thông tin phim từ database
-            string query = $"SELECT * FROM movie WHERE movie_name = N'{movieName}'";
+            string query = $"SELECT id, movie_name, movie_description, director, genre, movie_cast, release_date, running_time, poster FROM movie WHERE id = {id}";
             DataTable dt = dataAccess.ExecuteQueryTable(query);
 
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count == 0)
             {
-                DataRow row = dt.Rows[0];
-
-                // Khởi tạo form chỉnh sửa và truyền dữ liệu vào
-                Movies_Edit editForm = new Movies_Edit();
-                editForm.SetMovieData(
-                    row["movie_name"].ToString(),
-                    row["movie_description"].ToString(),
-                    row["director"].ToString(),
-                    row["genre"].ToString(),
-                    row["movie_cast"].ToString(),
-                    Convert.ToDateTime(row["release_date"]),
-                    row["running_time"].ToString(),
-                    row["poster"].ToString()
-                );
-
-                // Hiển thị form chỉnh sửa dưới dạng Dialog
-                editForm.StartPosition = FormStartPosition.Manual;
-                editForm.Location = new Point(650, 130);
-                editForm.FormClosed += (s, args) => LoadMovies(); // Reload danh sách sau khi đóng form
-                editForm.ShowDialog();
+                MessageBox.Show("Không tìm thấy phim với ID này!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            DataRow row = dt.Rows[0];
+
+            // Kiểm tra xem cột 'id' có tồn tại không
+            if (!dt.Columns.Contains("id"))
+            {
+                MessageBox.Show("Lỗi dữ liệu: Cột 'id' không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Khởi tạo form chỉnh sửa và truyền dữ liệu vào
+            Movies_Edit editForm = new Movies_Edit();
+            editForm.SetMovieData(
+                Convert.ToInt32(row["id"]),
+                row["movie_name"].ToString(),
+                row["movie_description"].ToString(),
+                row["director"].ToString(),
+                row["genre"].ToString(),
+                row["movie_cast"].ToString(),
+                Convert.ToDateTime(row["release_date"]),
+                row["running_time"].ToString(),
+                row["poster"].ToString()
+            );
+
+            editForm.StartPosition = FormStartPosition.Manual;
+            editForm.Location = new Point(650, 130);
+            editForm.FormClosed += (s, args) => LoadMovies();
+            editForm.ShowDialog();
         }
 
+
+
+
+
         // Hàm xử lý sự kiện khi nhấn Delete
-        private void DeleteMovie(string movieName)
+        private void DeleteMovie(int movieId)
         {
-            // Show confirmation dialog
-            DialogResult result = MessageBox.Show($"Are you sure you want to delete the movie: {movieName}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete this movie??",
+                                                  "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
                 try
                 {
-                    // Execute DELETE query
-                    string query = $"DELETE FROM movie WHERE movie_name = N'{movieName}'";
+                    string query = $"UPDATE movie SET isDeleted = 1 WHERE id = {movieId}";
                     int rowsAffected = dataAccess.ExecuteDMLQuery(query);
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Movie deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // Reload the movie list
+                        MessageBox.Show("Movie has been hidden successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadMovies();
                     }
                     else
                     {
-                        MessageBox.Show("Failed to delete movie!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Failed to hide movie!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
@@ -263,6 +277,8 @@ namespace Cinema.Admin.UserControls
                 }
             }
         }
+
+
 
         private Image GetImageFromDatabase(object imageData)
         {
@@ -276,10 +292,23 @@ namespace Cinema.Admin.UserControls
                 string fullPath = Path.Combine(projectRoot, imagePath);
 
                 if (File.Exists(fullPath))
-                    return Image.FromFile(fullPath);
+                {
+                    try
+                    {
+                        using (FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                        {
+                            return Image.FromStream(fs);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error when uploading images: " + ex.Message);
+                        return null;
+                    }
+                }
                 else
                 {
-                    Console.WriteLine("Không tìm thấy ảnh: " + fullPath);
+                    Console.WriteLine("No Image was found: " + fullPath);
                     return null;
                 }
             }
@@ -294,6 +323,7 @@ namespace Cinema.Admin.UserControls
 
             return null;
         }
+
 
         private void flowLayoutPanelMovies_Paint(object sender, PaintEventArgs e)
         {

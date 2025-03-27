@@ -34,14 +34,10 @@ namespace Cinema.Admin.TheaterComponents
         {
             try
             {
-                // Truy vấn danh sách rạp từ bảng `theater`
-                string query = "SELECT id, theater_name FROM theater";
+                string query = "SELECT id, theater_name FROM theater WHERE isDeleted = 0";
                 DataTable theaters = dataAccess.ExecuteQueryTable(query);
 
-                // Xóa danh sách cũ
                 listBox1.Items.Clear();
-
-                // Thêm dữ liệu vào listBox1
                 foreach (DataRow row in theaters.Rows)
                 {
                     listBox1.Items.Add(new TheaterItem
@@ -51,14 +47,14 @@ namespace Cinema.Admin.TheaterComponents
                     });
                 }
 
-                // Hiển thị tên rạp thay vì object
                 listBox1.DisplayMember = "TheaterName";
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải danh sách rạp: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading theaters: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private class TheaterItem
         {
@@ -78,7 +74,96 @@ namespace Cinema.Admin.TheaterComponents
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            // Check if a theater is selected
+            if (listBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a theater to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Get the selected theater
+            TheaterItem selectedTheater = (TheaterItem)listBox1.SelectedItem;
+            int theaterId = selectedTheater.TheaterID;
+
+            // Show confirmation dialog
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete the theater '{selectedTheater.TheaterName}'?",
+                                                  "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    // Update isDeleted = 1 in the theater table
+                    string query = $"UPDATE theater SET isDeleted = 1 WHERE id = {theaterId}";
+                    int rowsAffected = dataAccess.ExecuteDMLQuery(query);
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("The theater has been successfully hidden!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadTheaters(); // Reload the list
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to hide the theater!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Hiển thị hộp thoại xác nhận
+                DialogResult confirmResult = MessageBox.Show(
+                    "Are you sure you want to create a new theater?",
+                    "Confirm",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                // Nếu người dùng không nhấn "Yes" thì dừng lại
+                if (confirmResult != DialogResult.Yes)
+                    return;
+
+                // Insert new theater and get its ID
+                string insertTheaterQuery = "INSERT INTO theater (theater_name, isDeleted) VALUES ('', 0); SELECT SCOPE_IDENTITY();";
+                DataTable resultTable = dataAccess.ExecuteQueryTable(insertTheaterQuery);
+
+                if (resultTable.Rows.Count > 0)
+                {
+                    int newTheaterId = Convert.ToInt32(resultTable.Rows[0][0]);
+
+                    // Update theater name to "Screen <ID>"
+                    string updateNameQuery = $"UPDATE theater SET theater_name = 'Screen {newTheaterId}' WHERE id = {newTheaterId}";
+                    dataAccess.ExecuteDMLQuery(updateNameQuery);
+
+                    // Insert seats for the new theater
+                    string insertSeatsQuery = $@"
+                INSERT INTO SEAT (THEATER_ID, SEAT_CODE)
+                SELECT {newTheaterId}, CONCAT(R.Letter, FORMAT(C.Number, '00'))
+                FROM (VALUES ('A'), ('B'), ('C'), ('D'), ('E'), ('F'), ('G'), ('H')) AS R(Letter)
+                CROSS JOIN (VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10), (11), (12)) AS C(Number);";
+
+                    dataAccess.ExecuteDMLQuery(insertSeatsQuery);
+
+                    MessageBox.Show("Theater created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadTheaters(); // Reload the theater list
+                }
+                else
+                {
+                    MessageBox.Show("Failed to create theater!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
