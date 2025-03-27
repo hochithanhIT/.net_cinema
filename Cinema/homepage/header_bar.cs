@@ -75,6 +75,31 @@ namespace Cinema
             }
         }
 
+        private void picSchedule_Click(object sender, EventArgs e)
+        {
+            Form currentForm = this.FindForm();
+
+            if (!UserSession.IsLoggedIn)
+            {
+                MessageBox.Show("Please log in to view the schedule.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormRegistration loginForm = new FormRegistration();
+                loginForm.Show();
+                if (currentForm != null)
+                {
+                    currentForm.Close();
+                }
+                return;
+            }
+
+            Movie_Schedule movieScheduleForm = new Movie_Schedule();
+            movieScheduleForm.Show();
+
+            if (currentForm != null)
+            {
+                currentForm.Close();
+            }
+        }
+
         private void lblSignOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DialogResult result = MessageBox.Show("Would you like to log out of your account?", "Yes",

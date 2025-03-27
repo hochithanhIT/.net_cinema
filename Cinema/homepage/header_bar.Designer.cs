@@ -35,10 +35,16 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblSignOut = new System.Windows.Forms.LinkLabel();
             this.lblSchedule = new System.Windows.Forms.LinkLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.picLogout = new System.Windows.Forms.PictureBox();
+            this.picUser = new System.Windows.Forms.PictureBox();
+            this.picPolicy = new System.Windows.Forms.PictureBox();
+            this.picMembership = new System.Windows.Forms.PictureBox();
+            this.picSchedule = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogout)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPolicy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMembership)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSchedule)).BeginInit();
             this.SuspendLayout();
             // 
             // lblProfile
@@ -64,7 +70,7 @@
             this.lblMem.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMem.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lblMem.LinkColor = System.Drawing.Color.Black;
-            this.lblMem.Location = new System.Drawing.Point(525, 23);
+            this.lblMem.Location = new System.Drawing.Point(525, 24);
             this.lblMem.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMem.Name = "lblMem";
             this.lblMem.Size = new System.Drawing.Size(148, 29);
@@ -107,7 +113,7 @@
             this.lblSignOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSignOut.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lblSignOut.LinkColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSignOut.Location = new System.Drawing.Point(1673, 24);
+            this.lblSignOut.Location = new System.Drawing.Point(1751, 24);
             this.lblSignOut.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblSignOut.Name = "lblSignOut";
             this.lblSignOut.Size = new System.Drawing.Size(93, 29);
@@ -123,7 +129,7 @@
             this.lblSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSchedule.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lblSchedule.LinkColor = System.Drawing.Color.Black;
-            this.lblSchedule.Location = new System.Drawing.Point(718, 22);
+            this.lblSchedule.Location = new System.Drawing.Point(718, 24);
             this.lblSchedule.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblSchedule.Name = "lblSchedule";
             this.lblSchedule.Size = new System.Drawing.Size(115, 29);
@@ -132,33 +138,67 @@
             this.lblSchedule.Text = "Schedule";
             this.lblSchedule.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSchedule_LinkClicked);
             // 
-            // pictureBox1
+            // picLogout
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1652, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
+            this.picLogout.Image = ((System.Drawing.Image)(resources.GetObject("picLogout.Image")));
+            this.picLogout.Location = new System.Drawing.Point(1725, 27);
+            this.picLogout.Name = "picLogout";
+            this.picLogout.Size = new System.Drawing.Size(24, 24);
+            this.picLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogout.TabIndex = 12;
+            this.picLogout.TabStop = false;
             // 
-            // pictureBox2
+            // picUser
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1496, 28);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
+            this.picUser.Image = ((System.Drawing.Image)(resources.GetObject("picUser.Image")));
+            this.picUser.Location = new System.Drawing.Point(1502, 27);
+            this.picUser.Name = "picUser";
+            this.picUser.Size = new System.Drawing.Size(24, 24);
+            this.picUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picUser.TabIndex = 13;
+            this.picUser.TabStop = false;
+            // 
+            // picPolicy
+            // 
+            this.picPolicy.Image = ((System.Drawing.Image)(resources.GetObject("picPolicy.Image")));
+            this.picPolicy.Location = new System.Drawing.Point(343, 27);
+            this.picPolicy.Name = "picPolicy";
+            this.picPolicy.Size = new System.Drawing.Size(24, 24);
+            this.picPolicy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picPolicy.TabIndex = 14;
+            this.picPolicy.TabStop = false;
+            // 
+            // picMembership
+            // 
+            this.picMembership.Image = ((System.Drawing.Image)(resources.GetObject("picMembership.Image")));
+            this.picMembership.Location = new System.Drawing.Point(499, 27);
+            this.picMembership.Name = "picMembership";
+            this.picMembership.Size = new System.Drawing.Size(24, 24);
+            this.picMembership.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picMembership.TabIndex = 15;
+            this.picMembership.TabStop = false;
+            // 
+            // picSchedule
+            // 
+            this.picSchedule.Image = ((System.Drawing.Image)(resources.GetObject("picSchedule.Image")));
+            this.picSchedule.Location = new System.Drawing.Point(695, 27);
+            this.picSchedule.Name = "picSchedule";
+            this.picSchedule.Size = new System.Drawing.Size(24, 24);
+            this.picSchedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picSchedule.TabIndex = 16;
+            this.picSchedule.TabStop = false;
+            this.picSchedule.Click += new System.EventHandler(this.picSchedule_Click);
             // 
             // header_bar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(180)))));
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picSchedule);
+            this.Controls.Add(this.picMembership);
+            this.Controls.Add(this.picPolicy);
+            this.Controls.Add(this.picUser);
+            this.Controls.Add(this.picLogout);
             this.Controls.Add(this.lblSchedule);
             this.Controls.Add(this.lblSignOut);
             this.Controls.Add(this.lblMem);
@@ -166,11 +206,14 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblProfile);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "header_bar";
             this.Size = new System.Drawing.Size(1895, 72);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogout)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPolicy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMembership)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSchedule)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,7 +227,10 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.LinkLabel lblSignOut;
         private System.Windows.Forms.LinkLabel lblSchedule;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picLogout;
+        private System.Windows.Forms.PictureBox picUser;
+        private System.Windows.Forms.PictureBox picPolicy;
+        private System.Windows.Forms.PictureBox picMembership;
+        private System.Windows.Forms.PictureBox picSchedule;
     }
 }

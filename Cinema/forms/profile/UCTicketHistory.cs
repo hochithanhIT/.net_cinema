@@ -5,6 +5,8 @@
 //using System.Data.SqlClient;
 //using System.Globalization;
 //using Cinema.homepage;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+//using Cinema.Forms.SignUp_SignIn;
 
 //namespace Cinema.Forms.profile
 //{
@@ -12,16 +14,13 @@
 //    {
 //        private ProfileForm ProfileForm;
 //        private DataAccess dataAccess = new DataAccess();
-//        private string userEmail;
-//        private string userPhone;
 //        private Panel mainPanel;
+//        private decimal discount;
 
-//        public UCTicketHistory(ProfileForm ProfileForm, string email, string phone)
+//        public UCTicketHistory(ProfileForm profileForm)
 //        {
 //            InitializeComponent();
-//            this.ProfileForm = ProfileForm;
-//            this.userEmail = email;
-//            this.userPhone = phone;
+//            this.ProfileForm = profileForm;
 
 //            // Main panel with scroll
 //            mainPanel = new Panel
@@ -74,22 +73,17 @@
 //        {
 //            try
 //            {
-//                // Get user ID based on email or phone
-//                string userIdQuery = "SELECT ID FROM THEATER_MEM WHERE EMAIL = @email OR PHONE = @phone";
-//                SqlCommand userIdCmd = new SqlCommand(userIdQuery, dataAccess.Sqlcon);
-//                userIdCmd.Parameters.AddWithValue("@email", userEmail);
-//                userIdCmd.Parameters.AddWithValue("@phone", userPhone);
-
-//                object userIdResult = userIdCmd.ExecuteScalar();
-//                if (userIdResult == null)
+//                // Kiểm tra người dùng đã đăng nhập
+//                if (!UserSession.IsLoggedIn)
 //                {
 //                    DisplayEmptyMessage();
 //                    return;
 //                }
 
-//                int userId = Convert.ToInt32(userIdResult);
+//                // Lấy user ID từ UserSession.MemberId
+//                int userId = UserSession.MemberId;
 
-//                // Query to get ticket history
+//                // Query để lấy lịch sử giao dịch
 //                string query = @"
 //                    SELECT 
 //                        m.movie_name,
@@ -133,7 +127,7 @@
 //                DataTable dt = new DataTable();
 //                adapter.Fill(dt);
 
-//                // Clear existing tickets (except header)
+//                // Xóa các ticket cũ (trừ header)
 //                for (int i = mainPanel.Controls.Count - 1; i >= 0; i--)
 //                {
 //                    if (mainPanel.Controls[i].Tag?.ToString() == "ticket")
@@ -142,15 +136,15 @@
 //                    }
 //                }
 
-//                // Check if user has no tickets
+//                // Kiểm tra nếu không có ticket
 //                if (dt.Rows.Count == 0)
 //                {
 //                    DisplayEmptyMessage();
 //                    return;
 //                }
 
-//                // Create a card for each ticket
-//                int yPos = 70; // Below header
+//                // Tạo card cho mỗi ticket
+//                int yPos = 70; // Dưới header
 //                foreach (DataRow row in dt.Rows)
 //                {
 //                    Panel ticketPanel = CreateTicketPanel(
@@ -359,7 +353,7 @@
 //            btnBookNow.FlatAppearance.BorderSize = 0;
 //            btnBookNow.Click += (s, e) =>
 //            {
-//                HomepageForm homepageForm = new HomepageForm(userEmail, userEmail, userPhone, DateTime.Now, "0", "N/A", 0);
+//                HomepageForm homepageForm = new HomepageForm(); // Không cần truyền tham số
 //                homepageForm.Show();
 //                this.ProfileForm.Close();
 //            };
@@ -372,6 +366,7 @@
 //        }
 //    }
 //}
+
 
 using System;
 using System.Drawing;
@@ -389,20 +384,20 @@ namespace Cinema.Forms.profile
     {
         private ProfileForm ProfileForm;
         private DataAccess dataAccess = new DataAccess();
-        private Panel mainPanel;
         private decimal discount;
+        private Panel mainPanel;
+        private Label lblTitle;
 
         public UCTicketHistory(ProfileForm profileForm)
         {
-            InitializeComponent();
-            this.ProfileForm = profileForm;
+            ProfileForm = profileForm;
 
             // Main panel with scroll
             mainPanel = new Panel
             {
                 Dock = DockStyle.Fill,
                 AutoScroll = true,
-                BackColor = Color.FromArgb(255, 224, 180)
+                BackColor = Color.FromArgb(240, 240, 240)
             };
             this.Controls.Add(mainPanel);
 
@@ -411,6 +406,9 @@ namespace Cinema.Forms.profile
 
             // Load ticket history
             LoadTicketHistory();
+
+            // Handle resize to keep content centered
+            mainPanel.Resize += (s, e) => CenterPanels();
         }
 
         private void AddHeader()
@@ -422,15 +420,19 @@ namespace Cinema.Forms.profile
                 BackColor = Color.White
             };
 
-            Label lblTitle = new Label
+            lblTitle = new Label
             {
                 Text = "TICKET HISTORY",
-                Dock = DockStyle.Left,
                 Font = new Font("Segoe UI", 16, FontStyle.Bold),
                 ForeColor = Color.FromArgb(50, 50, 50),
-                Padding = new Padding(20, 15, 0, 0),
                 AutoSize = true
             };
+
+            // Center the label initially
+            CenterHeaderLabel(headerPanel, lblTitle);
+
+            // Handle resize to keep the label centered
+            headerPanel.Resize += (s, e) => CenterHeaderLabel(headerPanel, lblTitle);
 
             Panel divider = new Panel
             {
@@ -444,12 +446,19 @@ namespace Cinema.Forms.profile
             mainPanel.Controls.Add(headerPanel);
         }
 
+        private void CenterHeaderLabel(Panel headerPanel, Label label)
+        {
+            int xPos = (headerPanel.ClientSize.Width - label.Width) / 2;
+            int yPos = 15;
+            label.Location = new Point(Math.Max(xPos, 20), yPos);
+        }
+
         private void LoadTicketHistory()
         {
             try
             {
-                // Kiểm tra người dùng đã đăng nhập
-                if (!UserSession.IsLoggedIn)
+                //Kiểm tra người dùng đã đăng nhập
+                 if (!UserSession.IsLoggedIn)
                 {
                     DisplayEmptyMessage();
                     return;
@@ -458,7 +467,22 @@ namespace Cinema.Forms.profile
                 // Lấy user ID từ UserSession.MemberId
                 int userId = UserSession.MemberId;
 
-                // Query để lấy lịch sử giao dịch
+                // Get user ID based on email or phone
+                //string userIdQuery = "SELECT ID FROM THEATER_MEM WHERE EMAIL = @email OR PHONE = @phone";
+                //SqlCommand userIdCmd = new SqlCommand(userIdQuery, dataAccess.Sqlcon);
+                //userIdCmd.Parameters.AddWithValue("@email", email);
+                //userIdCmd.Parameters.AddWithValue("@phone", phone);
+
+                //object userIdResult = userIdCmd.ExecuteScalar();
+                //if (userIdResult == null)
+                //{
+                //    DisplayEmptyMessage();
+                //    return;
+                //}
+
+                //int userId = Convert.ToInt32(userIdResult);
+
+                // Query to get ticket history
                 string query = @"
                     SELECT 
                         m.movie_name,
@@ -502,7 +526,7 @@ namespace Cinema.Forms.profile
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
-                // Xóa các ticket cũ (trừ header)
+                // Clear existing tickets (except header)
                 for (int i = mainPanel.Controls.Count - 1; i >= 0; i--)
                 {
                     if (mainPanel.Controls[i].Tag?.ToString() == "ticket")
@@ -511,15 +535,15 @@ namespace Cinema.Forms.profile
                     }
                 }
 
-                // Kiểm tra nếu không có ticket
+                // Check if user has no tickets
                 if (dt.Rows.Count == 0)
                 {
                     DisplayEmptyMessage();
                     return;
                 }
 
-                // Tạo card cho mỗi ticket
-                int yPos = 70; // Dưới header
+                // Create a card for each ticket
+                int yPos = 70; // Below header
                 foreach (DataRow row in dt.Rows)
                 {
                     Panel ticketPanel = CreateTicketPanel(
@@ -534,7 +558,9 @@ namespace Cinema.Forms.profile
                         Convert.ToDateTime(row["purchase_date"])
                     );
 
-                    ticketPanel.Location = new Point(20, yPos);
+                    // Center the ticket panel
+                    int xPos = (mainPanel.ClientSize.Width - ticketPanel.Width) / 2;
+                    ticketPanel.Location = new Point(Math.Max(xPos, 20), yPos);
                     ticketPanel.Tag = "ticket";
                     mainPanel.Controls.Add(ticketPanel);
                     yPos += ticketPanel.Height + 20;
@@ -555,7 +581,7 @@ namespace Cinema.Forms.profile
             // Main ticket panel
             Panel panel = new Panel
             {
-                Size = new Size(760, 180),
+                Size = new Size(760, 220), // Increased height to accommodate more rows
                 BackColor = Color.White,
                 Padding = new Padding(0),
                 BorderStyle = BorderStyle.None
@@ -611,9 +637,9 @@ namespace Cinema.Forms.profile
             // Ticket details table
             TableLayoutPanel detailsTable = new TableLayoutPanel
             {
-                RowCount = 2,
+                RowCount = 4, // Increased to 4 to accommodate price rows
                 ColumnCount = 4,
-                Size = new Size(720, 80),
+                Size = new Size(720, 120), // Increased height to fit all rows
                 Location = new Point(20, 80),
                 CellBorderStyle = TableLayoutPanelCellBorderStyle.None,
                 Margin = new Padding(0)
@@ -623,8 +649,10 @@ namespace Cinema.Forms.profile
             detailsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             detailsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             detailsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            detailsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            detailsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            detailsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 25F)); // Row 0
+            detailsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 25F)); // Row 1
+            detailsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 25F)); // Row 2
+            detailsTable.RowStyles.Add(new RowStyle(SizeType.Percent, 25F)); // Row 3
 
             // Header row
             AddTableHeader(detailsTable, "THEATER", 0, 0);
@@ -638,7 +666,7 @@ namespace Cinema.Forms.profile
             AddTableCell(detailsTable, showDate.ToString("dd MMM yyyy HH:mm"), 1, 2);
             AddTableCell(detailsTable, $"{discountRate:P0}", 1, 3);
 
-            // Price row
+            // Price row headers
             AddTableHeader(detailsTable, "ORIGINAL PRICE", 2, 0);
             AddTableHeader(detailsTable, "DISCOUNT AMOUNT", 2, 1);
             AddTableHeader(detailsTable, "TOTAL PRICE", 2, 2);
@@ -690,9 +718,13 @@ namespace Cinema.Forms.profile
             Panel emptyPanel = new Panel
             {
                 Size = new Size(760, 200),
-                Location = new Point(20, 70),
                 BackColor = Color.White
             };
+
+            // Center the empty panel
+            int xPos = (mainPanel.ClientSize.Width - emptyPanel.Width) / 2;
+            emptyPanel.Location = new Point(Math.Max(xPos, 20), 70);
+            emptyPanel.Tag = "ticket";
 
             Label lblEmptyMessage = new Label
             {
@@ -728,8 +760,8 @@ namespace Cinema.Forms.profile
             btnBookNow.FlatAppearance.BorderSize = 0;
             btnBookNow.Click += (s, e) =>
             {
-                HomepageForm homepageForm = new HomepageForm(); // Không cần truyền tham số
-                homepageForm.Show();
+                HomepageForm homepage = new HomepageForm();
+                homepage.Show();
                 this.ProfileForm.Close();
             };
 
@@ -738,6 +770,18 @@ namespace Cinema.Forms.profile
             emptyPanel.Controls.Add(lblEmptyMessage);
 
             mainPanel.Controls.Add(emptyPanel);
+        }
+
+        private void CenterPanels()
+        {
+            foreach (Control control in mainPanel.Controls)
+            {
+                if (control.Tag?.ToString() == "ticket")
+                {
+                    int xPos = (mainPanel.ClientSize.Width - control.Width) / 2;
+                    control.Location = new Point(Math.Max(xPos, 20), control.Location.Y);
+                }
+            }
         }
     }
 }

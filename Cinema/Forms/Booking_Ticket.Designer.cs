@@ -153,9 +153,9 @@ namespace Cinema.Forms {
             // panelAvailableColor
             // 
             this.panelAvailableColor.BackColor = System.Drawing.Color.LightGray;
-            this.panelAvailableColor.Location = new System.Drawing.Point(195, 10);
+            this.panelAvailableColor.Location = new System.Drawing.Point(200, 10);
             this.panelAvailableColor.Name = "panelAvailableColor";
-            this.panelAvailableColor.Size = new System.Drawing.Size(20, 20);
+            this.panelAvailableColor.Size = new System.Drawing.Size(24, 20);
             this.panelAvailableColor.TabIndex = 8;
             // 
             // buttonConfirmBooking
@@ -203,7 +203,7 @@ namespace Cinema.Forms {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1282, 653);
+            this.ClientSize = new System.Drawing.Size(1482, 653);
             this.Controls.Add(this.labelTotalPriceValue);
             this.Controls.Add(this.labelSelectedSeatsValue);
             this.Controls.Add(this.labelMovieNameValue);

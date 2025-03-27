@@ -25,16 +25,6 @@ namespace Cinema
             // Load UCProfileDetails với thông tin từ UserSession
             if (UserSession.IsLoggedIn)
             {
-                //this.AddUserControl(new UCProfileDetails(
-                //    this,
-                //    UserSession.FullName,
-                //    UserSession.Email,
-                //    UserSession.Phone,
-                //    UserSession.Dob ?? DateTime.Now, // Đảm bảo Dob không null
-                //    UserSession.Spending,
-                //    UserSession.RankName,
-                //    UserSession.Discount
-                //));
                 this.AddUserControl(new UCProfileDetails(this));
             }
             else
