@@ -21,8 +21,8 @@ namespace Cinema.Admin.UserControls
         public UC_Theaters()
         {
             InitializeComponent();
-            
-            
+            FDate.Value = DateTime.Now;
+
         }
 
 

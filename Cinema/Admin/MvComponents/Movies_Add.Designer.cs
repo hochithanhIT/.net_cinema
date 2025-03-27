@@ -57,9 +57,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(144, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 39);
+            this.label1.Size = new System.Drawing.Size(269, 39);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Add New Movies";
+            this.label1.Text = "Add New Movie";
             // 
             // label2
             // 

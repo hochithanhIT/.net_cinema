@@ -19,6 +19,7 @@ namespace Cinema.Admin.Components
         public Movies_Add()
         {
             InitializeComponent();
+            MvDate.Value = DateTime.Now;
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
